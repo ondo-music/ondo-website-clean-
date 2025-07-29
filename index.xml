@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ondo website</title>
+    <link>https://ondo-official.com/</link>
+    <description>Recent content on ondo website</description>
+    <generator>Hugo</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://ondo-official.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ondo = ?</title>
+      <link>https://ondo-official.com/ondo/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0900</pubDate>
+      <guid>https://ondo-official.com/ondo/</guid>
+      <description>&lt;p&gt;ここは空っぽでOK！&#xA;本文はテンプレート（HTML側）でコントロールするから！&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
