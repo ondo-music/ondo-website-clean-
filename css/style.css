@@ -963,3 +963,46 @@ h2 {
   font-size: 0.9rem;
   line-height: 1.8;
 }
+
+/* 文中の外部リンクだけ強調 */
+.ext-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  color: #000;
+  font-weight: 500;
+  position: relative;
+}
+
+/* ↗︎ アイコンを付ける */
+.ext-link::after {
+  content: "↗︎";
+  font-size: 0.8em;
+  margin-left: 0.25em;
+  opacity: 0.7;
+  position: relative;
+  top: -1px; /* 少し上にすると綺麗 */
+}
+
+/* 文中の外部リンク専用 */
+.ext-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  color: #000;
+  font-weight: 500;
+  position: relative;
+  padding-right: 0.3em;
+}
+
+/* Font Awesome 外部リンクアイコン */
+.ext-link::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f35d"; /* fa-up-right-from-square */
+  font-size: 0.75em;
+  margin-left: 0.25em;
+  opacity: 0.8;
+  position: relative;
+  top: -1px;
+}
