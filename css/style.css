@@ -957,3 +957,9 @@ h2 {
     left: 1.5rem;                /* ロゴ位置も少し内側に */
   }
 }
+
+/* works（実績）の本文だけ小さくする */
+.discography .works-detail {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
