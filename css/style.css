@@ -1006,3 +1006,26 @@ h2 {
   position: relative;
   top: -1px;
 }
+
+/* 料金表の小見出し */
+.price-heading {
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid #1a1a1a33; /* 少し薄い罫線 */
+  padding-bottom: 0.3rem;
+}
+
+/* 各項目のブロック */
+.price-item {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* 項目名だけ視認性を上げる */
+.price-item strong {
+  font-weight: bold;
+  font-size: 1.05rem;
+}
