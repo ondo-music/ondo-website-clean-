@@ -1079,3 +1079,10 @@ h2 {
   margin-right: 0.75rem;
   margin-bottom: 0.5rem;
 }
+
+/* 料金説明だけフォントを小さく */
+.price-note {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-weight: normal;
+}
