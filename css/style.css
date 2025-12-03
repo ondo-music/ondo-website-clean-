@@ -942,3 +942,18 @@ h2 {
 .menu-links a:first-of-type {
   margin-left: 1.2rem;
 }
+
+/* スマホで本文の幅を広げる */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 4rem 1.25rem 3rem;  /* 上 / 左右 / 下 */
+  }
+
+  .footer {
+    padding: 3rem 1.25rem;       /* フッターも同じ幅感に */
+  }
+
+  .site-logo-container {
+    left: 1.5rem;                /* ロゴ位置も少し内側に */
+  }
+}
