@@ -5091,7 +5091,7 @@ body.is-home .home-updates {
   right: 24px;
   left: auto;
   transform: none;
-  bottom: 190px;
+  bottom: 152px;
   text-align: left;
   z-index: 82;
 }
@@ -5121,7 +5121,7 @@ body.is-home .ui-dock .social-dock {
     right: 12px;
     left: auto;
     transform: none;
-    bottom: 176px;
+    bottom: 138px;
     max-width: min(88vw, 460px);
     text-align: right;
   }
