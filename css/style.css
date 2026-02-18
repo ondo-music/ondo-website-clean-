@@ -5126,6 +5126,10 @@ body.is-home .ui-dock .social-dock {
     text-align: right;
   }
 
+  body.is-home .home-updates li:nth-child(n + 2) {
+    display: none;
+  }
+
   body.is-home .ui-dock {
     right: 12px;
     bottom: 66px;
