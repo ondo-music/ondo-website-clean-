@@ -6860,3 +6860,54 @@ body.page-about::after {
 body.page-about::before {
   right: clamp(66px, 8vw, 120px);
 }
+
+/* Mobile: hide scrapbook photos on About/Contact/Blog completely */
+@media (max-width: 768px) {
+  body.page-about::before,
+  body.page-about::after,
+  body.page-contact::after,
+  body.page-blog::after,
+  body.section-blog::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+/* Sticker mode: disable motion and keep collage-like pasted look */
+body.page-about::after,
+body.page-about::before,
+body.page-contact::after,
+body.page-blog::after,
+body.section-blog::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.page-about::after {
+  transform: rotate(-6deg) !important;
+  filter:
+    drop-shadow(0 0 0 rgba(255, 255, 255, 0.98))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.16));
+}
+
+body.page-about::before {
+  transform: rotate(2.2deg) !important;
+  filter:
+    drop-shadow(0 0 0 rgba(255, 255, 255, 0.98))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.16));
+}
+
+body.page-blog::after,
+body.section-blog::after {
+  transform: rotate(-2deg) !important;
+  filter:
+    drop-shadow(0 0 0 rgba(255, 255, 255, 0.98))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.16));
+}
+
+body.page-contact::after {
+  transform: rotate(-4deg) !important;
+  filter:
+    drop-shadow(0 0 0 rgba(255, 255, 255, 0.98))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.16));
+}
