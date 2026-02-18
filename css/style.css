@@ -6235,3 +6235,76 @@ body.is-home .artist-caption {
 body.is-home.menu-open .artist-caption {
   opacity: 0.88 !important;
 }
+
+/* ===== Movie subtle color + depth polish (final override) ===== */
+body.page-movie .movie-thumb {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.page-movie .movie-year-title::before {
+  transform: translate3d(0, var(--movie-year-shift, 0px), 0);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-movie .movie-item:hover .movie-thumb,
+  body.page-movie .movie-item:focus-visible .movie-thumb {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.13);
+  }
+
+}
+
+@media (hover: none) {
+  body.page-movie .movie-thumb {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  body.page-movie .movie-item:active .movie-thumb {
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-movie .movie-year-title::before,
+  body.page-movie .movie-thumb {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ===== Movie: always color thumbs + animated plus marker ===== */
+body.page-movie .movie-thumb img {
+  filter: none !important;
+}
+
+@keyframes movie-plus-idle {
+  0% {
+    transform: scale(1) rotate(-14deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(14deg);
+  }
+  100% {
+    transform: scale(1) rotate(-14deg);
+  }
+}
+
+body.page-movie .movie-ext {
+  animation: movie-plus-idle 4.2s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+body.page-movie .movie-item:hover .movie-ext,
+body.page-movie .movie-item:focus-visible .movie-ext {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-movie .movie-ext {
+    animation: none;
+  }
+}

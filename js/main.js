@@ -216,6 +216,36 @@
     }
   }
 
+  var movieYearTitles = Array.prototype.slice.call(document.querySelectorAll("body.page-movie .movie-year-title[data-year]"));
+  if (movieYearTitles.length) {
+    var movieReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var movieFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (!movieReduceMotion && movieFinePointer) {
+      var movieTicking = false;
+      var updateMovieYearParallax = function () {
+        var scrollY = window.scrollY || window.pageYOffset || 0;
+        movieYearTitles.forEach(function (title, index) {
+          var shift = Math.max(-24, Math.min(24, scrollY * 0.16 + (index * 1.5)));
+          title.style.setProperty("--movie-year-shift", shift.toFixed(2) + "px");
+        });
+        movieTicking = false;
+      };
+
+      var onMovieScroll = function () {
+        if (movieTicking) {
+          return;
+        }
+        movieTicking = true;
+        window.requestAnimationFrame(updateMovieYearParallax);
+      };
+
+      updateMovieYearParallax();
+      window.addEventListener("scroll", onMovieScroll, { passive: true });
+      window.addEventListener("resize", onMovieScroll, { passive: true });
+    }
+  }
+
   var copyBtn = document.querySelector("[data-copy-email]");
   if (copyBtn) {
     var copyStatusId = copyBtn.getAttribute("data-copy-target");
