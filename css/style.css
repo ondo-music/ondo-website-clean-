@@ -656,7 +656,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   padding: 12px;
 }
 
@@ -712,7 +712,7 @@ main {
     inset: 0;
     display: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
     align-content: center;
     justify-content: center;
     width: min(92vw, 420px);
@@ -809,7 +809,7 @@ main {
     inset: 0;
     display: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
     align-content: center;
     justify-content: center;
     width: min(92vw, 420px);
@@ -1883,7 +1883,7 @@ body.is-inner .profile-layout .profile-vertical::after {
 /* ===== Shared Header ===== */
 .site-header {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 11px;
   border-bottom: 1px solid rgba(59, 130, 246, 0.16);
   background: rgba(255, 255, 255, 0.78);
 }
@@ -2938,7 +2938,7 @@ body.page-movie .movie-year-title {
 
 body.page-movie .movie-list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 body.page-movie .movie-item {
@@ -3014,7 +3014,7 @@ body.page-movie .movie-tabs {
 
 body.page-movie .movie-year-tabs {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   align-content: start;
 }
 
@@ -3157,7 +3157,7 @@ body.page-movie .movie-ext {
   body.page-movie .movie-item {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    gap: 8px;
   }
 
   body.page-movie .movie-main {
@@ -3225,7 +3225,7 @@ body.page-about .about-works-list {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 body.page-about .about-works-item {
@@ -3247,7 +3247,7 @@ body.page-about .about-works-title {
 body.page-about .about-works-links {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 body.page-about .about-works-links a {
@@ -3358,7 +3358,7 @@ body.page-updates .updates-log ul {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 body.page-updates .updates-log a {
@@ -3413,7 +3413,7 @@ body.section-blog .blog-list {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 body.section-blog .blog-item {
@@ -3458,7 +3458,7 @@ body.section-blog .blog-tags {
   }
 
   body.section-blog .blog-item {
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
@@ -3583,7 +3583,7 @@ body.page-contact .contact-cta {
 body.page-contact .contact-cta-link,
 body.page-contact .contact-copy-btn {
   min-height: 44px;
-  padding: 10px 14px;
+  padding: 8px 11px;
   font: inherit;
   font-size: 13px;
   letter-spacing: 0.08em;
@@ -4664,7 +4664,7 @@ body.page-movie .movie-yt-badge {
   top: 0;
   z-index: 60;
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 11px;
   background: rgba(255, 255, 255, 0.02);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(0px);
@@ -4900,7 +4900,7 @@ body.page-about .profile-layout .profile-row {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 8px;
   pointer-events: auto;
 }
 
@@ -5357,7 +5357,7 @@ body.page-about .profile-layout .profile-vertical {
     transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
     pointer-events: auto;
     z-index: 6;
   }
@@ -5922,7 +5922,7 @@ body.page-discography .disc-subscribe-links a:focus-visible {
 @media (max-width: 768px) {
   body.page-discography .disc-log-heading {
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
   }
 
   body.page-discography .disc-subscribe-links {
@@ -6070,7 +6070,7 @@ body.page-discography .disc-subscribe-links a:focus-visible {
 body.page-discography .disc-subscribe-links {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 body.page-discography .disc-subscribe-links a {
@@ -6311,4 +6311,552 @@ body.page-movie .movie-item:focus-visible .movie-ext {
   body.page-movie .movie-ext {
     animation: none;
   }
+}
+
+/* ===== Links section (About / Contact) ===== */
+.links-section {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+}
+
+.links-section h2 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(20, 20, 20, 0.82);
+}
+
+.links-list {
+  margin-top: 14px;
+  display: grid;
+}
+
+.links-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 0;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: rgba(24, 24, 24, 0.78);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: color 180ms ease-out, border-color 180ms ease-out;
+}
+
+.links-ext {
+  flex: 0 0 auto;
+  font-size: 0.75em;
+  opacity: 0.55;
+  transition: opacity 180ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .links-item:hover,
+  .links-item:focus-visible {
+    color: rgba(20, 20, 20, 0.94);
+    border-bottom-color: rgba(107, 140, 255, 0.42);
+    outline: none;
+  }
+
+  .links-item:hover .links-ext,
+  .links-item:focus-visible .links-ext {
+    opacity: 0.9;
+  }
+}
+
+body.page-about .links-section--about {
+  width: min(1160px, 100%);
+  margin: clamp(36px, 6vh, 64px) auto 0;
+  padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 24px);
+  padding-right: clamp(20px, 5vw, 60px);
+}
+
+body.page-contact .links-section--contact {
+  margin-top: 22px;
+  max-width: 520px;
+}
+
+@media (max-width: 980px) {
+  body.page-about .links-section--about {
+    padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 18px);
+    padding-right: 16px;
+  }
+
+  body.page-contact .links-section--contact {
+    max-width: none;
+  }
+}
+
+/* ===== About Links: chip layout only (Contact untouched) ===== */
+body.page-about .links-section--about .links-list {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+
+body.page-about .links-section--about .links-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  min-height: 0;
+  padding: 8px 11px;
+  border: 1px solid rgba(24, 24, 24, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  border-bottom: 1px solid rgba(24, 24, 24, 0.16);
+}
+
+body.page-about .links-section--about .links-ext {
+  margin-left: 0.35em;
+  opacity: 0.58;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-about .links-section--about .links-item:hover,
+  body.page-about .links-section--about .links-item:focus-visible {
+    background: rgba(107, 140, 255, 0.08);
+    border-color: rgba(107, 140, 255, 0.36);
+    border-bottom-color: rgba(107, 140, 255, 0.36);
+  }
+}
+
+/* ===== About Links: row layout (no chips) ===== */
+body.page-about .links-section--about .links-list {
+  display: grid;
+  gap: 4px;
+}
+
+body.page-about .links-section--about .links-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(24, 24, 24, 0.78);
+}
+
+body.page-about .links-section--about .links-ext {
+  margin-left: 12px;
+  font-size: 0.72em;
+  opacity: 0.62;
+  transform: translateX(0);
+  transition: transform 180ms ease-out, opacity 180ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-about .links-section--about .links-item:hover,
+  body.page-about .links-section--about .links-item:focus-visible {
+    background: transparent;
+    border: 0;
+    color: rgba(20, 20, 20, 0.95);
+    outline: none;
+  }
+
+  body.page-about .links-section--about .links-item:hover .links-ext,
+  body.page-about .links-section--about .links-item:focus-visible .links-ext {
+    transform: translateX(4px);
+    opacity: 0.9;
+  }
+}
+
+/* ===== About Links: button row UI ===== */
+body.page-about .links-section--about .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 10px;
+}
+
+body.page-about .links-section--about .links__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 0;
+  text-decoration: none;
+  color: rgba(24, 24, 24, 0.82);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  will-change: transform;
+}
+
+
+body.page-about .links-section--about .links__label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+body.page-about .links-section--about .links__plus {
+  opacity: 0.6;
+  transition: opacity 0.18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-about .links-section--about .links__item:hover,
+  body.page-about .links-section--about .links__item:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.05);
+    outline: none;
+  }
+
+  body.page-about .links-section--about .links__item:hover .links__plus,
+  body.page-about .links-section--about .links__item:focus-visible .links__plus {
+    opacity: 1;
+  }
+}
+
+body.page-about .links-section--about .links__item:active {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ===== About: align Links left edge with About/Works ===== */
+body.page-about .profile-page .scene > .links-section--about {
+  width: min(1160px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 24px);
+  padding-right: clamp(20px, 5vw, 60px);
+}
+
+@media (max-width: 980px) {
+  body.page-about .profile-page .scene > .links-section--about {
+    padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 18px);
+    padding-right: 16px;
+  }
+}
+
+/* ===== About Links final align: same left edge as ABOUT/works ===== */
+body.page-about .profile-page .scene > .links-section--about {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 36px 0 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: left !important;
+}
+
+body.page-about .profile-page .scene > .links-section--about h2,
+body.page-about .profile-page .scene > .links-section--about .links {
+  margin-left: 0 !important;
+}
+
+/* ===== Contact Links: same layout as About buttons ===== */
+body.page-contact .links-section--contact {
+  margin-top: 18px;
+  max-width: none;
+}
+
+body.page-contact .links-section--contact .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 10px;
+}
+
+body.page-contact .links-section--contact .links__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(24, 24, 24, 0.82);
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+body.page-contact .links-section--contact .links__label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+body.page-contact .links-section--contact .links__plus {
+  opacity: 0.6;
+  transition: opacity 0.18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-contact .links-section--contact .links__item:hover,
+  body.page-contact .links-section--contact .links__item:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.05);
+    outline: none;
+  }
+
+  body.page-contact .links-section--contact .links__item:hover .links__plus,
+  body.page-contact .links-section--contact .links__item:focus-visible .links__plus {
+    opacity: 1;
+  }
+}
+
+body.page-contact .links-section--contact .links__item:active {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Movie heading links (same tone as Discography) ===== */
+body.page-movie .movie-log-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body.page-movie .movie-log-heading .page-title {
+  margin: 0;
+}
+
+body.page-movie .movie-subscribe-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+body.page-movie .movie-subscribe-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 0.35px solid #5b8cff;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(26, 26, 26, 0.78);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+body.page-movie .movie-subscribe-links a:hover,
+body.page-movie .movie-subscribe-links a:focus-visible {
+  background: rgba(59, 130, 246, 0.08);
+  color: rgba(26, 26, 26, 0.92);
+  outline: none;
+}
+
+@media (max-width: 980px) {
+  body.page-movie .movie-log-heading {
+    display: block;
+  }
+
+  body.page-movie .movie-log-heading .page-title {
+    margin-bottom: 10px;
+  }
+
+  body.page-movie .movie-subscribe-links {
+    display: inline-flex;
+    margin: 0 0 10px 0;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+}
+
+/* ===== Movie heading links hard align (match Discography position) ===== */
+body.page-movie .movie-log-heading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+body.page-movie .movie-log-heading .page-title {
+  margin: 0 !important;
+}
+
+body.page-movie .movie-log-heading .movie-subscribe-links {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  justify-content: flex-end !important;
+}
+
+@media (max-width: 980px) {
+  body.page-movie .movie-log-heading {
+    display: block !important;
+  }
+
+  body.page-movie .movie-log-heading .movie-subscribe-links {
+    margin-left: 0 !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* ===== Studio scrapbook photos (About / Contact / Blog, desktop only) ===== */
+body.page-about::after,
+body.page-contact::after,
+body.page-blog::after,
+body.section-blog::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+}
+
+body.page-about::after {
+  width: min(220px, 20vw);
+  aspect-ratio: 1 / 1;
+  right: 28px;
+  bottom: 28px;
+  background-image: url("/images/background/guitar.PNG");
+  transform: rotate(-2deg);
+}
+
+body.page-contact::after {
+  width: min(220px, 20vw);
+  aspect-ratio: 1 / 1;
+  left: 26px;
+  bottom: 24px;
+  background-image: url("/images/background/sp404mk2.PNG");
+  transform: rotate(2deg);
+}
+
+body.page-blog::after,
+body.section-blog::after {
+  width: min(230px, 21vw);
+  aspect-ratio: 1 / 1;
+  right: 28px;
+  top: 92px;
+  background-image: url("/images/background/macmini.PNG");
+  transform: rotate(-1.5deg);
+}
+
+@media (max-width: 768px) {
+  body.page-about::after,
+  body.page-contact::after,
+  body.page-blog::after,
+  body.section-blog::after {
+    display: none;
+  }
+}
+
+/* ===== Studio scrapbook photos tweak ===== */
+@keyframes scrapbookFloatA {
+  0% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+  50% { transform: translate3d(0, -9px, 0) rotate(-1.3deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+}
+
+@keyframes scrapbookFloatB {
+  0% { transform: translate3d(0, 0, 0) rotate(1.8deg); }
+  45% { transform: translate3d(0, -7px, 0) rotate(2.5deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(1.8deg); }
+}
+
+body.page-about::after {
+  width: min(200px, 18vw);
+  right: clamp(300px, 23vw, 420px);
+  bottom: clamp(120px, 16vh, 210px);
+  animation: scrapbookFloatA 9.2s ease-in-out infinite;
+}
+
+body.page-about::before {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 2;
+  width: min(210px, 19vw);
+  aspect-ratio: 1 / 1;
+  right: clamp(52px, 7vw, 120px);
+  bottom: clamp(126px, 17vh, 220px);
+  background: url("/images/background/bass.PNG") no-repeat center / contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+  animation: scrapbookFloatB 11.6s ease-in-out infinite;
+}
+
+body.page-contact::after {
+  left: auto;
+  right: 24px;
+  top: 148px;
+  bottom: auto;
+}
+
+body.page-blog::after,
+body.section-blog::after {
+  right: clamp(96px, 11vw, 180px);
+}
+
+@media (max-width: 768px) {
+  body.page-about::before {
+    display: none;
+  }
+}
+
+/* ===== Studio scrapbook photos motion tweak ===== */
+@keyframes scrapbookFloatA-strong {
+  0% { transform: translate3d(0, 0, 0) rotate(-6deg); }
+  25% { transform: translate3d(-3px, -12px, 0) rotate(-4.8deg); }
+  50% { transform: translate3d(2px, -18px, 0) rotate(-6.8deg); }
+  75% { transform: translate3d(-2px, -10px, 0) rotate(-5.2deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(-6deg); }
+}
+
+@keyframes scrapbookFloatB-strong {
+  0% { transform: translate3d(0, 0, 0) rotate(2.2deg); }
+  35% { transform: translate3d(2px, -8px, 0) rotate(3deg); }
+  70% { transform: translate3d(-1px, -13px, 0) rotate(1.6deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(2.2deg); }
+}
+
+@keyframes scrapbookMacFloatRotate {
+  0% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+  30% { transform: translate3d(2px, -7px, 0) rotate(0.5deg); }
+  60% { transform: translate3d(-2px, -11px, 0) rotate(2deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+}
+
+@keyframes scrapbookSamplerFloatLeft {
+  0% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  40% { transform: translate3d(-3px, -10px, 0) rotate(-5deg); }
+  75% { transform: translate3d(1px, -16px, 0) rotate(-3.2deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+}
+
+body.page-about::after {
+  transform-origin: 50% 60%;
+  animation: scrapbookFloatA-strong 6.8s ease-in-out infinite;
+}
+
+body.page-about::before {
+  transform-origin: 50% 60%;
+  animation: scrapbookFloatB-strong 8.9s ease-in-out infinite;
+}
+
+body.page-blog::after,
+body.section-blog::after {
+  transform-origin: 50% 50%;
+  animation: scrapbookMacFloatRotate 9.6s ease-in-out infinite;
+}
+
+body.page-contact::after {
+  right: clamp(56px, 9vw, 132px);
+  transform-origin: 50% 60%;
+  animation: scrapbookSamplerFloatLeft 7.4s ease-in-out infinite;
+}
+
+/* About scrapbook spacing tweak: bring guitar and bass closer */
+body.page-about::after {
+  right: clamp(230px, 18vw, 300px);
+}
+
+body.page-about::before {
+  right: clamp(66px, 8vw, 120px);
 }
