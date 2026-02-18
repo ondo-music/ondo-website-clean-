@@ -1,1088 +1,6237 @@
-/* --- 基本設定 --- */
+:root {
+  --bg: #ffffff;
+  --ink: #1f1f1f;
+  --card: #f8f8ff;
+  --profile: #ff3b30;
+  --discography: #ffcc00;
+  --movie: #34c759;
+  --works: #007aff;
+  --blog: #af52de;
+  --contact: #ff2d55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #fff;
-  color: #1a1a1a;
-  scroll-behavior: smooth;
+  color: var(--ink);
+  background: #ffffff;
+  font-family: "Avenir Next", "Hiragino Kaku Gothic ProN", sans-serif;
 }
 
-.zen-kaku {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-}
-
-/* --- タイピングロゴ --- */
-.site-logo-container {
-  position: fixed;
-  top: 2rem;
-  left: 3rem;
-  z-index: 1000;
-  pointer-events: none;
-}
-
-.site-logo {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #1a1a1a;
-  opacity: 0.9;
-}
-
-/* --- セクション共通 --- */
-.section {
-  padding: 3rem 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: relative;
-}
-
-.section::before {
-  content: '●';
-  position: absolute;
-  left: 1rem;
-  top: 2rem;
-  font-size: 1.5rem;
-  opacity: 0.5;
-}
-
-/* --- fade-in --- */
-.fade-in {
-  opacity: 0;
-  transform: translateX(-40px) scale(0.98);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-}
-
-/* --- ナビリンク --- */
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 4rem;
-}
-
-.nav a {
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid #1a1a1a;
-  border-radius: 1.5rem;
-  color: #1a1a1a;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* --- plainリンク --- */
-.plain-link {
+a {
   color: inherit;
   text-decoration: none;
 }
 
-/* --- ハッシュタグエリア --- */
-.hashtags {
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  letter-spacing: 0.03em;
+main {
+  min-height: 100vh;
 }
 
-.hashtags span {
-  margin-right: 0.5em;
-  animation: blink 4s infinite;
-  opacity: 1;
-}
-
-.hashtags span:nth-child(odd) { animation-delay: 1s; }
-.hashtags span:nth-child(even) { animation-delay: 2s; }
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.1; }
-}
-
-/* --- 横棒エフェクト --- */
-.animate-line,
-.contact-line,
-.sub-line {
-  position: relative;
-  display: inline-block;
-}
-
-.animate-line::after,
-.contact-line::after,
-.sub-line::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-left: 1rem;
-  width: 0;
-  height: 2px;
-  background-color: #111;
-  animation: line-expand 7s ease-in-out infinite;
-}
-
-@keyframes line-expand {
-  0% { width: 0; opacity: 1; }
-  30% { width: 120px; opacity: 1; }
-  60% { width: 120px; opacity: 1; }
-  90% { width: 0; opacity: 1; }
-  100% { width: 0; opacity: 0; }
-}
-
-/* --- フッター --- */
-.footer {
-  text-align: left;
-  font-size: 0.9rem;
-  padding: 4rem 3rem;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  line-height: 2;
-}
-
-.footer-nav-group {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-  margin-bottom: 2rem;
-}
-
-.footer-nav {
-  font-size: 1rem;
-  white-space: nowrap;
-}
-
-.footer-copy {
-  font-size: 0.9rem;
-  white-space: nowrap;
-  position: relative;
-}
-
-.footer-copy::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-left: 1rem;
-  width: 120px;
-  height: 2px;
-  background-color: #111;
-  animation: line-expand 7s ease-in-out infinite;
-}
-
-/* --- contactの▶︎点滅 --- */
-.blink-fast {
-  animation: blink-fast 0.4s step-start infinite;
-}
-
-@keyframes blink-fast {
-  50% { opacity: 0; }
-}
-
-/* --- ページトップボタン --- */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  font-size: 2rem;
-  color: #1a1a1a;
-  cursor: pointer;
-  animation: pulseFade 5s ease-in-out infinite;
-  z-index: 999;
-  user-select: none;
-}
-
-@keyframes pulseFade {
-  0% { opacity: 0.2; transform: scale(1); }
-  20% { opacity: 1; transform: scale(1.1); }
-  80% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0.2; transform: scale(1); }
-}
-
-/* --- 子ページ専用 ondo-page --- */
-.ondo-page {
-  text-align: center;
-}
-
-.ondo-page .left-align {
-  text-align: left;
-  margin: 2rem 0;
-}
-
-.ondo-page .shoulders {
-  font-size: 1.3rem;
-  margin-bottom: 3rem;
-}
-
-.ondo-page .catch {
-  font-size: 2.4rem;
-  margin: 4rem 0;
-  animation: slow-blink 6s ease-in-out infinite;
-}
-
-@keyframes slow-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-/* --- ondo-page リンクリスト --- */
-.ondo-page .ondo-links {
-  margin: 4rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.ondo-page .ondo-links p {
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-}
-
-.ondo-page .question-text {
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
-.ondo-page .line-expand {
-  flex-shrink: 0;
-  height: 2px;
-  background: #111;
-  width: 120px;
-  margin: 0 1rem;
-  animation: line-expand 7s ease-in-out infinite;
-}
-
-.ondo-page .links {
-  white-space: nowrap;
-}
-
-.ondo-page .ondo-links a {
-  color: inherit;
-  text-decoration: none; /* デフォルトのアンダーラインを消す */
-  margin: 0 0.5rem;
-  font-size: 0.9rem;
-  border-bottom: 2px dashed #1a1a1a; /* ←ここで点線＋太さ */
-}
-
-
-
-/* --- 子ページ用topボタン --- */
-.ondo-page .back-to-top-button a {
-  padding: 0.75rem 2rem;
-  border: 1px solid #1a1a1a;
-  border-radius: 2rem;
-  text-decoration: none;
-  color: #1a1a1a;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-
-.ondo-page .back-to-top-button a:hover {
-  background: #f0f0f0;
-}
-/* --- 各セクションの←矢印 点滅（1秒間隔でゆっくり） --- */
-.arrow-blink {
-  display: inline-block;
-  margin-left: 0.5rem;
-  font-size: 1.5rem;
-  animation: arrow-blink 2s infinite;
-  vertical-align: middle;
-}
-
-@keyframes arrow-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-/* --- Musicページ用（small-catchとdiscography追加） --- */
-
-/* キャッチコピーを少し小さくする */
-.small-catch {
-  font-size: 2rem; /* 通常のcatch（2.4rem）より少し小さめ */
-  margin: 3rem 0;
-  animation: slow-blink 6s ease-in-out infinite;
-}
-
-/* ディスコグラフィエリア */
-.discography p {
-  margin: 1rem 0;
-  font-size: 1.2rem;
-  font-family: 'Poppins', sans-serif;
-}
-
-.blink-slow {
-  animation: blink-slow 2s step-start infinite;
-}
-
-.arrow-blink-slow {
-  animation: blink-slow 1s step-start infinite;
-}
-
-@keyframes blink-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.partner-description {
-  width: 100%;
-  max-width: 700px;
-  min-height: 20rem; /* 最初からスペース確保 */
-  height: auto;       /* 高さを自動調整 */
-  margin: 4rem 0;
-  font-size: 1.2rem;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-weight: bold;
-  text-align: left;
-  line-height: 1.8;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden; /* 高さ変動による揺れ防止 */
-}
-
-.partner-description p {
-  margin: 1rem 0;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-@media screen and (max-width: 768px) {
-  .partner-description {
-    min-height: 24rem; /* モバイル時は少し余裕を確保 */
-  }
-}
-
-
-#partner-ja, #partner-en {
-  display: block;
-  margin-bottom: 1.5rem; /* 日本語と英語の間をあける */
-}
-.catch-ja {
-  text-align: left;
-  font-size: 1.2rem;
-}
-
-.catch-en {
-  text-align: right;
-  font-size: 1.2rem;
-  margin-top: 0.5rem; /* 少しだけ上との間を開ける */
-}
-.site-logo.typing {
-  display: inline-block;
-  font-size: 1.1rem;
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif; /* ←これを追加 */
-  color: #1a1a1a;
-  opacity: 0.9;
-  text-decoration: none;
-  pointer-events: auto;
-}
-/* --- discographyページ用スタイル --- */
-.discography-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 最小200px、最大で自動調整 */
-  gap: 2rem;
-  width: 100%;
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 0 2rem;
-}
-
-.album-card {
-  position: relative; /* ← これが大事！ */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-
-.album-image {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; /* 正方形にする */
-  overflow: visible;
-  border-radius: 0.5rem;
-  background-color: #f9f9f9;
-}
-
-.album-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* --- album titleのフォント統一（日本語+英語） --- */
-.album-title a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 1rem;
-  font-family: 'Zen Kaku Gothic New', 'Poppins', sans-serif;
-}
-
-
-
-/* --- メニューリンク（洗練デザイン＋フォント統一） --- */
-.menu-links {
-  position: absolute;
-  bottom: -3rem;
-  right: 0;
-  background: white;
-  box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
-  padding: 0.3rem 0.7rem;
-  border-radius: 0.5rem;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  animation: fadeIn 0.3s ease;
-  font-family: 'Zen Kaku Gothic New', 'Poppins', sans-serif;
-}
-
-.menu-links .menu-title {
-  font-weight: bold;
-  margin-right: 0.5rem;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-.menu-links a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: normal;
-}
-
-
-/* --- 年代ナビ（改行・「・」対応） --- */
-.year-nav a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.year-link a::before {
-  content: "→";
-  display: inline-block;
-  margin-right: 0.8rem;
-  animation: blink-slow 3.5s step-start infinite;
-}
-.year-link a {
-  animation: none; /* 数字は点滅させない */
-}
-
-
-
-@keyframes blink-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.album-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.album-image {
-  position: relative;
-  width: 100%;
-  padding-top: 100%;
-  border-radius: 0.5rem;
-  background-color: #f9f9f9;
+.is-home {
   overflow: hidden;
 }
 
-.album-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  cursor: pointer;
-}
-
-.menu-links {
-  margin-top: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.5rem;
-  font-family: 'Zen Kaku Gothic New', 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  z-index: 10;
-  animation: fadeIn 0.3s ease;
-}
-
-.menu-links.hidden {
-  display: none;
-}
-
-.menu-links .menu-title {
-  font-weight: bold;
-  font-size: 0.95rem;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 通常のセクション */
-.section {
-  padding: 6rem 3rem;
-}
-
-/* トップページのセクションだけ余白を狭める */
-.top-section {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
-}
-
-/* 動画表示、トップページ */
-.fixed-mv {
-  display: block;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 240px;
-  height: 135px; /* 16:9比率 */
-  z-index: 999;
-  border: 2px solid white;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  text-decoration: none;
-}
-
-.fixed-mv video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-}
-
-/* ラベル */
-.fixed-mv .mv-label {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
-  color: white;
-  font-weight: bold;
-  animation: blink-slow 2.5s infinite;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* 点滅アニメーション */
-@keyframes blink-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-
-/* モバイル対応（最大幅600px以下） */
-@media screen and (max-width: 600px) {
-  .fixed-mv {
-    width: 160px;
-    height: 90px;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-  .fixed-mv .mv-label {
-    font-size: 0.75rem;
-  }
-}
-
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
+.hero {
+  position: relative;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  padding: clamp(16px, 4vw, 40px);
+}
+
+.clock-panel {
+  position: fixed;
+  top: 22px;
+  left: 30px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+  border: 0.5px solid rgba(59, 130, 246, 0.42);
+  box-shadow: none;
+  padding: 6px 5px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.ruler {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ruler-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  border-bottom: 0.5px solid rgba(59, 130, 246, 0.22);
+  background:
+    repeating-linear-gradient(to right, rgba(59, 130, 246, 0.22) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(to right, rgba(59, 130, 246, 0.38) 0 1px, transparent 1px 100px);
+}
+
+.ruler-left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 18px;
+  border-right: 0.5px solid rgba(59, 130, 246, 0.22);
+  background:
+    repeating-linear-gradient(to bottom, rgba(59, 130, 246, 0.22) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(to bottom, rgba(59, 130, 246, 0.38) 0 1px, transparent 1px 100px);
+}
+
+
+.ruler-top,
+.ruler-left {
+  will-change: background-position;
+}
+
+
+.is-home.menu-open .ruler-top,
+.is-home.menu-open .ruler-left {
+  animation: none;
+}
+
+
+.is-home.menu-open.parallax-active .ruler-top,
+.is-home.menu-open.parallax-active .ruler-left {
+  animation: none;
+}
+
+.ruler-label {
+  position: absolute;
+  font-size: 0.5rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(59, 130, 246, 0.66);
+  font-variant-numeric: tabular-nums;
+}
+
+.ruler-left .ruler-label {
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: top left;
+}
+
+.status-bar {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  border: 0.5px solid rgba(59, 130, 246, 0.38);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  color: rgba(30, 30, 30, 0.9);
+  padding: 6px 8px;
+  font-size: 0.62rem;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.58;
+  transition: opacity 0.18s ease-out, border-color 0.18s ease-out;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.status-bar.is-active {
+  opacity: 0.88;
+  border-color: rgba(59, 130, 246, 0.66);
+}
+
+.clock-label {
+  margin: 0;
+  font-size: 0.44rem;
+  letter-spacing: 0.03em;
+  color: rgba(59, 130, 246, 0.85);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 1.1;
+}
+
+.clock-time {
+  margin: 0;
+  font-size: clamp(1.12rem, 1.54vw, 1.47rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: #1c1c1c;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.clock-date {
+  margin: 0;
+  font-size: 0.44rem;
+  color: rgba(28, 28, 28, 0.66);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 1.1;
+}
+
+.artist-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(70vw, 600px);
+  aspect-ratio: 1;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.artist-floater,
+.artist-rotor {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.artist-floater {
+  transform: translate3d(0, 0, 0);
+  animation-name: floatY;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-play-state: running;
+}
+
+.artist-rotor {
+  transform: rotate(0deg);
+  animation-name: spin;
+  animation-duration: 42s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-play-state: running;
+}
+
+.is-home.menu-open .artist-floater,
+.is-home.menu-open .artist-rotor {
+  animation-play-state: paused;
+}
+
+@keyframes floatY {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(0, -6px, 0);
+  }
+  50% {
+    transform: translate3d(0, 4px, 0);
+  }
+  75% {
+    transform: translate3d(0, -5px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.artist-button {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(220px, 34vw, 360px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.16);
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.artist-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.artist-selection {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(220px, 34vw, 360px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(59, 130, 246, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.selection-handle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: rgba(59, 130, 246, 0.9);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.72);
+  transform: translate3d(var(--handle-tx, 0px), var(--handle-ty, 0px), 0);
+  will-change: transform;
+}
+
+.selection-handle.tl {
+  top: -3px;
+  left: -3px;
+}
+
+.selection-handle.tr {
+  top: -3px;
+  right: -3px;
+}
+
+.selection-handle.br {
+  bottom: -3px;
+  right: -3px;
+}
+
+.selection-handle.bl {
+  bottom: -3px;
+  left: -3px;
+}
+
+.is-home.menu-open .artist-selection {
+  opacity: 1;
+  animation: selection-breathe 2.2s ease-in-out infinite;
+}
+
+@keyframes selection-breathe {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.008);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+@keyframes ruler-drift-x {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 24px 0, 96px 0;
+  }
+}
+
+@keyframes ruler-drift-y {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 24px, 0 96px;
+  }
+}
+
+@keyframes handle-drift-a {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate3d(2px, -3px, 0) rotate(3deg);
+  }
+  62% {
+    transform: translate3d(-2px, 2px, 0) rotate(-2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@keyframes handle-drift-b {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  28% {
+    transform: translate3d(-3px, -2px, 0) rotate(-3deg);
+  }
+  67% {
+    transform: translate3d(2px, 3px, 0) rotate(2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+.is-home.menu-open .selection-handle {
+  transform-origin: center;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.is-home.menu-open .selection-handle.tl {
+  animation-name: handle-drift-a;
+  animation-duration: 5.3s;
+  animation-delay: -0.6s;
+}
+
+.is-home.menu-open .selection-handle.tr {
+  animation-name: handle-drift-b;
+  animation-duration: 6.1s;
+  animation-delay: -1.2s;
+}
+
+.is-home.menu-open .selection-handle.br {
+  animation-name: handle-drift-a;
+  animation-duration: 5.8s;
+  animation-delay: -2s;
+}
+
+.is-home.menu-open .selection-handle.bl {
+  animation-name: handle-drift-b;
+  animation-duration: 6.6s;
+  animation-delay: -0.9s;
+}
+
+.artist-caption {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 18px);
+  transform: translateX(-50%);
+  margin: 0;
+  white-space: nowrap;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(0.72rem, 1.35vw, 0.94rem);
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: rgba(25, 25, 25, 0.92);
+  opacity: 0.66;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.is-home.menu-open .artist-caption {
+  opacity: 0.9;
+}
+
+.caption-cursor {
+  display: inline-block;
+  margin-left: 0.2ch;
+  animation: cursor-blink 1s steps(1, end) infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.arc-menu {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  --x-scale: 1;
+  --y-scale: 1;
+  --anchor-scale: 1;
+}
+
+.arc-menu::before,
+.arc-menu::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(59, 130, 246, 0.72);
+  background: rgba(59, 130, 246, 0.18);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 180ms ease-out, transform 180ms ease-out;
+}
+
+.arc-menu::before {
+  transform: translate(-50%, -50%) scale(calc(0.92 * var(--anchor-scale))) rotate(45deg);
+  box-shadow:
+    -218px -196px 0 -1px rgba(59, 130, 246, 0.72),
+    -138px -236px 0 -1px rgba(59, 130, 246, 0.64),
+    198px -176px 0 -1px rgba(59, 130, 246, 0.7),
+    286px -64px 0 -1px rgba(59, 130, 246, 0.68),
+    304px 82px 0 -1px rgba(59, 130, 246, 0.66),
+    218px 198px 0 -1px rgba(59, 130, 246, 0.62),
+    114px 258px 0 -1px rgba(59, 130, 246, 0.58);
+}
+
+.arc-menu::after {
+  transform: translate(-50%, -50%) scale(calc(0.92 * var(--anchor-scale)));
+  box-shadow:
+    -66px -260px 0 -1px rgba(59, 130, 246, 0.6),
+    74px -222px 0 -1px rgba(59, 130, 246, 0.58),
+    338px -12px 0 -1px rgba(59, 130, 246, 0.62),
+    256px 246px 0 -1px rgba(59, 130, 246, 0.56),
+    8px 314px 0 -1px rgba(59, 130, 246, 0.54);
+}
+
+.is-home.menu-open .arc-menu::before,
+.is-home.menu-open .arc-menu::after {
+  opacity: 0.68;
+  transform: translate(-50%, -50%) scale(calc(1 * var(--anchor-scale))) rotate(45deg);
+}
+
+.is-home.menu-open .arc-menu::after {
+  transform: translate(-50%, -50%) scale(calc(1 * var(--anchor-scale)));
+}
+
+.menu-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 146px;
+  height: 98px;
+  padding: 0 16px;
+  border-radius: 0;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  box-shadow: none;
+  overflow: visible;
+  isolation: isolate;
+  z-index: 3;
+  --splat-color: var(--ink-color, currentColor);
+  --hover-scale: 1;
+  transform-origin: center;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  outline: 1px solid transparent;
+  outline-offset: 0;
+  background: transparent;
+}
+
+.menu-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
-}
-/* キャッチコピー左寄せ） */
-#catch-message {
-  text-align: left;
-  font-size: 0.95rem;
-}
-
-/* ondoチェックボックス */
-.ondo-checklist {
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  line-height: 1.8;
-}
-
-.ondo-checklist input[type="checkbox"] {
-  margin-right: 0.5em;
-  transform: scale(1.2);
-  accent-color: #555; /* グレー系で統一感を持たせる */
+  background-color: var(--splat-color);
+  background-image: var(--splat-url, url("/img/splat-1.svg"));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  -webkit-mask-image: var(--splat-url, url("/img/splat-1.svg"));
+  mask-image: var(--splat-url, url("/img/splat-1.svg"));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  transform: rotate(var(--tilt, 0deg)) scale(calc(var(--size, 1) * var(--hover-scale)));
+  transition: transform 0.2s ease-out, outline-color 0.2s ease-out;
 }
 
-/* 回り込み */
-.footer-nav {
+.menu-item:hover,
+.menu-item:focus-visible {
+  --hover-scale: 1.03;
+  outline-color: color-mix(in srgb, var(--splat-color) 42%, #ffffff 58%);
+}
+
+.menu-item:focus-visible {
+  outline-offset: 1px;
+  outline-style: solid;
+}
+
+.arc-menu.open {
+  pointer-events: auto;
+}
+
+.is-home .arc-menu .menu-item {
+  --item-scale: 1;
+  --item-rot: 0deg;
+}
+
+.is-home .arc-menu .menu-item:nth-child(1) {
+  --a: -65deg !important;
+  --r: 290px !important;
+  --item-scale: 1;
+  --item-rot: -1deg;
+}
+
+.is-home .arc-menu .menu-item:nth-child(2) {
+  --a: -10deg !important;
+  --r: 245px !important;
+  --item-scale: 1.06;
+  --item-rot: 1deg;
+}
+
+.is-home .arc-menu .menu-item:nth-child(3) {
+  --a: 55deg !important;
+  --r: 290px !important;
+  --item-scale: 1;
+  --item-rot: -2deg;
+}
+
+.is-home .arc-menu .menu-item:nth-child(4) {
+  --a: 115deg !important;
+  --r: 245px !important;
+  --item-scale: 1.06;
+  --item-rot: 2deg;
+}
+
+.is-home .arc-menu .menu-item:nth-child(5) {
+  --a: 175deg !important;
+  --r: 290px !important;
+  --item-scale: 0.97;
+  --item-rot: -1deg;
+}
+
+.is-home .arc-menu .menu-item:nth-child(6) {
+  --a: -135deg !important;
+  --r: 245px !important;
+  --item-scale: 0.97;
+  --item-rot: 1deg;
+}
+
+.arc-menu.open .menu-item {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(var(--a, 0deg)) translateX(var(--r, 260px)) rotate(calc(-1 * var(--a, 0deg))) rotate(var(--item-rot, 0deg)) scale(var(--item-scale, 1));
+}
+
+.is-home.menu-open .arc-menu.open .menu-item {
+  transition:
+    transform 150ms cubic-bezier(0.2, 0.9, 0.25, 1.25),
+    opacity 0.45s ease,
+    box-shadow 150ms cubic-bezier(0.2, 0.9, 0.25, 1.25);
+}
+
+.is-home.menu-open .arc-menu.open .menu-item:hover {
+  transform: translate(-50%, -50%) rotate(var(--a, 0deg)) translateX(var(--r, 260px)) rotate(calc(-1 * var(--a, 0deg))) rotate(var(--item-rot, 0deg)) scale(calc(var(--item-scale, 1) * 1.08));
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.is-home.menu-open .arc-menu.open .menu-item:focus-visible {
+  transform: translate(-50%, -50%) rotate(var(--a, 0deg)) translateX(var(--r, 260px)) rotate(calc(-1 * var(--a, 0deg))) rotate(var(--item-rot, 0deg)) scale(calc(var(--item-scale, 1) * 1.05));
+}
+.splat-1 { --splat-url: url("/img/splat-1.svg"); }
+.splat-2 { --splat-url: url("/img/splat-2.svg"); }
+.splat-3 { --splat-url: url("/img/splat-3.svg"); }
+.splat-4 { --splat-url: url("/img/splat-4.svg"); }
+.splat-5 { --splat-url: url("/img/splat-5.svg"); }
+
+.profile { --ink-color: var(--profile); }
+.discography { color: #ffffff; --ink-color: var(--discography); }
+.movie { --ink-color: var(--movie); }
+.works { --ink-color: var(--works); }
+.blog { --ink-color: var(--blog); }
+.contact { --ink-color: var(--contact); }
+
+.site-nav {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  white-space: normal;
-}
-
-@media screen and (max-width: 768px) {
-  .footer-nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-copy-line {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-copy {
-    white-space: normal;
-  }
-
-  .footer-line {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .ondo-page .question-text,
-  .ondo-page .links {
-    white-space: normal;
-    word-break: break-word;
-  }
-
-  .ondo-page .ondo-links p {
-    flex-wrap: wrap;
-  }
-
-  .ondo-page .line-expand {
-    width: 100%;
-    max-width: 120px;
-  }
-}
-
-/* 末のレイアウト調整 */
-.question-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.question-line-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.line-expand {
-  height: 2px;
-  width: 120px;
-  background: #111;
-  animation: line-expand 7s ease-in-out infinite;
-}
-
-/* アー写 */
-.ondo-portrait-container {
-  width: 100%;
-  display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  gap: 10px;
+  padding: 12px;
+}
+
+.pill {
   position: relative;
-  z-index: 2; /* 背景動画より前面に */
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 999px;
 }
 
-.responsive-overlay-image {
-  max-width: 30%; /* PCでは3分の1に */
-  height: auto;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  opacity: 0.95;
+.pill.discography {
+  color: #1f1f1f;
 }
 
-/* スマホ向けサイズ戻し */
-@media screen and (max-width: 768px) {
-  .responsive-overlay-image {
-    max-width: 90%;
+.pill.active::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  animation: breathe 1.6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0% { transform: scale(0.94); opacity: 0.45; }
+  50% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(0.94); opacity: 0.45; }
+}
+
+.page-wrap {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 22px;
+  padding: 32px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+.page-wrap h1 {
+  margin-top: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.page-body {
+  line-height: 1.75;
+}
+
+
+@media (max-width: 980px) {
+  .arc-menu {
+    inset: 0;
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    align-content: center;
+    justify-content: center;
+    width: min(92vw, 420px);
+    height: min(74vh, 520px);
+    margin: auto;
+    pointer-events: none;
+    --anchor-scale: 0.62;
+  }
+
+  .arc-menu.open {
+    display: grid;
+    pointer-events: auto;
+  }
+
+  .arc-menu.open .menu-item {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    min-height: 52px;
+    height: 64px;
+    padding: 8px 10px;
+    opacity: 1;
+    transform: none;
+    font-size: 0.9rem;
+    --tilt: 0deg;
+    --size: 1;
+  }
+
+  .is-home.menu-open .arc-menu.open .menu-item:hover {
+    transform: scale(1.06);
+  }
+
+  .is-home.menu-open .arc-menu.open .menu-item:focus-visible {
+    transform: scale(1.04);
   }
 }
 
-.question-stream {
-  font-size: 0.9rem;
-  line-height: 2;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 16px;
+  }
+
+  .ruler-top {
+    height: 16px;
+  }
+
+  .ruler-left {
+    width: 16px;
+  }
+
+  .status-bar {
+    right: 8px;
+    bottom: 8px;
+    padding: 4px 6px;
+    font-size: 0.56rem;
+  }
+
+  .clock-panel {
+    top: 24px;
+    left: 24px;
+    padding: 4px 3px;
+    gap: 3px;
+  }
+
+  .clock-label,
+  .clock-date {
+    font-size: 0.36rem;
+  }
+
+  .clock-time {
+    font-size: clamp(0.72rem, 4.4vw, 0.94rem);
+  }
+
+  .artist-wrap {
+    width: min(80vw, 360px);
+  }
+
+  .artist-button {
+    width: min(58vw, 240px);
+  }
+
+  .artist-selection {
+    width: min(58vw, 240px);
+  }
+  .selection-handle {
+    width: 5px;
+    height: 5px;
+  }
+
+  .arc-menu {
+    inset: 0;
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    align-content: center;
+    justify-content: center;
+    width: min(92vw, 420px);
+    height: min(74vh, 520px);
+    margin: auto;
+    pointer-events: none;
+    --anchor-scale: 0.62;
+  }
+
+  .arc-menu::after {
+    display: none;
+  }
+
+  .arc-menu::before {
+    box-shadow:
+      -112px -116px 0 -1px rgba(59, 130, 246, 0.7),
+      126px -102px 0 -1px rgba(59, 130, 246, 0.66),
+      146px 16px 0 -1px rgba(59, 130, 246, 0.64),
+      122px 132px 0 -1px rgba(59, 130, 246, 0.6),
+      -18px 162px 0 -1px rgba(59, 130, 246, 0.56);
+  }
+
+  .arc-menu.open {
+    display: grid;
+    pointer-events: auto;
+  }
+
+  .arc-menu.open .menu-item {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    min-height: 52px;
+    height: 64px;
+    padding: 8px 10px;
+    opacity: 1;
+    transform: none;
+    font-size: 0.9rem;
+    --tilt: 0deg;
+    --size: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artist-floater,
+  .artist-rotor {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .artist-floater {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .artist-rotor {
+    transform: rotate(0deg) !important;
+  }
+
+  .menu-item {
+    transition: transform 0.45s ease, opacity 0.45s ease !important;
+  }
+
+  .menu-item:hover,
+  .menu-item:focus-visible {
+    scale: 1 !important;
+    outline-color: transparent !important;
+  }
+
+  .is-home.menu-open .arc-menu.open .menu-item:hover,
+  .is-home.menu-open .arc-menu.open .menu-item:focus-visible {
+    transform: translate(-50%, -50%) rotate(var(--a, 0deg)) translateX(var(--r, 260px)) rotate(calc(-1 * var(--a, 0deg))) rotate(var(--item-rot, 0deg)) scale(var(--item-scale, 1)) !important;
+    box-shadow: none !important;
+  }
+
+  .status-bar {
+    transition: none !important;
+  }
+
+  .arc-menu::before,
+  .arc-menu::after {
+    transition: none !important;
+  }
+
+  .caption-cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .artist-selection {
+    animation: none !important;
+  }
+
+  .is-home.menu-open .ruler-top,
+  .is-home.menu-open .ruler-left,
+  .is-home.menu-open .selection-handle {
+    animation: none !important;
+  }
+}
+
+
+
+/* selection box 残骸対策（不要なので常に消す） */
+.selection-box,
+.select-rect,
+.drag-rect,
+.marquee,
+.selection-rect {
+  display: none !important;
+}
+
+/* =========================
+   Home Intro Overlay
+========================= */
+
+.is-home .scene {
+  position: fixed;
+  inset: 0;
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  transform-origin: 50% 52%;
+  transition:
+    transform 820ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 820ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 620ms ease;
+  will-change: transform, filter, opacity;
+}
+
+.is-home.intro-active .scene {
+  opacity: 0;
+  transform: scale(0.985);
+  filter: blur(4px);
+}
+
+.is-home.intro-done .scene {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.985);
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 520ms ease, transform 520ms ease;
+  pointer-events: auto;
+}
+
+.intro.is-done {
+  opacity: 0;
+  transform: translate3d(0, 8px, 0);
+}
+
+.intro-guides {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(to right, rgba(59, 130, 246, 0.06) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(to bottom, rgba(59, 130, 246, 0.06) 0 1px, transparent 1px 48px),
+    linear-gradient(to right, transparent 0 80px, rgba(59, 130, 246, 0.16) 80px 81px, transparent 81px),
+    linear-gradient(to bottom, transparent 0 80px, rgba(59, 130, 246, 0.16) 80px 81px, transparent 81px);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.intro-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  white-space: nowrap;
+  color: rgba(20, 20, 20, 0.9);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(0.9rem, 1.9vw, 1.1rem);
+  letter-spacing: 0.13em;
+  line-height: 1;
+  padding: 0.12em 0.2em;
+  border-radius: 2px;
+}
+
+.intro-word {
+  display: inline-block;
+  min-width: 4ch;
+}
+
+.intro-text.is-selected {
+  color: rgba(255, 255, 255, 0.96);
+  background: rgba(59, 130, 246, 0.86);
+}
+
+.intro-cursor {
+  display: inline-block;
+  margin-left: 0.08ch;
+  animation: cursor-blink 1s steps(1, end) infinite;
+}
+
+@media (max-width: 768px) {
+  .intro {
+    padding: 18px;
+  }
+
+  .intro-guides {
+    background:
+      repeating-linear-gradient(to right, rgba(59, 130, 246, 0.055) 0 1px, transparent 1px 36px),
+      repeating-linear-gradient(to bottom, rgba(59, 130, 246, 0.055) 0 1px, transparent 1px 36px),
+      linear-gradient(to right, transparent 0 64px, rgba(59, 130, 246, 0.14) 64px 65px, transparent 65px),
+      linear-gradient(to bottom, transparent 0 64px, rgba(59, 130, 246, 0.14) 64px 65px, transparent 65px);
+  }
+
+  .intro-text {
+    font-size: clamp(0.82rem, 4.2vw, 0.95rem);
+    letter-spacing: 0.11em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-home .scene {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .intro {
+    transition: none !important;
+  }
+
+  .intro-cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+@media (max-width: 980px) {
+  .artist-caption {
+    bottom: calc(env(safe-area-inset-bottom) + 16px);
+    font-size: 12px;
+  }
+}
+
+.profile-page {
+  min-height: calc(100vh - 120px);
+  padding: clamp(24px, 5vw, 56px) 16px clamp(28px, 6vw, 64px);
+  display: grid;
+  place-items: center;
+}
+
+.profile-wrap {
+  width: min(940px, 100%);
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 36px);
+  align-items: center;
+  padding: clamp(18px, 3.4vw, 34px);
+  border: 1px solid rgba(59, 130, 246, 0.16);
+  border-radius: 16px;
+  background:
+    repeating-linear-gradient(to right, rgba(59, 130, 246, 0.04) 0 1px, transparent 1px 42px),
+    repeating-linear-gradient(to bottom, rgba(59, 130, 246, 0.04) 0 1px, transparent 1px 42px),
+    rgba(255, 255, 255, 0.82);
+}
+
+.profile-media {
+  margin: 0;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.profile-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 24px rgba(20, 30, 60, 0.08);
+}
+
+.profile-copy h1 {
+  margin: 0 0 14px;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.profile-body {
+  line-height: 1.7;
+  font-size: clamp(0.98rem, 1.45vw, 1.07rem);
+}
+
+.profile-body p {
+  margin: 0;
+}
+
+.profile-back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: rgba(59, 130, 246, 0.74);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.24);
+  padding-bottom: 1px;
+}
+
+.profile-back-link:hover,
+.profile-back-link:focus-visible {
+  color: rgba(30, 30, 30, 0.86);
+  border-bottom-color: rgba(59, 130, 246, 0.46);
+}
+
+@media (max-width: 980px) {
+  .profile-wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .profile-media {
+    max-width: min(70vw, 280px);
+    margin-inline: auto;
+    border-radius: 12px;
+  }
+
+  .profile-image {
+    border-radius: 12px;
+  }
+
+  .profile-copy {
+    width: min(560px, 100%);
+  }
+
+  .profile-copy h1 {
+    margin-bottom: 12px;
+  }
+}
+
+.profile-page .profile-shell {
+  position: relative;
+  width: min(920px, 100%);
+  margin-inline: auto;
+  padding: clamp(18px, 3vw, 34px) 16px clamp(64px, 8vw, 96px);
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+
+.profile-page .profile-artist-wrap {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: auto;
+  aspect-ratio: auto;
+}
+
+.profile-page .artist-floater,
+.profile-page .artist-rotor {
+  position: static;
+  animation: none !important;
+  transform: none !important;
+}
+
+.profile-page .profile-artist-button {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: auto;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.profile-page .profile-photo-wrap {
+  display: block;
+  width: min(320px, 70vw);
+  max-width: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 24px rgba(20, 30, 60, 0.08);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.profile-page .profile-artist-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-page .artist-selection {
+  width: min(320px, 70vw);
+  max-width: 320px;
+  border-radius: 14px;
+}
+
+.profile-page .profile-content-block {
+  width: min(520px, 100%);
+}
+
+.profile-page .profile-content-block h1 {
+  margin: 0 0 12px;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.profile-page .profile-content-text {
+  text-align: left;
+  line-height: 1.72;
+  font-size: clamp(0.97rem, 1.3vw, 1.05rem);
+}
+
+.profile-page .profile-content-text p {
+  margin: 0;
+}
+
+.profile-page .profile-arc-menu {
+  position: fixed;
+  inset: auto;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: min(164px, 40vw);
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.profile-page .profile-arc-menu.open {
+  display: grid;
+  pointer-events: auto;
+}
+
+.profile-page .profile-arc-menu.open .menu-item {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  padding: 8px 10px;
+  opacity: 1;
+  transform: none;
+  font-size: 0.88rem;
+  --tilt: 0deg;
+  --size: 1;
+}
+
+.profile-page .profile-home-float {
+  position: fixed;
+  right: 16px;
+  bottom: 44px;
+  z-index: 4;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: rgba(59, 130, 246, 0.75);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.24);
+  padding-bottom: 1px;
+}
+
+.profile-page .profile-home-float:hover,
+.profile-page .profile-home-float:focus-visible {
+  color: rgba(28, 28, 28, 0.85);
+  border-bottom-color: rgba(59, 130, 246, 0.46);
+}
+
+@media (max-width: 980px) {
+  .profile-page .profile-photo-wrap {
+    width: min(280px, 72vw);
+    max-width: 280px;
+    border-radius: 12px;
+  }
+
+  .profile-page .artist-selection {
+    width: min(280px, 72vw);
+    max-width: 280px;
+    border-radius: 12px;
+  }
+
+  .profile-page .profile-content-block {
+    width: min(520px, 92vw);
+  }
+
+  .profile-page .profile-arc-menu {
+    right: 10px;
+    top: auto;
+    bottom: 100px;
+    transform: none;
+    width: min(172px, 46vw);
+  }
+
+  .profile-page .profile-home-float {
+    right: 10px;
+    bottom: 40px;
+  }
+}
+
+/* ===== Profile Workbench Layout ===== */
+.profile-page {
+  --rulerW: 18px;
+}
+
+.profile-page .scene {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-top: clamp(78px, 10vh, 120px);
+  padding-right: clamp(20px, 5vw, 56px);
+  padding-bottom: clamp(40px, 8vh, 84px);
+  padding-left: calc(env(safe-area-inset-left) + var(--rulerW) + 24px);
+  overflow: auto;
+}
+
+.profile-page .profile-wrap {
+  width: min(1160px, 100%);
+}
+
+.profile-page .profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: clamp(36px, 5vw, 56px);
+  align-items: center;
+}
+
+.profile-page .profile-text {
+  max-width: 40em;
+}
+
+.profile-page .profile-text h1 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.2;
+}
+
+.profile-page .profile-body {
+  max-width: 38em;
+  line-height: 1.8;
+  letter-spacing: 0.012em;
   text-align: left;
 }
 
-.question-stream a {
-  color: inherit;
+.profile-page .profile-body p {
+  margin: 0;
+}
+
+.profile-page .profile-home {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin-top: 16px;
+  padding: 4px 8px 4px 0;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: rgba(35, 45, 60, 0.68);
   text-decoration: none;
-  border-bottom: 1px dotted #1a1a1a;
-  margin: 0 0.2em;
 }
 
-/* ■の点滅 */
-.blink-square {
-  display: inline-block;
-  margin: 0 0.4em;
-  animation: blink-square 1.5s step-start infinite;
+.profile-page .profile-home:hover,
+.profile-page .profile-home:focus-visible {
+  color: rgba(35, 45, 60, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-@keyframes blink-square {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
+.profile-page .profile-photo-col {
+  margin: 0;
+  display: grid;
+  place-items: center;
 }
 
-/* ナビをスマホで半分サイズに */
-@media screen and (max-width: 768px) {
-  .nav a {
-    font-size: 0.8rem; /* サイズを約80%に */
-    padding: 0.4rem 0.8rem; /* パディングも調整 */
-    border-radius: 1rem; /* 少し小さめに */
+.profile-page .profile-photo {
+  width: clamp(240px, 28vw, 360px);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 22px rgba(20, 30, 60, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.profile-page .profile-photo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 980px) {
+  .profile-page .scene {
+    place-items: start center;
+    padding-top: clamp(82px, 12vh, 116px);
+    padding-right: 16px;
+    padding-bottom: 36px;
+    padding-left: calc(env(safe-area-inset-left) + var(--rulerW) + 18px);
+  }
+
+  .profile-page .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .profile-page .profile-photo-col {
+    order: 1;
+  }
+
+  .profile-page .profile-text {
+    order: 2;
+    max-width: 100%;
+  }
+
+  .profile-page .profile-photo {
+    width: min(280px, 72vw);
   }
 }
 
-/* 太字解除とサイズ */
-h1 {
-  font-size: 1rem;
-  font-weight: normal;
-}
-h2 {
-  font-weight: normal;
+/* ===== Profile Final Layout ===== */
+body.is-profile {
+  --profile-ruler-w: 18px;
 }
 
+body.is-profile main.profile-page {
+  min-height: 100vh;
+}
 
-/* スマホフッター非表示 */
-@media screen and (max-width: 768px) {
-  .footer-nav-group {
+body.is-profile .profile-page .scene {
+  position: fixed;
+  inset: 0;
+  overflow: auto;
+  padding-top: clamp(84px, 11vh, 126px);
+  padding-right: clamp(20px, 5vw, 60px);
+  padding-bottom: clamp(48px, 8vh, 84px);
+  padding-left: calc(env(safe-area-inset-left) + var(--profile-ruler-w) + 24px);
+}
+
+body.is-profile .profile-layout {
+  width: min(1160px, 100%);
+  margin: 0 auto;
+}
+
+body.is-profile .profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(34px, 6vw, 56px);
+  align-items: center;
+}
+
+body.is-profile .profile-col-text {
+  max-width: 60ch;
+}
+
+body.is-profile .profile-col-text h1 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.2;
+}
+
+body.is-profile .profile-body {
+  max-width: 40em;
+  line-height: 1.8;
+  letter-spacing: 0.012em;
+}
+
+body.is-profile .profile-body p {
+  margin: 0;
+}
+
+body.is-profile .profile-col-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: min(66vh, 560px);
+}
+
+body.is-profile .profile-artist-button {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: auto;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  overflow: visible;
+}
+
+body.is-profile .profile-photo-wrap {
+  width: clamp(240px, 28vw, 360px);
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 26px rgba(20, 30, 60, 0.09);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.is-profile .profile-photo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 35%;
+  transform: scale(1.03);
+}
+
+body.is-profile .profile-col-visual .artist-selection {
+  width: clamp(240px, 28vw, 360px);
+  border-radius: 9999px;
+}
+
+body.is-profile .profile-arc-menu {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+body.is-profile .profile-arc-menu.open {
+  pointer-events: auto;
+}
+
+body.is-profile .profile-arc-menu.open .menu-item {
+  transform: translate(-50%, -50%) rotate(var(--a, 0deg)) translateX(var(--r, 220px)) rotate(calc(-1 * var(--a, 0deg)));
+}
+
+@media (max-width: 980px) {
+  body.is-profile .profile-page .scene {
+    padding-top: clamp(88px, 12vh, 118px);
+    padding-right: 16px;
+    padding-bottom: 36px;
+    padding-left: calc(env(safe-area-inset-left) + var(--profile-ruler-w) + 18px);
+  }
+
+  body.is-profile .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  body.is-profile .profile-col-visual {
+    order: 1;
+    min-height: auto;
+  }
+
+  body.is-profile .profile-col-text {
+    order: 2;
+    max-width: 100%;
+  }
+
+  body.is-profile .profile-photo-wrap,
+  body.is-profile .profile-col-visual .artist-selection {
+    width: min(78vw, 420px);
+    max-width: 280px;
+  }
+
+  body.is-profile .profile-arc-menu {
     display: none;
   }
 }
 
-/* モーダルメニューボタン（スマホ右上に表示） */
-.mobile-menu-button {
-  display: none;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  z-index: 9999;
-  cursor: pointer;
-  background: white;
-  border-radius: 50%;
-  padding: 0.5rem 0.7rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* ===== Profile Fix Pack ===== */
+body.is-profile .profile-page .scene {
+  padding-left: calc(env(safe-area-inset-left) + 18px + clamp(140px, 12vw, 220px));
 }
 
-/* モバイルメニュー（スマホ専用） */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  top: 3.5rem;
-  right: 1rem;
-  width: 80%;
-  max-width: 300px;
-  background-color: rgba(255, 255, 255, 0.3); /* 背景だけ30%の白 */
-  backdrop-filter: blur(6px); /* 背景ぼかし */
-  color: inherit;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  z-index: 9999;
-  transition: opacity 0.3s ease-in-out;
+body.is-profile .profile-col-text {
+  padding-left: clamp(10px, 1.4vw, 20px);
 }
 
-/* 表示状態（JSで付与） */
-.mobile-menu.active {
-  display: flex;
+body.is-profile .profile-col-visual {
+  min-height: min(62vh, 520px);
 }
 
-/* メニュー内のリンク */
-.mobile-menu a {
-  margin: 1rem 0;
-  font-size: 1.2rem;
-  color: #1a1a1a;
-  text-decoration: none;
-  border-bottom: 1px dotted #ccc;
+body.is-profile .profile-artist-card {
+  display: grid;
+  place-items: center;
 }
 
-/* モバイルメニューアイコン（☰） */
-.mobile-menu-button {
-  display: none;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  z-index: 10000;
-  cursor: pointer;
-  background: white;
-  border-radius: 50%;
-  padding: 0.5rem 0.7rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+body.is-profile .profile-photo-wrap {
+  width: clamp(240px, 28vw, 420px);
+  max-width: 420px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 26px rgba(20, 30, 60, 0.1);
+  animation: profile-pulse 2.8s ease-in-out infinite;
 }
 
-/* スマホでだけ表示 */
-@media screen and (max-width: 768px) {
-  .mobile-menu-button {
-    display: block;
+body.is-profile .profile-photo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 35%;
+  transform: scale(1.03);
+}
+
+
+body.is-profile .profile-col-visual .artist-selection {
+  width: clamp(240px, 28vw, 420px);
+  max-width: 420px;
+  border-radius: 9999px;
+}
+
+@keyframes profile-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
-/* 【≡ボタン】の背景・枠線を完全に消す */
-.mobile-menu-button {
-  background: none;     /* 背景を透明に */
-  border: none;         /* 枠線を消す */
-  box-shadow: none;     /* 影も消す */
+@media (max-width: 980px) {
+  body.is-profile .profile-page .scene {
+    padding-left: calc(env(safe-area-inset-left) + 18px + 18px);
+  }
+
+  body.is-profile .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.is-profile .profile-col-visual {
+    order: 1;
+    min-height: auto;
+  }
+
+  body.is-profile .profile-col-text {
+    order: 2;
+    padding-left: 0;
+  }
+
+  body.is-profile .profile-photo-wrap,
+  body.is-profile .profile-col-visual .artist-selection {
+    width: min(78vw, 420px);
+    max-width: 280px;
+  }
 }
 
-/* モーダルの出現・非表示アニメーション */
-.mobile-menu {
-  opacity: 0;
-  transform: translateY(-10px);
+@media (prefers-reduced-motion: reduce) {
+  body.is-profile .profile-photo-wrap {
+    animation: none !important;
+  }
+}
+
+.profile-layout .profile-artist-card {
+  display: grid;
+  justify-items: center;
+}
+
+.profile-layout .profile-text {
+  width: clamp(240px, 28vw, 420px);
+  max-width: 420px;
+  margin-top: 14px;
+  text-align: center;
+  font-family: inherit;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  color: rgba(24, 24, 24, 0.9);
+}
+
+.profile-layout .profile-text p {
+  margin: 0;
+}
+
+.profile-layout .profile-text p + p {
+  margin-top: 14px;
+}
+
+.profile-layout .profile-text p:last-child {
+  margin-top: 16px;
+}
+
+@media (max-width: 980px) {
+  .profile-layout .profile-text {
+    width: min(280px, 72vw);
+    max-width: 280px;
+  }
+}
+
+/* ===== Non-Home Artist Motion Override ===== */
+@keyframes pulseBeat {
+  0% {
+    transform: translateZ(0) scale(1) rotate(0deg);
+  }
+  12% {
+    transform: translateZ(0) scale(1.02) rotate(-1deg);
+  }
+  25% {
+    transform: translateZ(0) scale(0.995) rotate(0deg);
+  }
+  40% {
+    transform: translateZ(0) scale(1.03) rotate(1deg);
+  }
+  55% {
+    transform: translateZ(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateZ(0) scale(1) rotate(0deg);
+  }
+}
+
+body.is-inner .artist-floater,
+body.is-inner .artist-rotor {
+  animation: none !important;
+  transform: none !important;
+}
+
+body.is-inner .artist-photo,
+body.is-inner .profile-photo,
+body.is-inner .profile-photo-wrap,
+body.is-inner img[data-role="artist-photo"] {
+  animation: pulseBeat 2.4s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.is-inner .artist-photo,
+  body.is-inner .profile-photo,
+  body.is-inner .profile-photo-wrap,
+  body.is-inner img[data-role="artist-photo"] {
+    animation: none !important;
+  }
+}
+
+
+/* Profile image selected-like frame */
+body.is-inner .photo-selected {
+  position: relative;
+  border-radius: inherit;
+  outline: 2px solid #5b8cff;
+  outline-offset: 4px;
+}
+
+body.is-inner .photo-selected::before,
+body.is-inner .photo-selected::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #5b8cff;
+  background: #fff;
+  z-index: 2;
   pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.mobile-menu.active {
+body.is-inner .photo-selected::before {
+  top: -8px;
+  left: -8px;
+}
+
+body.is-inner .photo-selected::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+/* Profile vertical writing layout */
+body.is-inner .profile-layout .profile-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+body.is-inner .profile-layout .profile-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  line-height: 2;
+  font-size: 14px;
+  max-height: 420px;
+  text-align: start;
+}
+
+body.is-inner .profile-layout .profile-vertical p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  body.is-inner .profile-layout .profile-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  body.is-inner .profile-layout .profile-vertical {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    max-height: none;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+/* ===== Profile layout tuning: left-weighted row + vertical guide ===== */
+body.is-inner .profile-layout .profile-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  width: min(900px, 92vw);
+  margin: 0 auto;
+  justify-content: flex-start;
+  transform: translateX(-40px);
+}
+
+body.is-inner .profile-layout .profile-left {
+  position: relative;
+}
+
+
+
+body.is-inner .profile-layout .profile-vertical {
+  position: relative;
+  padding-left: 22px;
+}
+
+body.is-inner .profile-layout .profile-vertical::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(26, 26, 26, 0.18);
+}
+
+body.is-inner .profile-layout .profile-vertical::after {
+  content: "PROFILE TEXT";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  opacity: 0.35;
+}
+
+@media (max-width: 768px) {
+  body.is-inner .profile-layout .profile-row {
+    width: min(92vw, 540px);
+    transform: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  body.is-inner .profile-layout .profile-vertical {
+    padding-left: 0;
+  }
+
+  body.is-inner .profile-layout .profile-vertical::before,
+  body.is-inner .profile-layout .profile-vertical::after {
+    content: none;
+  }
+}
+
+
+
+/* ===== Shared Header ===== */
+.site-header {
+  width: 100%;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.16);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.site-header__inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.site-header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+}
+
+.site-header__link {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(26, 26, 26, 0.66);
+  text-decoration: none;
+  padding: 3px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header__link:hover,
+.site-header__link:focus-visible,
+.site-header__link.is-current {
+  color: rgba(26, 26, 26, 0.92);
+  border-bottom-color: rgba(59, 130, 246, 0.42);
+}
+
+
+@media (max-width: 980px) {
+  .site-header {
+    padding: 8px 10px;
+  }
+
+  .site-header__inner {
+    gap: 12px;
+  }
+
+  .site-header__link {
+    font-size: 11px;
+  }
+
+  .site-header__nav {
+    gap: 8px 12px;
+  }
+}
+
+/* ===== Profile spacing refinement (profile only) ===== */
+body.is-profile .profile-layout h1 {
+  margin-bottom: 40px;
+}
+
+body.is-profile .profile-layout .profile-row {
+  margin-top: 60px;
+  gap: 64px;
+}
+
+@media (max-width: 768px) {
+  body.is-profile .profile-layout h1 {
+    margin-bottom: 28px;
+  }
+
+  body.is-profile .profile-layout .profile-row {
+    margin-top: 24px;
+    gap: 20px;
+  }
+}
+
+
+
+/* ===== Profile photo circle fix (keep original position) ===== */
+body.is-profile .profile-photo-wrap {
+  aspect-ratio: 1 / 1;
+  border-radius: 50% !important;
+  overflow: hidden;
+}
+
+body.is-profile .profile-photo-wrap .profile-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.is-profile .photo-selected {
+  border-radius: 50%;
+  outline: none;
+  box-shadow: 0 0 0 2px #5b8cff;
+}
+
+/* ===== Profile photo hard circle fix ===== */
+body.is-profile .profile-photo-wrap.photo-selected {
+  display: block !important;
+  width: clamp(240px, 28vw, 360px) !important;
+  height: clamp(240px, 28vw, 360px) !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  line-height: 0;
+}
+
+body.is-profile .profile-photo-wrap.photo-selected .profile-photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+body.is-profile .photo-selected {
+  outline: none !important;
+}
+
+/* ===== Profile photo final circle override ===== */
+body.is-profile .profile-photo-wrap.photo-selected {
+  position: relative;
+  display: block !important;
+  width: clamp(240px, 28vw, 360px) !important;
+  height: clamp(240px, 28vw, 360px) !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+body.is-profile .profile-photo-wrap.photo-selected .profile-photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+/* Profileでは四角ハンドルを無効化し、円形リングに置換 */
+body.is-profile .profile-photo-wrap.photo-selected::before,
+body.is-profile .profile-photo-wrap.photo-selected::after {
+  content: none !important;
+}
+
+body.is-profile .profile-photo-wrap.photo-selected > .profile-select-ring,
+body.is-profile .profile-photo-wrap.photo-selected::marker {
+  display: none;
+}
+
+body.is-profile .profile-photo-wrap.photo-selected {
+  border: 2px solid rgba(91, 140, 255, 0.92);
+}
+
+/* ===== Profile stage layout: 12-col free placement (profile only) ===== */
+body.is-profile .profile-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(10px, 1.8vw, 22px);
+  row-gap: clamp(12px, 2.2vh, 26px);
+  width: min(1180px, calc(100vw - (var(--rulerW, 18px) + 56px)));
+  margin: 0 auto;
+  align-items: start;
+}
+
+body.is-profile .profile-layout .profile-col-text {
+  grid-column: 2 / span 4;
+  grid-row: 1;
+  z-index: 3;
+  padding-top: clamp(8px, 1.8vh, 18px);
+}
+
+body.is-profile .profile-layout .profile-col-visual {
+  grid-column: 4 / span 8;
+  grid-row: 1;
+  min-height: clamp(480px, 64vh, 760px);
+  display: block;
+}
+
+body.is-profile .profile-layout .profile-stack {
+  width: 100%;
+}
+
+body.is-profile .profile-layout .profile-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  width: 100%;
+  margin-top: 0;
+  gap: 0;
+  transform: none;
+}
+
+body.is-profile .profile-layout .profile-left {
+  grid-column: 2 / span 5;
+  grid-row: 1;
+  position: relative;
+  z-index: 2;
+  transform: translate3d(-18px, 62px, 0);
+}
+
+body.is-profile .profile-layout .profile-artist-card {
+  width: 100%;
+}
+
+body.is-profile .profile-layout .profile-photo-wrap.photo-selected {
+  margin: 0;
+}
+
+body.is-profile .profile-layout .profile-vertical {
+  grid-column: 8 / span 3;
+  grid-row: 1;
+  z-index: 4;
+  align-self: start;
+  justify-self: start;
+  transform: translate3d(8px, -6px, 0);
+  max-height: clamp(300px, 54vh, 460px);
+}
+
+body.is-profile .profile-layout h1 {
+  margin: 0 0 30px;
+}
+
+@media (max-width: 980px) {
+  body.is-profile .profile-layout {
+    display: block;
+    width: min(92vw, 640px);
+  }
+
+  body.is-profile .profile-layout .profile-col-text,
+  body.is-profile .profile-layout .profile-col-visual {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  body.is-profile .profile-layout .profile-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  body.is-profile .profile-layout .profile-left,
+  body.is-profile .profile-layout .profile-vertical {
+    transform: none;
+  }
+
+  body.is-profile .profile-layout .profile-vertical {
+    max-height: none;
+  }
+}
+
+/* ===== Discography Lab Timeline ===== */
+.discography-lab {
+  min-height: calc(100vh - 56px);
+  padding: clamp(24px, 4vh, 44px) 18px 56px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.discography-shell {
+  position: relative;
+  width: min(1160px, 100%);
+  margin: 0 auto;
+  padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 24px);
+}
+
+.discography-head {
+  margin-bottom: 24px;
+}
+
+.discography-head h1 {
+  margin: 0;
+  font-size: clamp(28px, 3.2vw, 42px);
+  letter-spacing: 0.01em;
+}
+
+.discography-head p {
+  margin: 6px 0 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  color: rgba(28, 28, 28, 0.56);
+}
+
+.discography-timeline {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 8px);
+  top: 84px;
+  bottom: 20px;
+  width: 1px;
+  background: rgba(59, 130, 246, 0.28);
+}
+
+.discography-years {
+  display: grid;
+  gap: 18px;
+}
+
+.discography-year {
+  position: relative;
+  padding-left: 42px;
+}
+
+.discography-year-dot {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 4px);
+  top: 16px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.66);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+.discography-year-title {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(20, 20, 20, 0.92);
+}
+
+.discography-year-toggle {
+  margin: 0;
+}
+
+.discography-year-toggle > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.discography-year-toggle > summary::-webkit-details-marker {
+  display: none;
+}
+
+.discography-year-toggle > summary::after {
+  content: "+";
+  margin-left: 12px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  color: rgba(59, 130, 246, 0.74);
+}
+
+.discography-year-toggle[open] > summary::after {
+  content: "-";
+}
+
+.discography-works {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px 18px;
+  max-width: 900px;
+}
+
+.discography-work {
+  width: 100%;
+}
+
+.discography-cover {
+  width: 180px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: rotate(-1.1deg);
+  transform-origin: center;
+  background: #fff;
+}
+
+.discography-work:nth-child(2n) .discography-cover {
+  transform: rotate(1.3deg);
+}
+
+.discography-work:nth-child(3n) .discography-cover {
+  transform: rotate(-0.5deg);
+}
+
+.discography-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.discography-label {
+  margin: 8px 0 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-align: left;
+  color: rgba(26, 26, 26, 0.84);
+}
+
+@media (max-width: 980px) {
+  .discography-shell {
+    padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 16px);
+  }
+
+  .discography-timeline {
+    left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 5px);
+  }
+
+  .discography-year {
+    padding-left: 34px;
+  }
+
+  .discography-year-dot {
+    left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 1px);
+  }
+
+  .discography-works {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 14px;
+  }
+
+  .discography-cover {
+    width: 100%;
+  }
+}
+
+/* ===== Discography Step 1 ===== */
+body.page-discography .discography-step1 {
+  min-height: calc(100vh - 56px);
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: clamp(30px, 6vh, 64px) 20px 24px calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 24px);
+}
+
+body.page-discography .discography-step1 h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+body.page-discography .discography-step1 p {
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(26, 26, 26, 0.64);
+}
+
+/* ===== Discography Step 1 spacing ===== */
+body.page-discography .disc-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px;
+}
+
+body.page-discography .disc-log .discography-step1 {
+  min-height: auto;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  body.page-discography .disc-log {
+    padding: 40px 24px;
+  }
+}
+
+/* ===== Discography Step 2 timeline axis ===== */
+body.page-discography .disc-timeline {
+  position: relative;
+  margin-top: 48px;
+  padding-left: 48px;
+  min-height: 220px;
+}
+
+body.page-discography .disc-timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(59, 130, 246, 0.34);
+}
+
+body.page-discography .disc-year-row {
+  position: relative;
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(26, 26, 26, 0.72);
+}
+
+body.page-discography .disc-year-row::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.78);
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.92);
+}
+
+/* ===== Discography Step 3 single work ===== */
+body.page-discography .disc-year-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+body.page-discography .disc-year-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+}
+
+body.page-discography .disc-work {
+  margin-left: clamp(120px, 14vw, 160px);
+}
+
+body.page-discography .disc-cover {
+  width: clamp(200px, 20vw, 220px);
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  background: #d9d9d9;
+}
+
+body.page-discography .disc-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+body.page-discography .disc-work-title {
+  margin: 14px 0 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  color: rgba(26, 26, 26, 0.82);
+}
+
+@media (max-width: 768px) {
+  body.page-discography .disc-work {
+    margin-left: clamp(28px, 6vw, 48px);
+  }
+
+  body.page-discography .disc-cover {
+    width: min(62vw, 220px);
+  }
+}
+
+/* ===== Discography Step 4: 2026 ten works ===== */
+body.page-discography .disc-year-row {
+  align-items: flex-start;
+}
+
+body.page-discography .disc-works-2026 {
+  margin-left: clamp(120px, 14vw, 160px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(40px, 5vh, 56px);
+}
+
+body.page-discography .disc-works-2026 .disc-work {
+  margin-left: 0;
+}
+
+body.page-discography .disc-works-2026 .disc-cover {
+  width: clamp(180px, 18vw, 198px);
+}
+
+@media (max-width: 768px) {
+  body.page-discography .disc-works-2026 {
+    margin-left: clamp(28px, 6vw, 48px);
+    gap: 34px;
+  }
+
+  body.page-discography .disc-works-2026 .disc-cover {
+    width: min(58vw, 198px);
+  }
+}
+
+/* ===== Discography Step 5: 2025 fold ===== */
+body.page-discography .disc-year-row--details {
+  position: relative;
+  margin-top: clamp(28px, 4vh, 44px);
+  margin-left: 0;
+}
+
+body.page-discography .disc-year-row--details::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.78);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.92);
+}
+
+body.page-discography .disc-year-row--details > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+body.page-discography .disc-year-row--details > summary::-webkit-details-marker {
+  display: none;
+}
+
+body.page-discography .disc-year-row--details > summary:hover,
+body.page-discography .disc-year-row--details > summary:focus-visible {
+  color: rgba(26, 26, 26, 0.96);
+}
+
+body.page-discography .disc-works-2025 {
+  margin-left: clamp(120px, 14vw, 160px);
+  margin-top: 18px;
+}
+
+body.page-discography .disc-works-2025 .disc-cover {
+  width: clamp(180px, 18vw, 198px);
+}
+
+@media (max-width: 768px) {
+  body.page-discography .disc-year-row--details::before {
+    left: -30px;
+  }
+
+  body.page-discography .disc-works-2025 {
+    margin-left: clamp(28px, 6vw, 48px);
+  }
+
+  body.page-discography .disc-works-2025 .disc-cover {
+    width: min(58vw, 198px);
+  }
+}
+
+/* ===== Discography Step 6: sticky now card ===== */
+@media (min-width: 981px) {
+  body.page-discography .discography-step1 {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    column-gap: clamp(26px, 4vw, 48px);
+    align-items: start;
+  }
+
+  body.page-discography .discography-step1 > h1,
+  body.page-discography .discography-step1 > p,
+  body.page-discography .discography-step1 > .disc-timeline {
+    grid-column: 1;
+  }
+
+  body.page-discography .disc-now-sticky {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    position: sticky;
+    top: 64px;
+    align-self: start;
+    border: 1px solid rgba(30, 30, 30, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 10px;
+  }
+
+  body.page-discography .disc-now-cover {
+    margin: 8px 0 0;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  body.page-discography .disc-now-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  body.page-discography .disc-now-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(59, 130, 246, 0.74);
+    background: rgba(59, 130, 246, 0.09);
+  }
+
+  body.page-discography .disc-now-title {
+    margin: 14px 0 0;
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+    font-size: 12px;
+    letter-spacing: 0.07em;
+    color: rgba(26, 26, 26, 0.82);
+    text-align: left;
+  }
+}
+
+@media (max-width: 980px) {
+  body.page-discography .disc-now-sticky {
+    display: none;
+  }
+}
+
+/* ===== Discography Step 7: year label hover/active cues ===== */
+body.page-discography .disc-year-label {
+  position: relative;
+  transition: color 220ms ease-out, letter-spacing 220ms ease-out, opacity 220ms ease-out;
+}
+
+body.page-discography .disc-year-row::before {
+  transition: transform 220ms ease-out, opacity 220ms ease-out;
+  transform-origin: center;
+}
+
+body.page-discography .disc-year-row:hover > .disc-year-label,
+body.page-discography .disc-year-row:focus-within > .disc-year-label {
+  color: rgba(26, 26, 26, 0.96);
+  letter-spacing: 0.19em;
+}
+
+body.page-discography .disc-year-row:hover::before,
+body.page-discography .disc-year-row:focus-within::before {
+  transform: scale(1.15);
   opacity: 1;
-  transform: translateY(0);
+}
+
+body.page-discography .disc-year-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: rgba(59, 130, 246, 0.52);
+  opacity: 0;
+  transition: width 220ms ease-out, opacity 220ms ease-out;
+}
+
+body.page-discography .disc-year-row:hover > .disc-year-label::after,
+body.page-discography .disc-year-row:focus-within > .disc-year-label::after,
+body.page-discography details.disc-year-row[open] > summary.disc-year-label::after {
+  width: 28px;
+  opacity: 1;
+}
+
+/* ===== Discography Step 8: subtle timeline pulse ===== */
+@keyframes disc-line-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes disc-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+body.page-discography .disc-timeline::before {
+  opacity: 0.42;
+  animation: disc-line-pulse 4.6s ease-in-out infinite;
+}
+
+body.page-discography .disc-year-row::before {
+  animation: disc-dot-pulse 4.2s ease-in-out infinite;
+}
+
+body.page-discography .disc-timeline > .disc-year-row:nth-of-type(2)::before {
+  animation-duration: 3.8s;
+  animation-delay: -0.4s;
+}
+
+body.page-discography .disc-timeline > .disc-year-row:nth-of-type(3)::before {
+  animation-duration: 4.7s;
+  animation-delay: -1.1s;
+}
+
+body.page-discography .disc-timeline > .disc-year-row:nth-of-type(4)::before {
+  animation-duration: 3.4s;
+  animation-delay: -0.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-discography .disc-timeline::before,
+  body.page-discography .disc-year-row::before {
+    animation: none !important;
+  }
+}
+
+/* ===== Discography Step 9: card focus-like outline ===== */
+body.page-discography .disc-work {
+  position: relative;
+}
+
+body.page-discography .disc-work::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 14px;
+  pointer-events: none;
+  transition: border-color 200ms ease-out;
+}
+
+body.page-discography .disc-work::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: border-color 200ms ease-out;
+}
+
+body.page-discography .disc-work:hover::before,
+body.page-discography .disc-work:focus-within::before {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+body.page-discography .disc-work:hover::after,
+body.page-discography .disc-work:focus-within::after {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+body.page-discography .disc-work:active::before {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+body.page-discography .disc-work:active::after {
+  border-color: rgba(0, 0, 0, 0.24);
+}
+
+/* ===== Discography Step 7C-3: active card outline ===== */
+body.page-discography .disc-now-sticky {
+  position: relative;
+}
+
+body.page-discography .disc-now-sticky.is-active::after,
+body.page-discography .disc-now-sticky[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  inset: clamp(-10px, -1.2vw, -8px);
+  border: 2px solid var(--hud-blue, #6B8CFF);
+  border-radius: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 980px) {
+  body.page-discography .disc-now-sticky.is-active::after,
+  body.page-discography .disc-now-sticky[data-active="true"]::after {
+    inset: -8px;
+  }
+}
+
+/* ===== Discography Step 7C-4: blue square hover outline ===== */
+body.page-discography .disc-work {
+  position: relative;
+  border: none;
+  border-radius: 0;
+}
+
+body.page-discography .disc-work::before {
+  content: none !important;
+}
+
+body.page-discography .disc-work::after {
+  content: "";
+  position: absolute;
+  inset: clamp(-20px, -2.2vw, -18px);
+  border: 2px solid var(--hud-blue, #4c7dff);
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease-out;
+  z-index: 2;
+}
+
+body.page-discography .disc-work:hover::after,
+body.page-discography .disc-work:focus-within::after {
+  opacity: 1;
+}
+
+@media (max-width: 980px) {
+  body.page-discography .disc-work::after {
+    inset: -12px;
+  }
+}
+
+/* ===== Discography Step 7C-5: fix clipped hover frame ===== */
+body.page-discography .disc-works-2026,
+body.page-discography .disc-works-2025,
+body.page-discography .disc-year-row,
+body.page-discography .disc-year-row > * {
+  overflow: visible;
+}
+
+body.page-discography .disc-work {
+  position: relative;
+  display: inline-block;
+  width: fit-content !important;
+  overflow: visible;
+}
+
+body.page-discography .disc-work::before {
+  content: none !important;
+}
+
+body.page-discography .disc-work::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border: 2px solid var(--hud-blue, #4c7dff);
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.2s ease-out;
+}
+
+body.page-discography .disc-work:hover::after,
+body.page-discography .disc-work:focus-within::after {
+  opacity: 1;
+}
+
+@media (max-width: 980px) {
+  body.page-discography .disc-work::after {
+    inset: -14px;
+  }
+}
+
+/* ===== Discography Step 10: responsive list columns ===== */
+@media (min-width: 1024px) {
+  body.page-discography .disc-works-2026,
+  body.page-discography .disc-works-2025 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 36px;
+    align-items: start;
+  }
+
+  body.page-discography .disc-works-2026 .disc-work,
+  body.page-discography .disc-works-2025 .disc-work {
+    justify-self: start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body.page-discography .disc-works-2026,
+  body.page-discography .disc-works-2025 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+}
+
+@media (max-width: 767px) {
+  body.page-discography .disc-works-2026,
+  body.page-discography .disc-works-2025 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+}
+
+/* ===== Discography Step 10B: section heading spans grid ===== */
+body.page-discography .disc-cards-head {
+  margin: 0 0 clamp(18px, 2.6vh, 28px);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(26, 26, 26, 0.68);
+}
+
+@media (min-width: 1024px) {
+  body.page-discography .disc-works-2026 .disc-cards-head,
+  body.page-discography .disc-works-2025 .disc-cards-head {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== Movie Step 1 ===== */
+body.page-movie .movie-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px;
+}
+
+body.page-movie .movie-log h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  body.page-movie .movie-log {
+    padding: 40px 24px;
+  }
+}
+
+/* ===== Movie Step 2: yearly MV links ===== */
+body.page-movie .movie-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+}
+
+body.page-movie .movie-log h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+body.page-movie .movie-years {
+  margin-top: 36px;
+  display: grid;
+  gap: 34px;
+}
+
+body.page-movie .movie-year-title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: rgba(24, 24, 24, 0.78);
+}
+
+body.page-movie .movie-list {
+  display: grid;
+  gap: 10px;
+}
+
+body.page-movie .movie-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+  padding: 10px 12px;
+  color: rgba(26, 26, 26, 0.86);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.62);
+  transition: border-color 200ms ease-out, background-color 200ms ease-out, color 200ms ease-out;
+}
+
+body.page-movie .movie-item:hover,
+body.page-movie .movie-item:focus-visible {
+  border-color: rgba(107, 140, 255, 0.42);
+  background: rgba(107, 140, 255, 0.08);
+  color: rgba(18, 18, 18, 0.96);
+  outline: none;
+}
+
+body.page-movie .movie-num {
+  width: 48px;
+  flex: 0 0 48px;
+  color: rgba(26, 26, 26, 0.66);
+}
+
+body.page-movie .movie-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+body.page-movie .movie-ext {
+  flex: 0 0 auto;
+  color: rgba(26, 26, 26, 0.64);
+  letter-spacing: 0.06em;
+}
+
+@media (min-width: 1080px) {
+  body.page-movie .movie-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.page-movie .movie-log {
+    padding: 40px 24px;
+  }
+
+  body.page-movie .movie-item {
+    gap: 12px;
+    padding: 10px;
+  }
+
+  body.page-movie .movie-num {
+    width: 42px;
+    flex-basis: 42px;
+  }
+}
+
+/* ===== Movie Step 3: year tabs layout ===== */
+body.page-movie .movie-tabs {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  column-gap: clamp(24px, 4vw, 52px);
+  align-items: start;
+}
+
+body.page-movie .movie-year-tabs {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+body.page-movie .movie-year-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 4px 0;
+  text-align: left;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.62);
+  cursor: pointer;
+  position: relative;
+}
+
+body.page-movie .movie-year-tab::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%);
+  opacity: 0;
+  background: rgba(107, 140, 255, 0.72);
+}
+
+body.page-movie .movie-year-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: rgba(107, 140, 255, 0.62);
+  transition: width 0.2s ease-out, opacity 0.2s ease-out;
+  opacity: 0;
+}
+
+body.page-movie .movie-year-tab:hover,
+body.page-movie .movie-year-tab:focus-visible,
+body.page-movie .movie-year-tab.is-active {
+  color: rgba(18, 18, 18, 0.92);
+  outline: none;
+}
+
+body.page-movie .movie-year-tab.is-active::before {
+  opacity: 1;
+}
+
+body.page-movie .movie-year-tab.is-active::after,
+body.page-movie .movie-year-tab:hover::after,
+body.page-movie .movie-year-tab:focus-visible::after {
+  width: 32px;
+  opacity: 1;
+}
+
+body.page-movie .movie-panels {
+  min-width: 0;
+}
+
+body.page-movie .movie-panel[hidden] {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  body.page-movie .movie-tabs {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+
+  body.page-movie .movie-year-tabs {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  body.page-movie .movie-year-tab::before {
+    left: -10px;
+  }
+}
+
+/* ===== Movie Step 4: thumb list from data ===== */
+body.page-movie .movie-item {
+  justify-content: space-between;
+  gap: 18px;
+  border-radius: 0;
+}
+
+body.page-movie .movie-main {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;
+}
+
+body.page-movie .movie-thumb {
+  flex: 0 0 168px;
+  width: 168px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #e7e7e7;
+}
+
+body.page-movie .movie-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+body.page-movie .movie-title-wrap {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+body.page-movie .movie-num {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+body.page-movie .movie-title {
+  overflow-wrap: anywhere;
+}
+
+body.page-movie .movie-ext {
+  flex: 0 0 auto;
+  margin-left: 8px;
+  white-space: nowrap;
+  align-self: center;
+}
+
+@media (max-width: 767px) {
+  body.page-movie .movie-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  body.page-movie .movie-main {
+    width: 100%;
+  }
+
+  body.page-movie .movie-thumb {
+    flex-basis: min(46vw, 172px);
+    width: min(46vw, 172px);
+  }
+
+  body.page-movie .movie-ext {
+    align-self: flex-end;
+  }
+}
+
+/* ===== About page works section ===== */
+body.page-about .about-works {
+  width: min(1160px, 100%);
+  margin: clamp(48px, 8vh, 96px) auto clamp(80px, 14vh, 140px);
+  padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 24px);
+  padding-right: clamp(20px, 5vw, 60px);
+}
+
+body.page-about .about-works h2 {
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(20, 20, 20, 0.82);
+}
+
+/* ===== About works log ===== */
+body.page-about .about-works {
+  width: min(1160px, 100%);
+  margin: clamp(56px, 9vh, 104px) auto clamp(84px, 14vh, 148px);
+  padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 24px);
+  padding-right: clamp(20px, 5vw, 60px);
+}
+
+body.page-about .about-works h2 {
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(20, 20, 20, 0.82);
+}
+
+body.page-about .about-works-log {
+  margin-top: 28px;
+  display: grid;
+  gap: 26px;
+}
+
+body.page-about .about-works-year h3 {
+  margin: 0 0 10px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: rgba(22, 22, 22, 0.72);
+}
+
+body.page-about .about-works-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+body.page-about .about-works-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 14px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(24, 24, 24, 0.84);
+}
+
+body.page-about .about-works-title {
+  flex: 0 0 auto;
+  min-width: 132px;
+}
+
+body.page-about .about-works-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+body.page-about .about-works-links a {
+  color: rgba(24, 24, 24, 0.74);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.page-about .about-works-links a:hover,
+body.page-about .about-works-links a:focus-visible {
+  color: rgba(18, 18, 18, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+  outline: none;
+}
+
+@media (max-width: 980px) {
+  body.page-about .about-works {
+    padding-left: calc(env(safe-area-inset-left) + var(--rulerW, 18px) + 18px);
+    padding-right: 16px;
+  }
+
+  body.page-about .about-works-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  body.page-about .about-works-title {
+    min-width: 0;
+  }
+}
+
+/* ===== Home updates (latest 2 months) ===== */
+body.is-home .home-updates {
+  position: fixed;
+  right: 14px;
+  bottom: 58px;
+  z-index: 3;
+  max-width: min(340px, 36vw);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: rgba(32, 32, 32, 0.56);
   pointer-events: auto;
 }
 
-/* SNS */
-
-.social-icons {
-  position: fixed;
-  bottom: 2rem;
-  right: 6rem; /* ← 元は4.5rem。約1アイコン分（1.5rem）追加で左に移動 */
-  display: flex;
-  gap: 1rem;
-  z-index: 999;
-}
-
-
-.social-icons a {
-  color: #1a1a1a;
-  font-size: 1.4rem;
-  transition: opacity 0.3s ease;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  opacity: 0.6;
-}
-
-/* スマホ時はサイズ調整 */
-@media screen and (max-width: 768px) {
-  .social-icons {
-    right: 5rem; /* 元は3.5rem */
-    bottom: 1.5rem;
-    gap: 0.8rem;
-  }
-
-  .social-icons a {
-    font-size: 1.2rem;
-  }
-}  /* ← これが抜けていた！ */
-
-
-/* musicページのフォントオーサム */
-.platform-icons {
-  display: flex;
-  gap: 1.5rem;             /* アイコン間の距離 */
-  margin-top: 2rem;        /* 上との間隔（少し広めに） */
-  margin-left: 2rem;       /* 全体を右へ移動（アイコン1つ分） */
-  font-size: 1.4rem;       /* アイコンサイズ */
-}
-
-.platform-icons a {
-  color: #1a1a1a;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.platform-icons a:hover {
-  opacity: 0.6;
-}
-
-
-.menu-links a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: normal;
-  margin-left: 0.7rem; /* ← アイコン間の余白を調整 */
-  font-size: 1.2rem;   /* ← 見た目が整うように少し大きめ推奨 */
-}
-
-/* 最初のアイコンだけ少し右にずらす */
-.menu-links a:first-of-type {
-  margin-left: 1.2rem;
-}
-
-/* スマホで本文の幅を広げる */
-@media screen and (max-width: 768px) {
-  .section {
-    padding: 4rem 1.25rem 3rem;  /* 上 / 左右 / 下 */
-  }
-
-  .footer {
-    padding: 3rem 1.25rem;       /* フッターも同じ幅感に */
-  }
-
-  .site-logo-container {
-    left: 1.5rem;                /* ロゴ位置も少し内側に */
-  }
-}
-
-/* works（実績）の本文だけ小さくする */
-.discography .works-detail {
-  font-size: 0.9rem;
-  line-height: 1.8;
-}
-
-/* 文中の外部リンクだけ強調 */
-.ext-link {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  color: #000;
+body.is-home .home-updates h2 {
+  margin: 0 0 6px;
+  font-size: 10px;
   font-weight: 500;
-  position: relative;
+  letter-spacing: 0.14em;
+  color: rgba(32, 32, 32, 0.44);
 }
 
-/* ↗︎ アイコンを付ける */
-.ext-link::after {
-  content: "↗︎";
-  font-size: 0.8em;
-  margin-left: 0.25em;
-  opacity: 0.7;
-  position: relative;
-  top: -1px; /* 少し上にすると綺麗 */
+body.is-home .home-updates ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* 文中の外部リンク専用 */
-.ext-link {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  color: #000;
-  font-weight: 500;
-  position: relative;
-  padding-right: 0.3em;
+body.is-home .home-updates li {
+  margin: 0;
 }
 
-/* Font Awesome 外部リンクアイコン */
-.ext-link::after {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  content: "\f35d"; /* fa-up-right-from-square */
-  font-size: 0.75em;
-  margin-left: 0.25em;
-  opacity: 0.8;
-  position: relative;
-  top: -1px;
+body.is-home .home-updates a {
+  color: rgba(32, 32, 32, 0.72);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease-out, border-color 180ms ease-out;
 }
 
-/* 料金表の小見出し */
-.price-heading {
-  font-size: 1.3rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  border-bottom: 1px solid #1a1a1a33; /* 少し薄い罫線 */
-  padding-bottom: 0.3rem;
+body.is-home .home-updates a:hover,
+body.is-home .home-updates a:focus-visible {
+  color: rgba(32, 32, 32, 0.92);
+  border-bottom-color: rgba(107, 140, 255, 0.52);
+  outline: none;
 }
 
-/* 各項目のブロック */
-.price-item {
-  margin-bottom: 2rem;
-  line-height: 1.8;
-  font-size: 1.05rem;
+@media (max-width: 980px) {
+  body.is-home .home-updates {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(env(safe-area-inset-bottom) + 54px);
+    max-width: min(90vw, 560px);
+    text-align: center;
+  }
 }
 
-/* 項目名だけ視認性を上げる */
-.price-item strong {
-  font-weight: bold;
-  font-size: 1.05rem;
+/* ===== Updates list page ===== */
+body.page-updates .updates-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
 }
 
-/* 料金セクション全体（フォント太さを落として統一） */
-.price-section {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-weight: normal;
-  font-size: 1rem;
+body.page-updates .updates-log h1 {
+  margin: 0 0 18px;
+  font-size: clamp(28px, 4vw, 46px);
+  letter-spacing: 0.08em;
 }
 
-/* 小見出し（■ 音楽 など） */
-.price-heading {
-  font-size: 1.2rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  border-bottom: 1px solid #1a1a1a33;
-  padding-bottom: 0.3rem;
+body.page-updates .updates-log ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+body.page-updates .updates-log a {
+  color: rgba(24, 24, 24, 0.78);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+body.page-updates .updates-log a:hover,
+body.page-updates .updates-log a:focus-visible {
+  color: rgba(24, 24, 24, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.54);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  body.page-updates .updates-log {
+    padding: 40px 24px;
+  }
+}
+
+/* ===== Blog Step 1: log list ===== */
+body.section-blog .blog-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+}
+
+body.section-blog .blog-log h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+body.section-blog .blog-years {
+  margin-top: 34px;
+  display: grid;
+  gap: 26px;
+}
+
+body.section-blog .blog-year h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: rgba(24, 24, 24, 0.72);
+}
+
+body.section-blog .blog-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+body.section-blog .blog-item {
   display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-height: 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(24, 24, 24, 0.8);
+}
+
+body.section-blog .blog-date {
+  flex: 0 0 56px;
+  color: rgba(24, 24, 24, 0.6);
+}
+
+body.section-blog .blog-link {
+  color: rgba(24, 24, 24, 0.84);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.section-blog .blog-link:hover,
+body.section-blog .blog-link:focus-visible {
+  color: rgba(24, 24, 24, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.56);
+  outline: none;
+}
+
+body.section-blog .blog-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: rgba(24, 24, 24, 0.5);
+}
+
+@media (max-width: 768px) {
+  body.section-blog .blog-log {
+    padding: 40px 24px;
+  }
+
+  body.section-blog .blog-item {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  body.section-blog .blog-date {
+    flex-basis: 50px;
+  }
+}
+
+/* ===== Blog Step 2: single article ===== */
+body.section-blog .blog-single {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 64px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  color: rgba(24, 24, 24, 0.88);
+}
+
+body.section-blog .blog-single-back {
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  min-height: 28px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.66);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 
-/* 見出しアイコン */
-.price-heading i {
-  font-size: 1rem;
+body.section-blog .blog-single-back:hover,
+body.section-blog .blog-single-back:focus-visible {
+  color: rgba(24, 24, 24, 0.94);
+  border-bottom-color: rgba(107, 140, 255, 0.56);
+  outline: none;
 }
 
-/* 各項目のブロック */
-.price-item {
-  margin-bottom: 1.8rem;
-  line-height: 1.8;
-  font-size: 1.05rem;
+body.section-blog .blog-single-head h1 {
+  margin: 0;
+  font-size: clamp(28px, 3.8vw, 44px);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
 }
 
-/* 項目名 */
-.price-item strong {
-  font-weight: 600;
+body.section-blog .blog-single-meta {
+  margin: 10px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.62);
 }
 
-/* 金額だけ右寄せ */
-.price-amount {
+body.section-blog .blog-single-tags {
+  margin: 8px 0 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(24, 24, 24, 0.56);
+}
+
+body.section-blog .blog-single-body {
+  margin-top: 26px;
+  font-size: 13px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+body.section-blog .blog-single-body > *:first-child {
+  margin-top: 0;
+}
+
+body.section-blog .blog-single-body > *:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  body.section-blog .blog-single {
+    padding: 40px 24px;
+  }
+}
+
+/* ===== Blog Step 3: page bundle images ===== */
+body.section-blog .blog-single-body img {
   display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 12px;
+  margin: 18px 0;
+}
+
+/* ===== Contact page ===== */
+body.page-contact .contact-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  color: rgba(24, 24, 24, 0.86);
+}
+
+body.page-contact .contact-log h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+body.page-contact .contact-sub {
+  margin: 12px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.62);
+}
+
+body.page-contact .contact-cta {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+body.page-contact .contact-cta-link,
+body.page-contact .contact-copy-btn {
+  min-height: 44px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.88);
+  background: transparent;
+  border: 1px solid rgba(24, 24, 24, 0.16);
+  border-radius: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 180ms ease-out, color 180ms ease-out, background-color 180ms ease-out;
+}
+
+body.page-contact .contact-cta-link:hover,
+body.page-contact .contact-cta-link:focus-visible,
+body.page-contact .contact-copy-btn:hover,
+body.page-contact .contact-copy-btn:focus-visible {
+  border-color: rgba(107, 140, 255, 0.52);
+  color: rgba(24, 24, 24, 0.96);
+  background: rgba(107, 140, 255, 0.06);
+  outline: none;
+}
+
+body.page-contact .contact-copy-status {
+  min-width: 64px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.56);
+}
+
+body.page-contact .contact-links {
+  margin-top: 24px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+body.page-contact .contact-links a {
+  color: rgba(24, 24, 24, 0.78);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.page-contact .contact-links a:hover,
+body.page-contact .contact-links a:focus-visible {
+  color: rgba(24, 24, 24, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+  outline: none;
+}
+
+body.page-contact .contact-note {
+  margin: 28px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.5);
+}
+
+@media (max-width: 768px) {
+  body.page-contact .contact-log {
+    padding: 40px 24px;
+  }
+
+  body.page-contact .contact-cta-link,
+  body.page-contact .contact-copy-btn {
+    min-height: 42px;
+    padding: 9px 12px;
+  }
+}
+
+/* ===== About fix: header links clickable ===== */
+body.page-about .site-header {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+/* ===== Shared page title ===== */
+.page-title {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* ===== Global fixed HOME button ===== */
+.home-fixed-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 72px;
+  z-index: 40;
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 180ms ease-out, border-color 180ms ease-out, background-color 180ms ease-out;
+}
+
+.home-fixed-btn:hover,
+.home-fixed-btn:focus-visible {
+  color: var(--hud-blue, #6B8CFF);
+  border-color: var(--hud-blue, #6B8CFF);
+  outline: none;
+}
+
+/* ===== Header HOME outlined ===== */
+.site-header__link-home {
+  border: 1px solid rgba(107, 140, 255, 0.52);
+  border-radius: 4px;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.site-header__link-home:hover,
+.site-header__link-home:focus-visible {
+  border-color: rgba(107, 140, 255, 0.9);
+  color: var(--hud-blue, #6B8CFF);
+}
+
+/* ===== About title align with other page heads ===== */
+body.page-about .profile-layout .page-title {
+  margin: 0 0 30px;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ===== Blog single: zine typesetting (single only) ===== */
+body.section-blog .blog-single {
+  max-width: 1180px;
+  padding: 80px 64px 104px;
+}
+
+body.section-blog .blog-single-back {
+  margin-bottom: 28px;
+}
+
+body.section-blog .blog-single-head {
+  position: relative;
+  max-width: 620px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(107, 140, 255, 0.34);
+}
+
+body.section-blog .blog-single-head::after {
+  content: "COLOPHON";
+  position: absolute;
+  right: -116px;
+  top: 2px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(24, 24, 24, 0.34);
+}
+
+body.section-blog .blog-single-head h1 {
+  letter-spacing: 0.06em;
+}
+
+body.section-blog .blog-single-meta,
+body.section-blog .blog-single-tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(24, 24, 24, 0.56);
+}
+
+body.section-blog .blog-single-tags {
+  margin-left: 14px;
+}
+
+body.section-blog .blog-single-body {
+  max-width: 600px;
+  margin-top: 38px;
+  font-size: 13px;
+  line-height: 2.02;
+  letter-spacing: 0.015em;
+}
+
+body.section-blog .blog-single-body p {
+  margin: 0 0 1.55em;
+}
+
+body.section-blog .blog-single-body img,
+body.section-blog .blog-single-body figure {
+  width: 100%;
+  max-width: 600px;
+  margin: 30px 0 12px;
+}
+
+body.section-blog .blog-single-body img {
+  display: block;
+  height: auto;
+  border-radius: 12px;
+}
+
+body.section-blog .blog-single-body figcaption {
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.5);
+}
+
+@media (max-width: 768px) {
+  body.section-blog .blog-single {
+    padding: 44px 24px 72px;
+  }
+
+  body.section-blog .blog-single-head,
+  body.section-blog .blog-single-body {
+    max-width: 100%;
+  }
+
+  body.section-blog .blog-single-head::after {
+    content: none;
+  }
+
+  body.section-blog .blog-single-meta,
+  body.section-blog .blog-single-tags {
+    display: flex;
+    margin-left: 0;
+  }
+
+  body.section-blog .blog-single-tags {
+    margin-top: 8px;
+  }
+}
+
+/* ===== Blog single: experimental zine layout ===== */
+body.section-blog .blog-single.zine-post {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 84px 64px 108px;
+}
+
+body.section-blog .blog-single.zine-post .blog-single-head {
+  max-width: 660px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(107, 140, 255, 0.32);
+}
+
+body.section-blog .blog-single.zine-post .post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 660px) minmax(170px, 220px);
+  column-gap: clamp(24px, 3.8vw, 56px);
+  align-items: start;
+  margin-top: 34px;
+}
+
+body.section-blog .blog-single.zine-post .post-body {
+  max-width: 660px;
+  font-size: 13.5px;
+  line-height: 2.06;
+  letter-spacing: 0.016em;
+}
+
+body.section-blog .blog-single.zine-post .post-body p {
+  margin: 0 0 1.62em;
+}
+
+body.section-blog .blog-single.zine-post .post-meta {
+  position: sticky;
+  top: 92px;
+  border-left: 1px solid rgba(107, 140, 255, 0.28);
+  padding-left: 16px;
+  color: rgba(24, 24, 24, 0.58);
+}
+
+body.section-blog .blog-single.zine-post .post-meta-block + .post-meta-block {
+  margin-top: 20px;
+}
+
+body.section-blog .blog-single.zine-post .post-meta-label {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(24, 24, 24, 0.42);
+}
+
+body.section-blog .blog-single.zine-post .post-meta-value,
+body.section-blog .blog-single.zine-post .post-meta-tags {
+  margin: 6px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+body.section-blog .blog-single.zine-post .post-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+body.section-blog .blog-single.zine-post .post-body img,
+body.section-blog .blog-single.zine-post .post-body figure {
+  width: 100%;
+  max-width: 660px;
+  margin: 34px 0 14px;
+}
+
+body.section-blog .blog-single.zine-post .post-body img {
+  display: block;
+  height: auto;
+  border-radius: 12px;
+}
+
+body.section-blog .blog-single.zine-post .post-body figcaption {
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.5);
+}
+
+body.section-blog .blog-single.zine-post .post-body .marginalia,
+body.section-blog .blog-single.zine-post .post-body .timecode,
+body.section-blog .blog-single.zine-post .post-body .editor-note {
+  display: inline-block;
+  margin: 0 0 0.25em;
+  padding: 2px 6px;
+  border: 1px solid rgba(107, 140, 255, 0.34);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.62);
+}
+
+body.section-blog .blog-single.zine-post .post-body .editor-note::before {
+  content: "※ ";
+}
+
+body.section-blog .blog-single.zine-post .post-body .timecode::before {
+  content: "\2020 ";
+}
+
+@media (max-width: 980px) {
+  body.section-blog .blog-single.zine-post {
+    padding: 50px 24px 80px;
+  }
+
+  body.section-blog .blog-single.zine-post .post-layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 22px;
+  }
+
+  body.section-blog .blog-single.zine-post .post-meta {
+    position: static;
+    border-left: 0;
+    border-top: 1px solid rgba(107, 140, 255, 0.28);
+    padding-left: 0;
+    padding-top: 14px;
+  }
+
+  body.section-blog .blog-single.zine-post .post-body,
+  body.section-blog .blog-single.zine-post .blog-single-head,
+  body.section-blog .blog-single.zine-post .post-body img,
+  body.section-blog .blog-single.zine-post .post-body figure {
+    max-width: 100%;
+  }
+}
+
+/* ===== Blog single: prev/next nav ===== */
+body.section-blog .blog-single.zine-post .post-nav {
+  max-width: 660px;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(107, 140, 255, 0.26);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+body.section-blog .blog-single.zine-post .post-nav-prev,
+body.section-blog .blog-single.zine-post .post-nav-next {
+  flex: 1;
+  min-height: 24px;
+}
+
+body.section-blog .blog-single.zine-post .post-nav-next {
   text-align: right;
 }
 
-/* Contact 内のリンク（外部リンクアイコン付きテキスト用） */
-.contact-links a {
-  display: inline-block;
-  margin-right: 0.75rem;
-  margin-bottom: 0.5rem;
+body.section-blog .blog-single.zine-post .post-nav a {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.7);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease-out, border-color 180ms ease-out;
 }
 
-/* 料金説明だけフォントを小さく */
-.price-note {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  font-weight: normal;
+body.section-blog .blog-single.zine-post .post-nav a:hover,
+body.section-blog .blog-single.zine-post .post-nav a:focus-visible {
+  color: rgba(24, 24, 24, 0.94);
+  border-bottom-color: rgba(107, 140, 255, 0.56);
+  outline: none;
+}
+
+@media (max-width: 980px) {
+  body.section-blog .blog-single.zine-post .post-nav {
+    max-width: 100%;
+    margin-top: 34px;
+  }
+}
+
+/* ===== Blog single type scale tweak ===== */
+body.section-blog .blog-single.zine-post .blog-single-head h1 {
+  font-size: clamp(26px, 2.2vw, 30px);
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+body.section-blog .blog-single.zine-post .post-body {
+  font-size: clamp(16px, 1.15vw, 17px);
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+/* ===== Blog tags step1 ===== */
+body.section-blog .blog-filter {
+  margin: 18px 0 26px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+body.section-blog .blog-filter-btn {
+  padding: 5px 10px;
+  border: 1px solid rgba(107, 140, 255, 0.32);
+  background: transparent;
+  color: rgba(24, 24, 24, 0.7);
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+body.section-blog .blog-filter-btn.is-active,
+body.section-blog .blog-filter-btn:hover,
+body.section-blog .blog-filter-btn:focus-visible {
+  color: rgba(24, 24, 24, 0.94);
+  border-color: rgba(107, 140, 255, 0.62);
+  background: rgba(107, 140, 255, 0.08);
+  outline: none;
+}
+
+body.section-blog .post-tags-bottom {
+  max-width: 660px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: rgba(24, 24, 24, 0.62);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+body.section-blog .post-tags-bottom__tag {
+  border: 1px solid rgba(107, 140, 255, 0.3);
+  padding: 2px 8px;
+}
+
+@media (max-width: 980px) {
+  body.section-blog .post-tags-bottom {
+    max-width: 100%;
+  }
+}
+
+/* ===== Blog tags links ===== */
+body.section-blog .blog-single.zine-post .post-meta-tags a,
+body.section-blog .blog-single.zine-post .post-tags-bottom__tag {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.section-blog .blog-single.zine-post .post-meta-tags a:hover,
+body.section-blog .blog-single.zine-post .post-meta-tags a:focus-visible,
+body.section-blog .blog-single.zine-post .post-tags-bottom__tag:hover,
+body.section-blog .blog-single.zine-post .post-tags-bottom__tag:focus-visible {
+  color: rgba(24, 24, 24, 0.92);
+  border-bottom-color: rgba(107, 140, 255, 0.56);
+  outline: none;
+}
+
+/* ===== Discography: disable jacket hover frame ===== */
+body.page-discography .disc-work::before,
+body.page-discography .disc-work::after {
+  content: none !important;
+}
+
+body.page-discography .disc-work:hover::before,
+body.page-discography .disc-work:hover::after,
+body.page-discography .disc-work:focus-within::before,
+body.page-discography .disc-work:focus-within::after,
+body.page-discography .disc-work:active::before,
+body.page-discography .disc-work:active::after {
+  border-color: transparent !important;
+}
+
+body.page-discography .disc-cover-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Discography: release type groups ===== */
+body.page-discography .disc-release-group + .disc-release-group {
+  margin-top: 36px;
+}
+
+body.page-discography .disc-release-head {
+  margin: 0 0 14px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(26, 26, 26, 0.72);
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(107, 140, 255, 0.42);
+}
+
+/* ===== About works: text log format ===== */
+body.page-about .about-works-item--stack {
+  display: block;
+}
+
+body.page-about .about-works-org {
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: rgba(24, 24, 24, 0.86);
+}
+
+body.page-about .about-works-points {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: rgba(24, 24, 24, 0.76);
+}
+
+/* ===== About works: linkified references ===== */
+body.page-about .about-works-org a,
+body.page-about .about-works-point-links a {
+  color: rgba(24, 24, 24, 0.74);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.page-about .about-works-org a:hover,
+body.page-about .about-works-org a:focus-visible,
+body.page-about .about-works-point-links a:hover,
+body.page-about .about-works-point-links a:focus-visible {
+  color: rgba(18, 18, 18, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+  outline: none;
+}
+
+body.page-about .about-works-point-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+/* ===== Footer music links ===== */
+.music-links-footer {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 12;
+  pointer-events: auto;
+}
+
+body.is-home .music-links-footer {
+  bottom: max(2px, env(safe-area-inset-bottom));
+}
+
+.music-links-footer__nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.56);
+}
+
+.music-links-footer__nav a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease-out, border-color 180ms ease-out;
+}
+
+.music-links-footer__nav a:hover,
+.music-links-footer__nav a:focus-visible {
+  color: rgba(24, 24, 24, 0.86);
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+  outline: none;
+}
+
+@media (max-width: 980px) {
+  .music-links-footer {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  body.is-home .music-links-footer {
+    bottom: max(0px, env(safe-area-inset-bottom));
+  }
+
+  .music-links-footer__nav {
+    gap: 10px 12px;
+    font-size: 10.5px;
+  }
+}
+
+/* ===== Home footer spacing tweak ===== */
+body.is-home .artist-caption {
+  bottom: calc(env(safe-area-inset-bottom) + 28px);
+}
+
+body.is-home .music-links-footer {
+  bottom: max(4px, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 980px) {
+  body.is-home .artist-caption {
+    bottom: calc(env(safe-area-inset-bottom) + 24px);
+  }
+
+  body.is-home .music-links-footer {
+    bottom: max(2px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ===== Home footer spacing tweak (reverse order) ===== */
+body.is-home .music-links-footer {
+  bottom: calc(env(safe-area-inset-bottom) + 28px);
+}
+
+body.is-home .artist-caption {
+  bottom: max(4px, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 980px) {
+  body.is-home .music-links-footer {
+    bottom: calc(env(safe-area-inset-bottom) + 24px);
+  }
+
+  body.is-home .artist-caption {
+    bottom: max(2px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ===== Home footer vertical lift ===== */
+body.is-home .music-links-footer {
+  bottom: calc(env(safe-area-inset-bottom) + 42px);
+}
+
+body.is-home .artist-caption {
+  bottom: calc(env(safe-area-inset-bottom) + 16px);
+}
+
+@media (max-width: 980px) {
+  body.is-home .music-links-footer {
+    bottom: calc(env(safe-area-inset-bottom) + 34px);
+  }
+
+  body.is-home .artist-caption {
+    bottom: calc(env(safe-area-inset-bottom) + 12px);
+  }
+}
+
+/* page entry transition */
+html.js main {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.38s ease-out, transform 0.38s ease-out;
+}
+
+html.js body.page-entered main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js main {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===== About artist photo: transparent asset support ===== */
+body.page-about .profile-photo-wrap,
+body.page-about .profile-photo-wrap.photo-selected {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+}
+
+body.page-about .profile-photo-wrap picture,
+body.page-about .profile-photo-wrap .profile-photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body.page-about .profile-photo-wrap .profile-photo-img {
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+
+body.page-about .profile-photo-wrap.photo-selected::before,
+body.page-about .profile-photo-wrap.photo-selected::after {
+  content: none !important;
+}
+
+/* ===== About artist photo: robust transparent render fix ===== */
+body.page-about .profile-photo-wrap,
+body.page-about .profile-photo-wrap.photo-selected {
+  width: clamp(240px, 28vw, 360px) !important;
+  aspect-ratio: 1 / 1;
+  height: auto !important;
+  display: grid;
+  place-items: center;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 2px solid rgba(91, 140, 255, 0.92) !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+}
+
+body.page-about .profile-photo-wrap .profile-photo-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block;
+  background: transparent !important;
+}
+
+body.page-about .profile-photo-wrap.photo-selected::before,
+body.page-about .profile-photo-wrap.photo-selected::after {
+  content: "" !important;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid rgba(91, 140, 255, 0.92);
+  background: #fff;
+  z-index: 2;
+}
+
+body.page-about .profile-photo-wrap.photo-selected::before {
+  top: -8px;
+  left: -8px;
+}
+
+body.page-about .profile-photo-wrap.photo-selected::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+/* ===== About artist photo: transparent-only final override ===== */
+body.page-about .profile-photo-wrap,
+body.page-about .profile-photo-wrap.photo-selected {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+}
+
+body.page-about .profile-photo-wrap.photo-selected::before,
+body.page-about .profile-photo-wrap.photo-selected::after {
+  content: none !important;
+}
+
+body.page-about .profile-photo-wrap .profile-photo-img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+}
+
+/* ===== About heading consistency ===== */
+body.page-about .profile-layout .page-title { text-transform: uppercase; }
+
+/* ===== About heading position align with other pages ===== */
+body.page-about .profile-page .scene {
+  padding-top: clamp(28px, 5vh, 52px);
+  padding-left: clamp(24px, 5vw, 64px);
+  padding-right: clamp(24px, 5vw, 64px);
+}
+
+body.page-about .profile-layout {
+  width: min(1200px, 100%);
+}
+
+body.page-about .profile-layout .profile-col-text {
+  grid-column: 1 / span 4;
+  padding-top: 0;
+}
+
+@media (max-width: 980px) {
+  body.page-about .profile-page .scene {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* ===== About heading exact align with inner pages ===== */
+body.page-about .profile-page .scene {
+  padding-top: 64px !important;
+  padding-right: 64px !important;
+  padding-bottom: 96px !important;
+  padding-left: 64px !important;
+}
+
+body.page-about .profile-layout {
+  width: min(1200px, 100%) !important;
+  margin: 0 auto !important;
+}
+
+body.page-about .profile-layout .profile-col-text {
+  grid-column: 1 / span 4 !important;
+  padding-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene {
+    padding-top: 40px !important;
+    padding-right: 24px !important;
+    padding-bottom: 72px !important;
+    padding-left: 24px !important;
+  }
+}
+
+/* ===== About layout: match inner pages title position ===== */
+body.page-about .hero.profile-page {
+  height: auto !important;
+  min-height: 0 !important;
+  display: block !important;
+  padding: 0 !important;
+}
+
+body.page-about .profile-page .scene {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  overflow: visible !important;
+  padding: 64px 64px 96px !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene {
+    padding: 40px 24px 72px !important;
+  }
+}
+
+/* ===== Movie cinematic gallery polish ===== */
+body.page-movie .movie-panel {
+  position: relative;
+}
+
+body.page-movie .movie-year-title {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 18px;
+}
+
+body.page-movie .movie-year-title::before {
+  content: attr(data-year);
+  position: absolute;
+  left: -0.04em;
+  top: -0.42em;
+  font-size: clamp(120px, 16vw, 220px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.04);
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+
+body.page-movie .movie-item {
+  transition: transform 220ms ease-out, box-shadow 220ms ease-out, border-color 220ms ease-out, background-color 220ms ease-out, color 220ms ease-out;
+  transform-origin: center;
+}
+
+body.page-movie .movie-item:hover,
+body.page-movie .movie-item:focus-visible {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+body.page-movie .movie-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+body.page-movie .movie-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(110%);
+  transition: filter 240ms ease-out;
+}
+
+body.page-movie .movie-item:hover .movie-thumb img,
+body.page-movie .movie-item:focus-visible .movie-thumb img {
+  filter: grayscale(0%) contrast(100%);
+}
+
+body.page-movie .movie-yt-badge {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 24px;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(255, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  display: grid;
+  place-items: center;
+  opacity: 0.68;
+  transition: opacity 220ms ease-out, background-color 220ms ease-out;
+}
+
+body.page-movie .movie-yt-play {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid rgba(255, 255, 255, 0.94);
+  margin-left: 1px;
+}
+
+body.page-movie .movie-item:hover .movie-yt-badge,
+body.page-movie .movie-item:focus-visible .movie-yt-badge {
+  opacity: 0.95;
+  background: rgba(255, 0, 0, 0.72);
+}
+
+@media (max-width: 980px) {
+  body.page-movie .movie-year-title::before {
+    font-size: clamp(84px, 20vw, 140px);
+    top: -0.34em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-movie .movie-item,
+  body.page-movie .movie-thumb img,
+  body.page-movie .movie-yt-badge {
+    transition: none;
+  }
+
+  body.page-movie .movie-item:hover,
+  body.page-movie .movie-item:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ===== Movie thumb corner mark: plus ===== */
+body.page-movie .movie-yt-badge {
+  width: 18px;
+  height: 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(90, 90, 90, 0.52);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
+  transform: rotate(0deg);
+  transition: color 220ms ease-out, transform 220ms ease-out;
+}
+
+body.page-movie .movie-yt-badge::before {
+  content: "+";
+}
+
+body.page-movie .movie-yt-play {
+  display: none;
+}
+
+body.page-movie .movie-item:hover .movie-yt-badge,
+body.page-movie .movie-item:focus-visible .movie-yt-badge {
+  color: rgba(45, 45, 45, 0.82);
+  transform: rotate(10deg);
+  background: transparent;
+}
+
+/* ===== Movie plus badge hard override ===== */
+body.page-movie .movie-yt-badge {
+  width: 18px !important;
+  height: 18px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: rgba(90, 90, 90, 0.52) !important;
+  font-family: inherit !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  display: grid !important;
+  place-items: center !important;
+  opacity: 0.9 !important;
+  transform: rotate(0deg) !important;
+  transition: color 220ms ease-out, transform 220ms ease-out !important;
+}
+
+body.page-movie .movie-yt-badge::before {
+  content: none !important;
+}
+
+body.page-movie .movie-item:hover .movie-yt-badge,
+body.page-movie .movie-item:focus-visible .movie-yt-badge {
+  color: rgba(45, 45, 45, 0.82) !important;
+  transform: rotate(10deg) !important;
+  background: transparent !important;
+}
+
+/* ===== Movie right-side plus marker ===== */
+body.page-movie .movie-ext {
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(90, 90, 90, 0.52) !important;
+  transition: color 220ms ease-out, transform 220ms ease-out;
+}
+
+body.page-movie .movie-item:hover .movie-ext,
+body.page-movie .movie-item:focus-visible .movie-ext {
+  color: rgba(45, 45, 45, 0.82) !important;
+  transform: rotate(10deg);
+}
+
+/* legacy thumb badge off */
+body.page-movie .movie-yt-badge {
+  display: none !important;
+}
+
+/* ===== Sticky header with soft scroll glass ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: background-color 0.25s ease-out, border-color 0.25s ease-out, backdrop-filter 0.25s ease-out, -webkit-backdrop-filter 0.25s ease-out;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ===== About header: sync with global sticky menu ===== */
+body.page-about .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  pointer-events: auto;
+}
+
+/* ===== Movie hover behavior by device capability ===== */
+@media (hover: hover) and (pointer: fine) {
+  body.page-movie .movie-thumb img {
+    filter: grayscale(100%) contrast(110%);
+  }
+
+  body.page-movie .movie-item:hover .movie-thumb img,
+  body.page-movie .movie-item:focus-visible .movie-thumb img {
+    filter: grayscale(0%) contrast(100%);
+  }
+
+  body.page-movie .movie-item:hover,
+  body.page-movie .movie-item:focus-visible {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (hover: none) {
+  body.page-movie .movie-thumb img {
+    filter: none !important;
+  }
+
+  body.page-movie .movie-item:hover,
+  body.page-movie .movie-item:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+
+  body.page-movie .movie-item:active {
+    transform: scale(0.99);
+    opacity: 0.96;
+  }
+}
+
+/* ===== About container width/position normalize ===== */
+body.page-about .profile-layout {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+body.page-about .profile-layout .profile-col-text {
+  padding: 0 !important;
+  margin: 0 0 32px !important;
+}
+
+body.page-about .profile-layout .profile-row {
+  width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+  justify-content: flex-start !important;
+  gap: 48px !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-layout .profile-col-text {
+    margin-bottom: 20px !important;
+  }
+
+  body.page-about .profile-layout .profile-row {
+    width: 100% !important;
+    gap: 18px !important;
+  }
+}
+
+/* ===== About final width lock (same frame as other inner pages) ===== */
+body.page-about .profile-page .scene {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 64px 64px 96px !important;
+}
+
+body.page-about .profile-layout {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body.page-about .profile-layout .profile-col-text {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 32px !important;
+}
+
+body.page-about .profile-layout .page-title {
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene {
+    max-width: none !important;
+    padding: 40px 24px 72px !important;
+  }
+}
+
+/* ===== About hard reset: same frame as other inner pages ===== */
+body.page-about .hero.profile-page {
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+body.page-about .profile-page .scene {
+  position: relative !important;
+  inset: auto !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 64px 64px 96px !important;
+  overflow: visible !important;
+}
+
+body.page-about .profile-layout {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body.page-about .profile-layout .profile-col-text {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  padding: 0 !important;
+  margin: 0 0 32px !important;
+}
+
+body.page-about .profile-layout .profile-col-visual,
+body.page-about .profile-layout .profile-row,
+body.page-about .profile-layout .profile-left,
+body.page-about .profile-layout .profile-vertical {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  transform: none !important;
+}
+
+body.page-about .profile-layout .profile-row {
+  width: 100% !important;
+  margin: 0 !important;
+  justify-content: flex-start !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene {
+    max-width: none !important;
+    padding: 40px 24px 72px !important;
+  }
+
+  body.page-about .profile-layout .profile-col-text {
+    margin-bottom: 20px !important;
+  }
+}
+
+/* ===== About final hard alignment (same content width as inner pages) ===== */
+body.page-about .profile-page .scene,
+body.page-about .profile-layout,
+body.page-about .profile-layout .profile-row {
+  box-sizing: border-box !important;
+}
+
+body.page-about .profile-page .scene {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 64px !important;
+}
+
+body.page-about .profile-layout {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body.page-about .profile-layout .profile-col-text {
+  width: 100% !important;
+  margin: 0 0 32px 0 !important;
+  padding: 0 !important;
+}
+
+body.page-about .profile-layout .profile-col-text .page-title {
+  margin: 0 !important;
+}
+
+body.page-about .profile-layout .profile-row {
+  width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene {
+    max-width: none !important;
+    padding: 40px 24px 72px !important;
+  }
+
+  body.page-about .profile-layout .profile-col-text {
+    margin-bottom: 20px !important;
+  }
+}
+
+/* ===== Right-bottom UI dock (HOME + SNS) ===== */
+.ui-dock {
+  position: fixed;
+  right: 24px;
+  bottom: 72px;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.ui-dock .status-bar {
+  position: static;
+  right: auto;
+  bottom: auto;
+  margin: 0;
+  opacity: 0.55;
+  transition: opacity 0.24s ease-out, border-color 0.24s ease-out;
+}
+
+.ui-dock .status-bar.is-active,
+.ui-dock:hover .status-bar {
+  opacity: 0.92;
+}
+
+.ui-dock .home-fixed-btn {
+  position: static;
+  right: auto;
+  bottom: auto;
+  opacity: 0.55;
+  transition: opacity 0.24s ease-out, color 0.24s ease-out, border-color 0.24s ease-out;
+}
+
+.ui-dock .home-fixed-btn:hover,
+.ui-dock .home-fixed-btn:focus-visible {
+  opacity: 1;
+}
+
+.social-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.55;
+  transition: opacity 0.24s ease-out;
+}
+
+.social-dock:hover,
+.social-dock:focus-within {
+  opacity: 1;
+}
+
+.social-dock__icon {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(26, 26, 26, 0.68);
+  text-decoration: none;
+  border: 1px solid rgba(26, 26, 26, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  transition: color 0.24s ease-out, border-color 0.24s ease-out, background-color 0.24s ease-out, opacity 0.24s ease-out;
+}
+
+.social-dock__icon:hover,
+.social-dock__icon:focus-visible {
+  color: rgba(26, 26, 26, 0.96);
+  border-color: rgba(107, 140, 255, 0.56);
+  background: rgba(255, 255, 255, 0.84);
+  outline: none;
+}
+
+.social-dock__icon i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* prevent overlap on home where updates live near right-bottom */
+body.is-home .ui-dock {
+  bottom: 112px;
+}
+
+@media (max-width: 980px) {
+  .ui-dock {
+    right: 12px;
+    bottom: 66px;
+    gap: 8px;
+  }
+
+  body.is-home .ui-dock {
+    bottom: 102px;
+  }
+}
+
+
+/* ensure SNS dock stays visible on Discography */
+body.page-discography .ui-dock .social-dock {
+  display: inline-flex;
+  opacity: 0.65;
+}
+
+/* Contact: stack social links vertically */
+body.page-contact .contact-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* ===== Discography latest cover atmospheric background (PC only) ===== */
+body.page-discography .discography-bg {
+  display: none;
+}
+
+@media (min-width: 981px) {
+  body.page-discography .discography-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+  }
+
+  body.page-discography .discography-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--disc-bg-image);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 6vw) 52%;
+    background-size: min(58vw, 920px) auto;
+    opacity: 0.06;
+    filter: grayscale(100%) contrast(110%) blur(10px);
+    transform: translateZ(0);
+  }
+
+  body.page-discography .disc-log {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Discography BG tweak: stronger presence + full-screen feel */
+@media (min-width: 981px) {
+  body.page-discography .discography-bg::before {
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.1;
+    filter: grayscale(100%) contrast(112%) blur(8px);
+  }
+}
+
+/* Header HOME: remove boxed style (match other links) */
+.site-header__link-home {
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  line-height: inherit !important;
+}
+
+.site-header__link-home:hover,
+.site-header__link-home:focus-visible {
+  border-color: transparent !important;
+}
+
+/* ===== Blog-only subtle graph-paper background ===== */
+body.section-blog {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@media (max-width: 768px) {
+  body.section-blog {
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
+
+/* ===== Dock visibility/order fixes ===== */
+/* Ensure SNS is visible on blog pages (list + single) */
+body.section-blog .ui-dock .social-dock {
+  display: inline-flex !important;
+  opacity: 0.7;
+}
+
+/* Home right-bottom stack order: Updates (top) -> Status -> SNS (bottom) */
+body.is-home .home-updates {
+  right: 24px;
+  left: auto;
+  transform: none;
+  bottom: 190px;
+  text-align: left;
+  z-index: 82;
+}
+
+body.is-home .ui-dock {
+  right: 24px;
+  bottom: 72px;
+  z-index: 81;
+  gap: 8px;
+}
+
+/* top page has status + sns only (HOME hidden by template), so status stays above sns */
+body.is-home .ui-dock .status-bar {
+  order: 1;
+}
+
+body.is-home .ui-dock .social-dock {
+  order: 2;
+}
+
+@media (max-width: 980px) {
+  body.section-blog .ui-dock .social-dock {
+    opacity: 0.78;
+  }
+
+  body.is-home .home-updates {
+    right: 12px;
+    left: auto;
+    transform: none;
+    bottom: 176px;
+    max-width: min(88vw, 460px);
+    text-align: right;
+  }
+
+  body.is-home .ui-dock {
+    right: 12px;
+    bottom: 66px;
+  }
+}
+
+/* ===== Card personality (Movie / Discography) ===== */
+body.page-movie .movie-item,
+body.page-discography .disc-work {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  transform-origin: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-movie .movie-item:hover,
+  body.page-movie .movie-item:focus-visible,
+  body.page-discography .disc-work:hover,
+  body.page-discography .disc-work:focus-within {
+    transform: scale(1.03) rotate(0.5deg) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+/* Album card treatment (Discography) */
+body.page-discography .disc-work--album .disc-cover {
+  position: relative;
+  border-radius: 0 !important;
+  border: 2px solid rgba(0, 0, 0, 0.22);
+}
+
+body.page-discography .disc-work--album .disc-cover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--hud-blue, #6B8CFF);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.page-discography .disc-work--album:hover .disc-cover::after,
+  body.page-discography .disc-work--album:focus-within .disc-cover::after {
+    opacity: 1;
+  }
+}
+
+/* ===== CSS-only page transition ===== */
+.page-transition {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: page-transition-in 0.3s ease forwards;
+}
+
+@keyframes page-transition-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* ===== About SEO intro ===== */
+body.page-about .about-seo-intro {
+  margin-top: 12px;
+  max-width: 62ch;
+}
+
+body.page-about .about-seo-intro h2 {
+  margin: 0 0 8px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(24, 24, 24, 0.62);
+  text-transform: uppercase;
+}
+
+body.page-about .about-seo-intro p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+  color: rgba(24, 24, 24, 0.82);
+}
+
+@media (max-width: 980px) {
+  body.page-about .about-seo-intro {
+    margin-top: 10px;
+    max-width: none;
+  }
+
+  body.page-about .about-seo-intro p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+}
+
+/* About vertical copy: keep paragraph spacing (blank-line feel) */
+body.page-about .profile-layout .profile-vertical p {
+  margin: 0;
+}
+
+body.page-about .profile-layout .profile-vertical p + p {
+  margin-block-start: 1.2em;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-layout .profile-vertical p + p {
+    margin-top: 1em;
+  }
+}
+
+/* About profile copy: switch to horizontal writing at same position */
+body.page-about .profile-layout .profile-vertical {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  line-height: 1.9;
+  max-height: none;
+  width: min(34ch, 100%);
+}
+
+body.page-about .profile-layout .profile-vertical p {
+  margin: 0;
+}
+
+body.page-about .profile-layout .profile-vertical p + p {
+  margin-top: 1.1em;
+}
+
+/* About profile copy width: allow wider line length */
+body.page-about .profile-layout .profile-vertical {
+  width: min(56ch, 100%) !important;
+}
+
+/* ===== About width parity with Discography/Movie ===== */
+body.page-about .profile-page .scene {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 64px !important;
+}
+
+body.page-about .profile-layout .profile-row {
+  width: 100% !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 64px !important;
+}
+
+body.page-about .profile-layout .profile-left {
+  flex: 0 0 auto;
+}
+
+body.page-about .profile-layout .profile-vertical {
+  flex: 1 1 auto;
+  width: auto !important;
+  max-width: none !important;
+}
+
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene {
+    max-width: none !important;
+    padding: 40px 24px 72px !important;
+  }
+
+  body.page-about .profile-layout .profile-row {
+    gap: 18px !important;
+  }
+
+  body.page-about .profile-layout .profile-vertical {
+    width: 100% !important;
+  }
+}
+
+/* Hide left clock HUD on non-home pages (mobile only) */
+@media (max-width: 768px) {
+  body.is-not-home .clock-panel {
+    display: none;
+  }
+}
+
+/* Discography: hide NOW pickup card on phone only */
+@media (max-width: 768px) {
+  body.page-discography .discography-step1 {
+    grid-template-columns: 1fr !important;
+    column-gap: 0 !important;
+  }
+
+  body.page-discography .disc-now-sticky {
+    display: none !important;
+  }
+}
+
+/* ===== Home mobile NAV-open de-clutter ===== */
+@media (max-width: 768px) {
+  /* 1) Fade out peripheral UI while nav is open */
+  body.is-home.menu-open .home-updates,
+  body.is-home.menu-open .ui-dock .social-dock,
+  body.is-home.menu-open .music-links-footer {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.2s ease;
+  }
+
+  /* 3) Arrange nav items as 2-column grid to avoid crowding */
+  body.is-home.menu-open .arc-menu.open {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(88vw, 340px);
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    pointer-events: auto;
+    z-index: 6;
+  }
+
+  body.is-home.menu-open .arc-menu.open .menu-item {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100%;
+    height: auto;
+    min-height: 48px;
+    padding: 9px 10px;
+    opacity: 1;
+  }
+
+  /* 2) Lighten button visual */
+  body.is-home.menu-open .arc-menu.open .menu-item {
+    color: rgba(22, 22, 22, 0.92) !important;
+    font-size: 12px;
+    border-radius: 8px;
+    box-shadow: none !important;
+    outline: none;
+  }
+
+  body.is-home.menu-open .arc-menu.open .menu-item::before {
+    background: #ffffff !important;
+    background-image: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    border: 1px solid rgba(107, 140, 255, 0.62);
+    border-radius: 8px;
+    transform: none !important;
+  }
+
+  body.is-home.menu-open .arc-menu.open .menu-item:hover,
+  body.is-home.menu-open .arc-menu.open .menu-item:focus-visible {
+    --hover-scale: 1;
+  }
+}
+
+/* ===== Home artist CTA discoverability ===== */
+body.is-home .artist-wrap::after {
+  content: "MENU";
+  position: absolute;
+  right: 10%;
+  top: 12%;
+  z-index: 7;
+  padding: 2px 6px;
+  border: 1px solid rgba(107, 140, 255, 0.56);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.78);
+  color: rgba(59, 130, 246, 0.92);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+body.is-home.menu-open .artist-wrap::after {
+  content: "CLOSE";
+}
+
+body.is-home .artist-button {
+  cursor: pointer;
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.is-home .artist-button:hover,
+  body.is-home .artist-button:focus-visible {
+    transform: translate(-50%, -50%) scale(1.015);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  }
+}
+
+body.is-home .artist-button:active {
+  transform: translate(-50%, -50%) scale(0.992);
+}
+
+@media (max-width: 768px) {
+  body.is-home .artist-wrap::after {
+    right: 12%;
+    top: 14%;
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+}
+
+/* ===== Home artist MENU label: orbit on circle rim ===== */
+body.is-home .artist-wrap {
+  --menu-orbit-r: clamp(132px, 20vw, 192px);
+}
+
+body.is-home .artist-wrap::after {
+  content: "MENU";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 7;
+  padding: 2px 6px;
+  border: 1px solid rgba(107, 140, 255, 0.56);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  color: rgba(59, 130, 246, 0.92);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  pointer-events: none;
+  transform: rotate(0deg) translateY(calc(-1 * var(--menu-orbit-r))) rotate(0deg);
+  animation: menu-orbit 12s linear infinite;
+}
+
+body.is-home.menu-open .artist-wrap::after {
+  content: "CLOSE";
+}
+
+@keyframes menu-orbit {
+  0% {
+    transform: rotate(0deg) translateY(calc(-1 * var(--menu-orbit-r))) rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) translateY(calc(-1 * var(--menu-orbit-r))) rotate(-90deg);
+  }
+  50% {
+    transform: rotate(180deg) translateY(calc(-1 * var(--menu-orbit-r))) rotate(-180deg);
+  }
+  75% {
+    transform: rotate(270deg) translateY(calc(-1 * var(--menu-orbit-r))) rotate(-270deg);
+  }
+  100% {
+    transform: rotate(360deg) translateY(calc(-1 * var(--menu-orbit-r))) rotate(-360deg);
+  }
+}
+
+/* Pause label orbit for readability on hover */
+@media (hover: hover) and (pointer: fine) {
+  body.is-home .artist-wrap:hover::after {
+    animation-play-state: paused;
+  }
+}
+
+/* Clickable feel */
+body.is-home .artist-button {
+  cursor: pointer;
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.is-home .artist-button:hover,
+  body.is-home .artist-button:focus-visible {
+    transform: translate(-50%, -50%) scale(1.02);
+    box-shadow: 0 26px 52px rgba(0, 0, 0, 0.22);
+  }
+}
+
+body.is-home .artist-button:active {
+  transform: translate(-50%, -50%) scale(0.99);
+}
+
+@media (max-width: 768px) {
+  body.is-home .artist-wrap {
+    --menu-orbit-r: clamp(112px, 34vw, 148px);
+  }
+
+  body.is-home .artist-wrap::after {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+}
+
+/* Home MENU orbit fine-tune */
+body.is-home .artist-wrap::after {
+  animation-duration: 18s;
+  padding: 0;
+  line-height: 1;
+  border-radius: 2px;
+}
+
+/* Home MENU label: remove border frame */
+body.is-home .artist-wrap::after {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Blog single: date next to title */
+body.section-blog .blog-single.zine-post .blog-single-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+body.section-blog .blog-single.zine-post .blog-single-title-date {
+  flex: 0 0 auto;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.56);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  body.section-blog .blog-single.zine-post .blog-single-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* About mobile: keep profile text left-aligned */
+@media (max-width: 768px) {
+  body.page-about .profile-layout .profile-vertical,
+  body.page-about .profile-layout .profile-vertical p {
+    text-align: left !important;
+  }
+}
+
+/* About mobile: align WORKS block to same left edge as Profile text */
+@media (max-width: 768px) {
+  body.page-about .about-works {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 40px 0 96px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    text-align: left !important;
+  }
+
+  body.page-about .about-works-log,
+  body.page-about .about-works-year,
+  body.page-about .about-works-list,
+  body.page-about .about-works-item,
+  body.page-about .about-works-org,
+  body.page-about .about-works-points {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* About mobile final align: WORKS starts at same x as Profile in .scene */
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene > .about-works {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 40px 0 96px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+  }
+
+  body.page-about .profile-page .scene > .about-works h2,
+  body.page-about .profile-page .scene > .about-works .about-works-log,
+  body.page-about .profile-page .scene > .about-works .about-works-year,
+  body.page-about .profile-page .scene > .about-works .about-works-list,
+  body.page-about .profile-page .scene > .about-works .about-works-item,
+  body.page-about .profile-page .scene > .about-works .about-works-org,
+  body.page-about .profile-page .scene > .about-works .about-works-points {
+    margin-left: 0 !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* About desktop: align WORKS left edge with Profile content in .scene */
+body.page-about .profile-page .scene > .about-works {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 56px 0 120px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: left !important;
+}
+
+body.page-about .profile-page .scene > .about-works h2,
+body.page-about .profile-page .scene > .about-works .about-works-log,
+body.page-about .profile-page .scene > .about-works .about-works-year,
+body.page-about .profile-page .scene > .about-works .about-works-list,
+body.page-about .profile-page .scene > .about-works .about-works-item,
+body.page-about .profile-page .scene > .about-works .about-works-org,
+body.page-about .profile-page .scene > .about-works .about-works-points {
+  margin-left: 0 !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* ===== Status position: top-right ===== */
+.ui-dock .status-bar {
+  position: fixed;
+  top: 34px;
+  right: 24px;
+  bottom: auto;
+  z-index: 90;
+}
+
+@media (max-width: 980px) {
+  .ui-dock .status-bar {
+    top: 30px;
+    right: 12px;
+  }
+}
+
+/* ===== Mobile: music platform links on one line (no horizontal scroll) ===== */
+@media (max-width: 768px) {
+  .music-links-footer {
+    max-width: calc(100vw - 20px);
+    overflow: hidden;
+  }
+
+  .music-links-footer__nav {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    justify-content: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ===== Footer music links slash separators ===== */
+.music-links-footer__nav {
+  gap: 0;
+}
+
+.music-links-footer__sep {
+  margin: 0 6px;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .music-links-footer__sep {
+    margin: 0 4px;
+  }
+}
+
+/* ===== About WORKS: subtle external-link icon ===== */
+body.page-about .about-works a .about-ext-icon {
+  font-size: 0.75em;
+  margin-left: 0.35em;
+  opacity: 0.5;
+  transform: translateY(-0.02em);
+  transition: opacity 180ms ease-out;
+}
+
+body.page-about .about-works a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+body.page-about .about-works a:hover,
+body.page-about .about-works a:focus-visible {
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+}
+
+body.page-about .about-works a:hover .about-ext-icon,
+body.page-about .about-works a:focus-visible .about-ext-icon {
+  opacity: 0.9;
+}
+
+/* ===== 404 page ===== */
+.not-found-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 64px 120px;
+}
+
+.not-found-sub {
+  margin: 10px 0 22px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(26, 26, 26, 0.62);
+}
+
+.not-found-home a,
+.not-found-links a {
+  color: rgba(24, 24, 24, 0.78);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease-out, border-color 180ms ease-out;
+}
+
+.not-found-home a:hover,
+.not-found-home a:focus-visible,
+.not-found-links a:hover,
+.not-found-links a:focus-visible {
+  color: rgba(24, 24, 24, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+  outline: none;
+}
+
+.not-found-links {
+  margin-top: 14px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  .not-found-log {
+    padding: 44px 24px 96px;
+  }
+
+  .not-found-links {
+    gap: 8px 12px;
+    font-size: 11px;
+  }
+}
+
+/* ===== Mobile safe-area for fixed UI dock ===== */
+@media (max-width: 768px) {
+  .ui-dock {
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(66px + env(safe-area-inset-bottom));
+  }
+
+  body.is-home .ui-dock {
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(66px + env(safe-area-inset-bottom));
+  }
+
+  .ui-dock .status-bar {
+    right: calc(12px + env(safe-area-inset-right));
+  }
+}
+
+/* ===== Global reduced-motion safety ===== */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .page-transition {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .artist-wrap::after,
+  .artist-floater,
+  .artist-rotor,
+  .status-bar,
+  .clock-time,
+  .clock-date,
+  .clock-label {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== Discography header subscribe links (outline buttons) ===== */
+body.page-discography .disc-subscribe-links {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 12px;
+  margin: 4px 0 2px;
+}
+
+body.page-discography .disc-subscribe-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 0.5px solid rgba(107, 140, 255, 0.72);
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(59, 130, 246, 0.9);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.page-discography .disc-subscribe-links a:hover,
+body.page-discography .disc-subscribe-links a:focus-visible {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.86);
+  color: rgba(27, 27, 27, 0.92);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  body.page-discography .disc-subscribe-links {
+    justify-self: end;
+    gap: 8px 10px;
+  }
+
+  body.page-discography .disc-subscribe-links a {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+}
+
+/* ===== Discography heading row + square outline streaming links ===== */
+body.page-discography .disc-log-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body.page-discography .disc-log-heading .page-title {
+  margin: 0;
+}
+
+body.page-discography .disc-subscribe-links {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 12px;
+  margin: 0;
+}
+
+body.page-discography .disc-subscribe-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 0.5px solid rgba(107, 140, 255, 0.72);
+  border-radius: 0;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.page-discography .disc-subscribe-links a:hover,
+body.page-discography .disc-subscribe-links a:focus-visible {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.86);
+  color: #1a1a1a;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  body.page-discography .disc-log-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  body.page-discography .disc-subscribe-links {
+    gap: 8px 10px;
+  }
+
+  body.page-discography .disc-subscribe-links a {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+}
+
+/* Discography subscribe buttons: softer text tone */
+body.page-discography .disc-subscribe-links a {
+  color: rgba(26, 26, 26, 0.74);
+}
+
+body.page-discography .disc-subscribe-links a:hover,
+body.page-discography .disc-subscribe-links a:focus-visible {
+  color: rgba(26, 26, 26, 0.9);
+}
+
+/* Discography mobile: place subscribe links below DISC LOG */
+@media (max-width: 768px) {
+  body.page-discography .disc-log-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  body.page-discography .disc-subscribe-links {
+    justify-content: flex-start;
+    margin-top: 4px;
+  }
+}
+
+/* Discography mobile final override: links under DISC LOG + spacing + blue outline */
+@media (max-width: 768px) {
+  body.page-discography .disc-log-heading {
+    display: block !important;
+  }
+
+  body.page-discography .disc-log-heading .page-title {
+    margin-bottom: 10px !important;
+  }
+
+  body.page-discography .disc-subscribe-links {
+    display: inline-flex !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  body.page-discography .disc-subscribe-links a {
+    border: 0.5px solid rgba(59, 130, 246, 0.82) !important;
+    border-radius: 0 !important;
+    color: rgba(26, 26, 26, 0.78) !important;
+    background: transparent !important;
+  }
+}
+
+/* Discography mobile hard-fix: force subscribe links visible under title */
+@media (max-width: 768px) {
+  body.page-discography .disc-log-heading .disc-subscribe-links {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    width: 100%;
+  }
+
+  body.page-discography .disc-log-heading .disc-subscribe-links a {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: 0.5px solid rgba(59, 130, 246, 0.9) !important;
+    color: rgba(26, 26, 26, 0.78) !important;
+    background: transparent !important;
+  }
+}
+
+/* Discography responsive fallback: apply same layout up to tablet width */
+@media (max-width: 980px) {
+  body.page-discography .disc-log-heading {
+    display: block !important;
+  }
+
+  body.page-discography .disc-log-heading .page-title {
+    margin-bottom: 10px !important;
+  }
+
+  body.page-discography .disc-log-heading .disc-subscribe-links {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    justify-content: flex-start !important;
+    gap: 8px 10px !important;
+    margin: 0 0 10px 0 !important;
+    width: 100%;
+  }
+
+  body.page-discography .disc-log-heading .disc-subscribe-links a {
+    border: 0.5px solid rgba(59, 130, 246, 0.9) !important;
+    border-radius: 0 !important;
+    color: rgba(26, 26, 26, 0.78) !important;
+    background: transparent !important;
+  }
+}
+
+/* Discography mobile visual hard-fix: force outline-button look */
+@media (max-width: 980px) {
+  body.page-discography .disc-log .discography-step1 .disc-log-heading .disc-subscribe-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  body.page-discography .disc-log .discography-step1 .disc-log-heading .disc-subscribe-links a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 10px !important;
+    min-height: 30px !important;
+    border: 0.5px solid #5b8cff !important;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+    color: rgba(26, 26, 26, 0.78) !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+  }
+
+  body.page-discography .disc-log .discography-step1 .disc-log-heading .disc-subscribe-links a:hover,
+  body.page-discography .disc-log .discography-step1 .disc-log-heading .disc-subscribe-links a:focus-visible {
+    background: rgba(59, 130, 246, 0.08) !important;
+    border-color: rgba(59, 130, 246, 0.95) !important;
+    color: rgba(26, 26, 26, 0.92) !important;
+  }
+}
+
+/* Discography subscribe links final split: desktop vs mobile */
+body.page-discography .disc-subscribe-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+body.page-discography .disc-subscribe-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 0.5px solid #5b8cff;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(26, 26, 26, 0.78);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+body.page-discography .disc-subscribe-links a:hover,
+body.page-discography .disc-subscribe-links a:focus-visible {
+  background: rgba(59, 130, 246, 0.08);
+  color: rgba(26, 26, 26, 0.92);
+}
+
+body.page-discography .disc-subscribe-links--mobile {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  body.page-discography .disc-subscribe-links--desktop {
+    display: none !important;
+  }
+
+  body.page-discography .disc-subscribe-links--mobile {
+    display: inline-flex !important;
+    margin: 10px 0 12px !important;
+  }
+}
+
+/* Discography subscribe links: strict single-instance switch */
+@media (max-width: 980px) {
+  body.page-discography .disc-subscribe-links--desktop,
+  body.page-discography .disc-log-heading .disc-subscribe-links--desktop {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body.page-discography .disc-subscribe-links--mobile {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media (min-width: 981px) {
+  body.page-discography .disc-subscribe-links--mobile {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body.page-discography .disc-subscribe-links--desktop {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Discography mobile final position: subscribe links directly under DISC LOG */
+@media (max-width: 980px) {
+  body.page-discography .disc-log-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+
+  body.page-discography .disc-log-heading .disc-subscribe-links--desktop {
+    display: none !important;
+  }
+
+  body.page-discography .disc-log-heading .disc-subscribe-links--mobile {
+    display: inline-flex !important;
+    margin: 10px 0 0 0 !important;
+    gap: 8px !important;
+  }
+}
+
+/* Discography subscribe buttons: ultra-thin outline tweak */
+body.page-discography .disc-subscribe-links a,
+body.page-discography .disc-log-heading .disc-subscribe-links--mobile a,
+body.page-discography .disc-log-heading .disc-subscribe-links--desktop a {
+  border-width: 0.35px !important;
+  border-color: rgba(91, 140, 255, 0.72) !important;
+}
+
+/* ===== Home top-right meta stack: caption above status ===== */
+body.is-home .artist-caption {
+  position: fixed !important;
+  top: calc(env(safe-area-inset-top) + 12px) !important;
+  right: calc(12px + env(safe-area-inset-right)) !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  text-align: right;
+  z-index: 92;
+}
+
+body.is-home .ui-dock .status-bar {
+  top: calc(env(safe-area-inset-top) + 36px) !important;
+  right: calc(12px + env(safe-area-inset-right)) !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 91;
+}
+
+@media (max-width: 980px) {
+  body.is-home .artist-caption {
+    top: calc(env(safe-area-inset-top) + 10px) !important;
+    right: calc(10px + env(safe-area-inset-right)) !important;
+    font-size: 10px;
+  }
+
+  body.is-home .ui-dock .status-bar {
+    top: calc(env(safe-area-inset-top) + 32px) !important;
+    right: calc(10px + env(safe-area-inset-right)) !important;
+  }
+}
+
+/* Home top-right stack: avoid overlap with top ruler */
+body.is-home .artist-caption {
+  top: calc(env(safe-area-inset-top) + 28px) !important;
+}
+
+body.is-home .ui-dock .status-bar {
+  top: calc(env(safe-area-inset-top) + 54px) !important;
+}
+
+@media (max-width: 980px) {
+  body.is-home .artist-caption {
+    top: calc(env(safe-area-inset-top) + 24px) !important;
+  }
+
+  body.is-home .ui-dock .status-bar {
+    top: calc(env(safe-area-inset-top) + 48px) !important;
+  }
+}
+
+/* Home top-right caption: match status typography tone */
+body.is-home .artist-caption {
+  font-family: inherit !important;
+  font-size: 0.62rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  line-height: 1.35 !important;
+  color: rgba(30, 30, 30, 0.9) !important;
+  opacity: 0.56 !important;
+}
+
+body.is-home.menu-open .artist-caption {
+  opacity: 0.88 !important;
 }
