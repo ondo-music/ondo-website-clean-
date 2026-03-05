@@ -6971,3 +6971,79 @@ body.page-contact .contact-copy-btn {
     margin-top: 0 !important;
   }
 }
+
+/* Movie subscribe links: hard-sync with Discography placement */
+body.page-movie .movie-log-heading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+body.page-movie .movie-log-heading .page-title {
+  margin: 0 !important;
+}
+
+body.page-movie .movie-subscribe-links {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+body.page-movie .movie-subscribe-links a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 30px !important;
+  padding: 6px 10px !important;
+  border: 0.35px solid rgba(91, 140, 255, 0.72) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: rgba(26, 26, 26, 0.78) !important;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+}
+
+body.page-movie .movie-subscribe-links a:hover,
+body.page-movie .movie-subscribe-links a:focus-visible {
+  background: rgba(59, 130, 246, 0.08) !important;
+  color: rgba(26, 26, 26, 0.92) !important;
+  outline: none !important;
+}
+
+body.page-movie .movie-subscribe-links--mobile {
+  display: none !important;
+}
+
+@media (min-width: 981px) {
+  body.page-movie .movie-subscribe-links--desktop {
+    display: inline-flex !important;
+    margin-right: clamp(210px, 14vw, 280px) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  body.page-movie .movie-log-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+
+  body.page-movie .movie-log-heading .page-title {
+    margin: 0 0 46px 0 !important;
+  }
+
+  body.page-movie .movie-subscribe-links--desktop {
+    display: none !important;
+  }
+
+  body.page-movie .movie-subscribe-links--mobile {
+    display: inline-flex !important;
+    margin: 10px 0 0 0 !important;
+    gap: 8px !important;
+  }
+}
