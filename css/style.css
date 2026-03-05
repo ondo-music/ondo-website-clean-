@@ -5126,7 +5126,7 @@ body.is-home .ui-dock .social-dock {
     text-align: right;
   }
 
-  body.is-home .home-updates li:nth-child(n + 2) {
+  body.is-home .home-updates li:nth-child(n + 4) {
     display: none;
   }
 
