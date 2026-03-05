@@ -356,6 +356,14 @@
 
         item.hidden = tags.indexOf(tag) === -1;
       });
+
+      var yearSections = Array.prototype.slice.call(blogFilterRoot.querySelectorAll(".blog-year"));
+      yearSections.forEach(function (section) {
+        var visibleInSection = Array.prototype.slice.call(section.querySelectorAll("[data-blog-item]")).some(function (item) {
+          return !item.hidden;
+        });
+        section.hidden = !visibleInSection;
+      });
     };
 
     filterButtons.forEach(function (btn) {
@@ -366,7 +374,9 @@
 
     var params = new URLSearchParams(window.location.search);
     var initialTag = params.get("tag") || "all";
-    var allowed = ["all", "制作", "環境", "HP"];
+    var allowed = ["all"].concat(filterButtons.map(function (btn) {
+      return btn.getAttribute("data-blog-filter") || "";
+    }));
     if (allowed.indexOf(initialTag) === -1) {
       initialTag = "all";
     }
