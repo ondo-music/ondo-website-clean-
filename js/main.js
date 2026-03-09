@@ -246,6 +246,25 @@
     }
   }
 
+  var shareButtons = Array.prototype.slice.call(document.querySelectorAll("[data-web-share]"));
+  shareButtons.forEach(function (button) {
+    if (!navigator.share) {
+      button.hidden = true;
+      return;
+    }
+
+    button.hidden = false;
+    button.addEventListener("click", function () {
+      var title = button.getAttribute("data-share-title") || document.title;
+      var url = button.getAttribute("data-share-url") || window.location.href;
+      navigator.share({ title: title, url: url }).catch(function (err) {
+        if (err && err.name === "AbortError") {
+          return;
+        }
+      });
+    });
+  });
+
   var copyBtn = document.querySelector("[data-copy-email]");
   if (copyBtn) {
     var copyStatusId = copyBtn.getAttribute("data-copy-target");
