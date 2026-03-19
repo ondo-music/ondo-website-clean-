@@ -3829,7 +3829,7 @@ body.section-blog .blog-single.zine-post {
 body.section-blog .blog-single.zine-post .blog-single-head {
   max-width: 660px;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(107, 140, 255, 0.32);
+  border-bottom: 0;
 }
 
 body.section-blog .blog-single.zine-post .post-layout {
