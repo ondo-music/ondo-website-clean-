@@ -7198,3 +7198,34 @@ body.section-blog .blog-single.zine-post .post-share__button[hidden] {
     height: 46px;
   }
 }
+
+body.section-blog .blog-single.zine-post .blog-linked-image {
+  display: inline-block;
+  margin: 12px 0 24px;
+  text-decoration: none;
+}
+
+body.section-blog .blog-single.zine-post .blog-linked-image__img {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform;
+}
+
+body.section-blog .blog-single.zine-post .blog-linked-image--logo .blog-linked-image__img {
+  width: min(100%, 220px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.section-blog .blog-single.zine-post .blog-linked-image:hover .blog-linked-image__img {
+    transform: scale(1.03);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+  }
+}
+
+body.section-blog .blog-single.zine-post .blog-linked-image:active .blog-linked-image__img {
+  transform: scale(1.015);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
