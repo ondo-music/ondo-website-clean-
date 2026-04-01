@@ -7214,9 +7214,6 @@ body.section-blog .blog-single.zine-post .blog-linked-image__img {
   will-change: transform;
 }
 
-body.section-blog .blog-single.zine-post .blog-linked-image--logo .blog-linked-image__img {
-  width: min(100%, 220px);
-}
 
 @media (hover: hover) and (pointer: fine) {
   body.section-blog .blog-single.zine-post .blog-linked-image:hover .blog-linked-image__img {
