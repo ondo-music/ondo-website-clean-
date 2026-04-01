@@ -7226,3 +7226,12 @@ body.section-blog .blog-single.zine-post .blog-linked-image:active .blog-linked-
   transform: scale(1.015);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
+
+body.section-blog .blog-single.zine-post .post-body a:not(.blog-linked-image):not(.x-link-card) {
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+body.section-blog .blog-single.zine-post .post-body a:not(.blog-linked-image):not(.x-link-card):hover {
+  text-decoration-thickness: 2px;
+}
