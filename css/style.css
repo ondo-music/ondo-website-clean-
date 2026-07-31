@@ -7280,3 +7280,15 @@ body.section-blog .blog-single.zine-post .blog-link-card__url {
   font-size: 12px;
   color: #666;
 }
+
+
+/* ===== Blog: plain white background ===== */
+body.section-blog {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+body.section-blog::before,
+body.section-blog::after {
+  background-image: none !important;
+}
