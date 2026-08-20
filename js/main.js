@@ -416,6 +416,7 @@
   var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   var finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
   var pointerEnabled = !reducedMotionQuery.matches && finePointerQuery.matches;
+  var homeHoverMenuEnabled = !!artistButton && root.classList.contains("is-home") && finePointerQuery.matches;
 
   var pointerX = window.innerWidth * 0.5;
   var pointerY = window.innerHeight * 0.5;
@@ -619,7 +620,22 @@
   setMenuOpen(false, true);
   setStatus("STATUS: IDLE / NAV: CLOSED");
 
+  if (homeHoverMenuEnabled) {
+    artistButton.addEventListener("pointerenter", function () {
+      if (!arcMenu.classList.contains("open")) {
+        setMenuOpen(true);
+      }
+    });
+  }
+
   menuTrigger.addEventListener("click", function () {
+    if (homeHoverMenuEnabled && artistButton) {
+      if (!arcMenu.classList.contains("open")) {
+        setMenuOpen(true);
+      }
+      return;
+    }
+
     setMenuOpen(!arcMenu.classList.contains("open"));
   });
 
