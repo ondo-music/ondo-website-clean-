@@ -4161,6 +4161,39 @@ body.page-about .about-works-point-links {
   margin-left: 8px;
 }
 
+/* ===== Footer language switcher ===== */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: rgba(24, 24, 24, 0.44);
+}
+
+.language-switcher a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 180ms ease-out, opacity 180ms ease-out;
+}
+
+.language-switcher a[aria-current="page"] {
+  color: rgba(24, 24, 24, 0.84);
+}
+
+.language-switcher a:hover,
+.language-switcher a:focus-visible {
+  color: rgba(24, 24, 24, 0.84);
+  outline: none;
+}
+
+.language-switcher__sep {
+  margin: 0 7px;
+  opacity: 0.7;
+}
+
 /* ===== Footer music links ===== */
 .music-links-footer {
   position: fixed;
@@ -4169,6 +4202,9 @@ body.page-about .about-works-point-links {
   bottom: max(12px, env(safe-area-inset-bottom));
   z-index: 12;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body.is-home .music-links-footer {
@@ -4204,6 +4240,12 @@ body.is-home .music-links-footer {
     left: 50%;
     transform: translateX(-50%);
     bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  .language-switcher {
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
   }
 
   body.is-home .music-links-footer {
@@ -5401,7 +5443,7 @@ body.page-about .profile-layout .profile-vertical {
 
 /* ===== Home artist CTA discoverability ===== */
 body.is-home .artist-wrap::after {
-  content: "MENU";
+  content: attr(data-menu-label);
   position: absolute;
   right: 10%;
   top: 12%;
@@ -5419,7 +5461,7 @@ body.is-home .artist-wrap::after {
 }
 
 body.is-home.menu-open .artist-wrap::after {
-  content: "CLOSE";
+  content: attr(data-menu-close);
 }
 
 body.is-home .artist-button {
@@ -5454,7 +5496,7 @@ body.is-home .artist-wrap {
 }
 
 body.is-home .artist-wrap::after {
-  content: "MENU";
+  content: attr(data-menu-label);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -5474,7 +5516,7 @@ body.is-home .artist-wrap::after {
 }
 
 body.is-home.menu-open .artist-wrap::after {
-  content: "CLOSE";
+  content: attr(data-menu-close);
 }
 
 @keyframes menu-orbit {

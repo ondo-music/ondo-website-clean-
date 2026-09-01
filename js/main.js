@@ -613,12 +613,12 @@
     }
 
     if (!skipStatus) {
-      setStatus(open ? "STATUS: NAV OPEN" : "STATUS: NAV CLOSED", 500);
+      setStatus(open ? (root.dataset.statusNavOpen || "STATUS: NAV OPEN") : (root.dataset.statusNavClosed || "STATUS: NAV CLOSED"), 500);
     }
   };
 
   setMenuOpen(false, true);
-  setStatus("STATUS: IDLE / NAV: CLOSED");
+  setStatus(statusBar ? statusBar.textContent : "STATUS: IDLE / NAV: CLOSED");
 
   if (homeHoverMenuEnabled) {
     artistButton.addEventListener("pointerenter", function () {
@@ -644,7 +644,7 @@
     link.addEventListener("click", function (event) {
       event.preventDefault();
       var href = link.getAttribute("href") || "";
-      setStatus("STATUS: OPENING " + href, 420);
+      setStatus((root.dataset.statusOpening || "STATUS: OPENING") + " " + href, 420);
       window.setTimeout(function () {
         window.location.href = href;
       }, 420);
