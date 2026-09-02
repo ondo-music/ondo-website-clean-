@@ -7334,3 +7334,281 @@ body.section-blog::before,
 body.section-blog::after {
   background-image: none !important;
 }
+
+
+/* ===== Lyrics ===== */
+.section-lyrics .lyrics-log {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 84px 64px 120px;
+}
+
+.section-lyrics .lyrics-log__head {
+  margin-bottom: 42px;
+}
+
+.section-lyrics .lyrics-log__lede {
+  margin: 14px 0 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  color: rgba(24, 24, 24, 0.58);
+}
+
+.section-lyrics .lyrics-year + .lyrics-year {
+  margin-top: 38px;
+}
+
+.section-lyrics .lyrics-year__head h2 {
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(24, 24, 24, 0.6);
+}
+
+.section-lyrics .lyrics-shelf {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 30px 24px;
+  align-items: end;
+  padding: 22px 0 30px;
+}
+
+.section-lyrics .lyrics-shelf::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 1px;
+  background: rgba(24, 24, 24, 0.08);
+}
+
+.section-lyrics .lyrics-card {
+  position: relative;
+  z-index: 1;
+}
+
+.section-lyrics .lyrics-card__link {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-lyrics .lyrics-card__cover {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.section-lyrics .lyrics-card__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-lyrics .lyrics-card__title {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.84);
+}
+
+.section-lyrics .lyrics-card__link:hover .lyrics-card__cover,
+.section-lyrics .lyrics-card__link:focus-visible .lyrics-card__cover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.12);
+}
+
+.section-lyrics .lyrics-card__link:focus-visible {
+  outline: none;
+}
+
+.section-lyrics .lyrics-card--album .lyrics-card__cover {
+  border-radius: 0;
+}
+
+.section-lyrics .lyrics-single {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 84px 64px 120px;
+}
+
+.section-lyrics .lyrics-single__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 700px) minmax(220px, 260px);
+  gap: clamp(32px, 5vw, 84px);
+  align-items: start;
+}
+
+.section-lyrics .lyrics-single__back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: rgba(24, 24, 24, 0.66);
+  text-decoration: none;
+}
+
+.section-lyrics .lyrics-single__back:hover,
+.section-lyrics .lyrics-single__back:focus-visible {
+  color: rgba(24, 24, 24, 0.96);
+  text-decoration: underline;
+  outline: none;
+}
+
+.section-lyrics .lyrics-single__head {
+  margin-bottom: 30px;
+}
+
+.section-lyrics .lyrics-single__head .page-title {
+  margin: 0;
+}
+
+.section-lyrics .lyrics-single__date {
+  margin: 12px 0 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.56);
+}
+
+.section-lyrics .lyrics-single__content {
+  font-size: 15px;
+  line-height: 2.05;
+  letter-spacing: 0.02em;
+}
+
+.section-lyrics .lyrics-single__content--raw {
+  white-space: pre-wrap;
+}
+
+.section-lyrics .lyrics-single__content p {
+  margin: 0 0 1.5em;
+}
+
+.section-lyrics .lyrics-album__lede {
+  margin: 0 0 18px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(24, 24, 24, 0.46);
+}
+
+.section-lyrics .lyrics-album__tracks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.section-lyrics .lyrics-album__track {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  align-items: baseline;
+}
+
+.section-lyrics .lyrics-album__number {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(24, 24, 24, 0.42);
+}
+
+.section-lyrics .lyrics-album__link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.section-lyrics .lyrics-album__link:hover,
+.section-lyrics .lyrics-album__link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.section-lyrics .lyrics-single__aside {
+  position: sticky;
+  top: 108px;
+}
+
+.section-lyrics .lyrics-single__cover {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.09);
+}
+
+.section-lyrics .lyrics-single__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-lyrics .lyrics-single__listen {
+  margin: 14px 0 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.56);
+}
+
+@media (max-width: 980px) {
+  .section-lyrics .lyrics-log,
+  .section-lyrics .lyrics-single {
+    padding: 48px 24px 88px;
+  }
+
+  .section-lyrics .lyrics-shelf {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+  }
+
+  .section-lyrics .lyrics-single__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .section-lyrics .lyrics-single__aside {
+    position: static;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-lyrics .lyrics-log__lede {
+    max-width: 100%;
+    font-size: 12px;
+  }
+
+  .section-lyrics .lyrics-shelf {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+
+  .section-lyrics .lyrics-card__title,
+  .section-lyrics .lyrics-single__date,
+  .section-lyrics .lyrics-single__listen {
+    font-size: 11px;
+  }
+
+  .section-lyrics .lyrics-single__content {
+    font-size: 14px;
+  }
+}
