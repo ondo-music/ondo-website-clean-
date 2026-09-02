@@ -7612,3 +7612,235 @@ body.section-blog::after {
     font-size: 14px;
   }
 }
+
+/* ===== Home wordmark reset ===== */
+body.is-home .home-wordmark {
+  position: fixed;
+  left: clamp(22px, 5vw, 72px);
+  top: clamp(84px, 16vh, 172px);
+  z-index: 4;
+  width: min(72vw, 860px);
+  pointer-events: none;
+}
+
+body.is-home .home-wordmark__title,
+body.is-home .home-wordmark__subtitle {
+  margin: 0;
+}
+
+body.is-home .home-wordmark__title {
+  font-family: inherit;
+  font-size: clamp(4.5rem, 12.8vw, 11.5rem);
+  font-weight: 600;
+  line-height: 0.84;
+  letter-spacing: -0.05em;
+  color: rgba(20, 20, 20, 0.96);
+  text-transform: none;
+}
+
+body.is-home .home-wordmark__subtitle {
+  margin-top: clamp(8px, 1.8vw, 18px);
+  padding-left: 0.15em;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: clamp(0.9rem, 1.7vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  color: rgba(34, 34, 34, 0.68);
+  white-space: nowrap;
+}
+
+body.is-home .artist-caption {
+  display: none !important;
+}
+
+body.is-home .ruler-top,
+body.is-home .ruler-left {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  body.is-home .home-wordmark {
+    left: clamp(18px, 6vw, 28px);
+    top: calc(env(safe-area-inset-top) + 74px);
+    width: min(92vw, 560px);
+  }
+
+  body.is-home .home-wordmark__title {
+    font-size: clamp(3.4rem, 19vw, 6.2rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+  }
+
+  body.is-home .home-wordmark__subtitle {
+    margin-top: 10px;
+    font-size: clamp(0.74rem, 3.1vw, 0.96rem);
+    letter-spacing: 0.12em;
+    white-space: normal;
+    max-width: 26ch;
+  }
+}
+
+/* ===== Home footer readability pass ===== */
+body.is-home .language-switcher {
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(24, 24, 24, 0.64);
+}
+
+body.is-home .music-links-footer__nav {
+  gap: 12px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.62);
+}
+
+body.is-home .home-updates {
+  max-width: min(420px, 42vw);
+  font-size: 12.5px;
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+}
+
+body.is-home .home-updates h2 {
+  margin-bottom: 10px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+@media (max-width: 980px) {
+  body.is-home .language-switcher {
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  body.is-home .music-links-footer__nav {
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  body.is-home .home-updates {
+    max-width: min(90vw, 460px);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  body.is-home .home-updates h2 {
+    font-size: 10.5px;
+    margin-bottom: 8px;
+  }
+}
+
+/* ===== About / Contact readability scale-up ===== */
+body.page-about .profile-layout .profile-col-text .page-title,
+body.page-contact .contact-log .page-title {
+  font-size: clamp(33px, 4.5vw, 58px);
+}
+
+body.page-about .profile-layout .profile-vertical {
+  font-size: 15.5px;
+  line-height: 2;
+}
+
+body.page-about .profile-layout .profile-vertical p {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+body.page-about .about-works h2,
+body.page-about .links-section--about h2 {
+  font-size: 15.5px;
+  letter-spacing: 0.08em;
+}
+
+body.page-about .about-works-year h3 {
+  font-size: 14px;
+}
+
+body.page-about .about-works-item {
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+body.page-about .links-section--about .links__label,
+body.page-about .links-section--about .links__plus {
+  font-size: 12px;
+}
+
+body.page-contact .contact-sub {
+  margin-top: 14px;
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+body.page-contact .contact-cta {
+  margin-top: 30px;
+  gap: 14px;
+}
+
+body.page-contact .contact-cta-link,
+body.page-contact .contact-copy-btn {
+  padding: 9px 13px;
+  font-size: 14px;
+}
+
+body.page-contact .contact-copy-status {
+  font-size: 12px;
+}
+
+body.page-contact .contact-links a {
+  font-size: 13.5px;
+}
+
+body.page-contact .contact-note {
+  margin-top: 30px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+body.page-contact .links-section--contact .links__label,
+body.page-contact .links-section--contact .links__plus {
+  font-size: 12px;
+}
+
+@media (max-width: 980px) {
+  body.page-about .profile-layout .profile-col-text .page-title,
+  body.page-contact .contact-log .page-title {
+    font-size: clamp(30px, 8.8vw, 42px);
+  }
+
+  body.page-about .profile-layout .profile-vertical {
+    font-size: 14px;
+    line-height: 1.95;
+  }
+
+  body.page-about .about-works h2,
+  body.page-about .links-section--about h2 {
+    font-size: 14px;
+  }
+
+  body.page-about .about-works-item {
+    font-size: 12.5px;
+  }
+
+  body.page-about .links-section--about .links__label,
+  body.page-about .links-section--about .links__plus,
+  body.page-contact .links-section--contact .links__label,
+  body.page-contact .links-section--contact .links__plus {
+    font-size: 11.5px;
+  }
+
+  body.page-contact .contact-sub {
+    font-size: 13px;
+  }
+
+  body.page-contact .contact-cta-link,
+  body.page-contact .contact-copy-btn {
+    font-size: 13px;
+  }
+
+  body.page-contact .contact-links a {
+    font-size: 13px;
+  }
+}
