@@ -7844,3 +7844,14 @@ body.page-contact .links-section--contact .links__plus {
     font-size: 13px;
   }
 }
+
+/* ===== Home mobile: keep nav above wordmark ===== */
+@media (max-width: 768px) {
+  body.is-home.menu-open .artist-wrap {
+    z-index: 12 !important;
+  }
+
+  body.is-home.menu-open .home-wordmark {
+    z-index: 1 !important;
+  }
+}
