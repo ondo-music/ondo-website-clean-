@@ -407,20 +407,30 @@
     });
   });
 
-  var copyBtn = document.querySelector("[data-copy-email]");
-  if (copyBtn) {
+  var copyButtons = Array.prototype.slice.call(document.querySelectorAll("[data-copy-email]"));
+  copyButtons.forEach(function (copyBtn) {
     var copyStatusId = copyBtn.getAttribute("data-copy-target");
     var copyStatus = copyStatusId ? document.getElementById(copyStatusId) : null;
+    var copyLabel = copyBtn.querySelector(".contact-copy-btn__text");
+    var defaultLabel = copyBtn.getAttribute("data-copy-label-default") || (copyLabel ? copyLabel.textContent : copyBtn.textContent);
+    var successLabel = copyBtn.getAttribute("data-copy-label-success") || "copied";
+    var failureLabel = copyBtn.getAttribute("data-copy-label-failure") || "failed";
 
-    var showCopyStatus = function (text) {
-      if (!copyStatus) {
-        return;
+    var showCopyStatus = function (text, buttonLabel) {
+      if (copyStatus) {
+        copyStatus.textContent = text;
+        window.clearTimeout(copyStatus._timer);
+        copyStatus._timer = window.setTimeout(function () {
+          copyStatus.textContent = "";
+        }, 2000);
       }
-      copyStatus.textContent = text;
-      window.clearTimeout(showCopyStatus._timer);
-      showCopyStatus._timer = window.setTimeout(function () {
-        copyStatus.textContent = "";
-      }, 2000);
+      if (copyLabel) {
+        copyLabel.textContent = buttonLabel;
+        window.clearTimeout(copyLabel._timer);
+        copyLabel._timer = window.setTimeout(function () {
+          copyLabel.textContent = defaultLabel;
+        }, 2000);
+      }
     };
 
     var fallbackCopy = function (text) {
@@ -449,15 +459,17 @@
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function () {
-          showCopyStatus("copied");
+          showCopyStatus(successLabel, successLabel);
         }).catch(function () {
-          showCopyStatus(fallbackCopy(text) ? "copied" : "failed");
+          var copied = fallbackCopy(text);
+          showCopyStatus(copied ? successLabel : failureLabel, copied ? successLabel : failureLabel);
         });
       } else {
-        showCopyStatus(fallbackCopy(text) ? "copied" : "failed");
+        var copied = fallbackCopy(text);
+        showCopyStatus(copied ? successLabel : failureLabel, copied ? successLabel : failureLabel);
       }
     });
-  }
+  });
 
   var blogFilterRoot = document.querySelector("[data-blog-filter-root]");
 

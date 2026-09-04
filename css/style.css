@@ -7290,12 +7290,17 @@ body.section-blog .blog-single.zine-post .post-body a:not(.blog-linked-image):no
 
 body.section-blog .blog-single.zine-post .blog-embed {
   margin: 28px 0 20px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
 }
 
 body.section-blog .blog-single.zine-post .blog-embed iframe {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   border: 0;
   border-radius: 12px;
 }
@@ -8396,23 +8401,46 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav a:focus-visib
   }
 }
 
-/* ===== Home mobile language switcher: top-right placement ===== */
-@media (max-width: 980px) {
+/* ===== Home mobile language switcher: align with desktop footer zone ===== */
+@media (max-width: 768px) {
+  body.is-home > .music-links-footer {
+    left: 18px;
+    right: auto;
+    transform: none;
+    align-items: flex-start;
+    bottom: calc(env(safe-area-inset-bottom) + 14px);
+  }
+
+  body.is-home > .music-links-footer .music-links-footer__heading,
+  body.is-home > .music-links-footer .music-links-footer__index,
+  body.is-home > .music-links-footer .music-links-footer__sep {
+    display: none;
+  }
+
+  body.is-home > .music-links-footer .music-links-footer__nav {
+    display: inline-flex;
+    justify-content: flex-start;
+    gap: 10px 16px;
+    font-size: 10.75px;
+  }
+
   body.is-home > .music-links-footer .language-switcher {
-    position: fixed;
-    top: calc(env(safe-area-inset-top) + 76px);
-    right: calc(16px + env(safe-area-inset-right));
+    display: inline-flex !important;
+    position: static;
     left: auto;
+    right: auto;
+    top: auto;
     bottom: auto;
     transform: none;
-    margin: 0;
-    z-index: 93;
-    justify-content: flex-end;
-    padding: 6px 10px;
-    background: rgba(255, 255, 255, 0.94);
-    border-radius: 999px;
-    box-shadow: 0 0 0 1px rgba(107, 140, 255, 0.12);
-    backdrop-filter: blur(6px);
+    margin: 8px 0 0;
+    z-index: auto;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
   body.is-home > .music-links-footer .language-switcher__label {
@@ -8608,5 +8636,209 @@ body.is-home .artist-image {
   body.is-home .artist-selection {
     width: min(58vw, 240px);
     height: min(58vw, 240px);
+  }
+}
+
+
+/* ===== Home mobile simplification ===== */
+@media (max-width: 768px) {
+  body.is-home .home-updates,
+  body.is-home .ui-dock .status-bar {
+    display: none !important;
+  }
+
+  body.is-home .home-wordmark {
+    top: calc(env(safe-area-inset-top) + 52px);
+    width: min(calc(100vw - 32px), 620px);
+  }
+
+  body.is-home .home-wordmark__subtitle {
+    margin-top: 8px;
+    font-size: clamp(0.72rem, 2.8vw, 0.9rem);
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    white-space: nowrap;
+    max-width: none;
+  }
+
+  body.is-home .ui-dock {
+    bottom: 66px;
+  }
+}
+
+@media (max-width: 420px) {
+  body.is-home .home-wordmark__subtitle {
+    font-size: clamp(0.68rem, 2.65vw, 0.84rem);
+    letter-spacing: 0.06em;
+  }
+}
+
+
+/* ===== Contact page refinement ===== */
+body.page-contact .contact-log {
+  max-width: 100%;
+  padding: 72px 64px 96px;
+}
+
+body.page-contact .contact-log__inner {
+  max-width: 760px;
+}
+
+body.page-contact .contact-log .page-title {
+  margin: 0;
+}
+
+body.page-contact .contact-copy {
+  margin-top: 26px;
+  max-width: 42rem;
+}
+
+body.page-contact .contact-copy__lead,
+body.page-contact .contact-copy__meta,
+body.page-contact .contact-copy__note {
+  margin: 0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.95;
+  letter-spacing: 0.02em;
+  color: rgba(24, 24, 24, 0.8);
+}
+
+body.page-contact .contact-copy__lead + .contact-copy__lead,
+body.page-contact .contact-copy__meta + .contact-copy__note {
+  margin-top: 18px;
+}
+
+body.page-contact .contact-methods {
+  margin-top: 38px;
+}
+
+body.page-contact .contact-section-title {
+  margin: 0 0 16px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(24, 24, 24, 0.7);
+}
+
+body.page-contact .contact-cta,
+body.page-contact .contact-cta-link,
+body.page-contact .links-section--contact {
+  display: none !important;
+}
+
+body.page-contact .contact-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(24, 24, 24, 0.88);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(24, 24, 24, 0.16);
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 180ms ease-out, color 180ms ease-out, background-color 180ms ease-out;
+}
+
+body.page-contact .contact-copy-btn:hover,
+body.page-contact .contact-copy-btn:focus-visible {
+  border-color: rgba(107, 140, 255, 0.52);
+  color: rgba(24, 24, 24, 0.96);
+  background: rgba(107, 140, 255, 0.06);
+  outline: none;
+}
+
+body.page-contact .contact-copy-btn__icon {
+  font-size: 0.95em;
+  opacity: 0.66;
+}
+
+body.page-contact .contact-copy-btn__text {
+  white-space: nowrap;
+}
+
+body.page-contact .contact-copy-btn + .contact-section-title {
+  margin-top: 24px;
+}
+
+body.page-contact .contact-links {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+body.page-contact .contact-links a {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: rgba(24, 24, 24, 0.82);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease-out, color 180ms ease-out;
+}
+
+body.page-contact .contact-links a:hover,
+body.page-contact .contact-links a:focus-visible {
+  color: rgba(24, 24, 24, 0.96);
+  border-bottom-color: rgba(107, 140, 255, 0.58);
+  outline: none;
+}
+
+body.page-contact .contact-copy--meta {
+  margin-top: 34px;
+}
+
+body.page-contact .contact-copy__note {
+  color: rgba(24, 24, 24, 0.58);
+}
+
+body.page-contact .contact-copy-status.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  body.page-contact .contact-log {
+    padding: 40px 24px 80px;
+  }
+
+  body.page-contact .contact-log__inner {
+    max-width: none;
+  }
+
+  body.page-contact .contact-copy {
+    margin-top: 22px;
+  }
+
+  body.page-contact .contact-copy__lead,
+  body.page-contact .contact-copy__meta,
+  body.page-contact .contact-copy__note {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  body.page-contact .contact-methods {
+    margin-top: 32px;
+  }
+
+  body.page-contact .contact-copy-btn {
+    width: auto;
+    min-height: 44px;
+    padding: 10px 13px;
+    font-size: 12.5px;
   }
 }
