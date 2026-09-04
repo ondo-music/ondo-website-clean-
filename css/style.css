@@ -8338,6 +8338,7 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav a:focus-visib
     margin-left: 16px;
     margin-right: 16px;
     margin-bottom: 28px;
+    overflow: hidden;
   }
 
   body.section-blog:not(.page-blog) .blog-single-head--no-hero {
@@ -8347,14 +8348,16 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav a:focus-visib
   body.section-blog:not(.page-blog) .blog-single-title,
   body.section-blog:not(.page-blog) .blog-single.zine-post .blog-single-head h1 {
     width: 100%;
-    max-width: calc(100vw - 32px);
-    font-size: clamp(2.75rem, 13.8vw, 4.8rem);
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-    text-wrap: wrap;
+    max-width: 100%;
+    font-size: clamp(2.55rem, 13vw, 4.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
     white-space: normal;
-    word-break: keep-all;
-    line-break: strict;
+    word-break: normal;
+    line-break: auto;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   body.section-blog:not(.page-blog) .blog-single-date-pill {
