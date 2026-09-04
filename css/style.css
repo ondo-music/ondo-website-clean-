@@ -3652,13 +3652,7 @@ body.section-blog .blog-single-head {
 }
 
 body.section-blog .blog-single-head::after {
-  content: "COLOPHON";
-  position: absolute;
-  right: -116px;
-  top: 2px;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: rgba(24, 24, 24, 0.34);
+  content: none;
 }
 
 body.section-blog .blog-single-head h1 {
