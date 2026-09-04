@@ -8057,7 +8057,6 @@ body.section-blog:not(.page-blog) {
   background-image: none;
 }
 
-body.section-blog:not(.page-blog) .home-fixed-btn,
 body.section-blog:not(.page-blog) .ui-dock .social-dock {
   display: none !important;
 }
@@ -8397,5 +8396,29 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav a:focus-visib
 
   body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav-next {
     text-align: left;
+  }
+}
+
+/* ===== Home mobile language switcher: top-right placement ===== */
+@media (max-width: 980px) {
+  body.is-home > .music-links-footer .language-switcher {
+    position: fixed;
+    top: calc(env(safe-area-inset-top) + 76px);
+    right: calc(16px + env(safe-area-inset-right));
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin: 0;
+    z-index: 93;
+    justify-content: flex-end;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px rgba(107, 140, 255, 0.12);
+    backdrop-filter: blur(6px);
+  }
+
+  body.is-home > .music-links-footer .language-switcher__label {
+    line-height: 1;
   }
 }
