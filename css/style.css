@@ -8949,3 +8949,21 @@ body.page-contact .contact-copy-status.sr-only {
     font-size: 12.5px;
   }
 }
+
+/* ===== Home mobile: simplify footer controls ===== */
+@media (max-width: 768px) {
+  body.is-home > .music-links-footer .music-links-footer__heading,
+  body.is-home > .music-links-footer .music-links-footer__listen-toggle,
+  body.is-home > .music-links-footer .music-links-footer__nav {
+    display: none !important;
+  }
+
+  body.is-home > .music-links-footer {
+    bottom: calc(env(safe-area-inset-bottom) + 14px);
+    gap: 0;
+  }
+
+  body.is-home .ui-dock .social-dock {
+    display: none !important;
+  }
+}
