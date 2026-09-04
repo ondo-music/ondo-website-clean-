@@ -78,6 +78,15 @@
   var introEl = document.getElementById("intro");
   if (introEl) {
     var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var skipIntroOnce = false;
+    try {
+      skipIntroOnce = window.sessionStorage.getItem("skipHomeIntroOnce") === "1";
+      if (skipIntroOnce) {
+        window.sessionStorage.removeItem("skipHomeIntroOnce");
+      }
+    } catch (e) {
+      skipIntroOnce = false;
+    }
     var introText = introEl.querySelector(".intro-text");
     var introWord = document.getElementById("intro-word");
     var root = document.body;
@@ -116,7 +125,7 @@
       }
     };
 
-    if (reducedMotion) {
+    if (reducedMotion || skipIntroOnce) {
       finishIntro();
     } else {
       if (introWord) {
@@ -159,6 +168,57 @@
         finishIntro();
       }, 2800);
     }
+  }
+
+  var languageSwitchers = Array.prototype.slice.call(document.querySelectorAll(".language-switcher [data-lang-switch]"));
+  var triggerLanguageSwitch = function (target, event) {
+    if (!target) {
+      return;
+    }
+    var switcher = target.closest(".language-switcher");
+    var targetLang = target.getAttribute("data-lang-switch");
+    var href = target.getAttribute("href") || target.getAttribute("data-lang-switch-href");
+    var isCurrentPage = target.getAttribute("aria-current") === "page";
+
+    if (!href || isCurrentPage) {
+      return;
+    }
+
+    if (event) {
+      event.preventDefault();
+    }
+
+    if (switcher) {
+      switcher.classList.remove("is-switching-ja", "is-switching-en");
+      switcher.classList.add(targetLang === "en" ? "is-switching-en" : "is-switching-ja");
+    }
+
+    if (document.body.classList.contains("is-home")) {
+      try {
+        window.sessionStorage.setItem("skipHomeIntroOnce", "1");
+      } catch (e) {}
+    }
+
+    window.setTimeout(function () {
+      window.location.href = href;
+    }, 170);
+  };
+
+  if (languageSwitchers.length) {
+    languageSwitchers.forEach(function (target) {
+      target.addEventListener("click", function (event) {
+        triggerLanguageSwitch(target, event);
+      });
+
+      if (target.classList.contains("language-switcher__toggle")) {
+        target.addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" && event.key !== " ") {
+            return;
+          }
+          triggerLanguageSwitch(target, event);
+        });
+      }
+    });
   }
 
   var statusBar = document.getElementById("status-bar");
