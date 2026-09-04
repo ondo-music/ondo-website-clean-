@@ -303,6 +303,62 @@
     });
   }
 
+  var listenFooters = Array.prototype.slice.call(document.querySelectorAll("[data-listen-footer]"));
+  if (listenFooters.length) {
+    listenFooters.forEach(function (footer) {
+      var toggle = footer.querySelector("[data-listen-toggle]");
+      if (!toggle) {
+        return;
+      }
+
+      var closeFooter = function () {
+        footer.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      };
+
+      var openFooter = function () {
+        footer.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+      };
+
+      toggle.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (footer.classList.contains("is-open")) {
+          closeFooter();
+        } else {
+          openFooter();
+        }
+      });
+
+      var nav = footer.querySelector(".music-links-footer__nav");
+      if (nav) {
+        nav.addEventListener("click", function (event) {
+          event.stopPropagation();
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        if (footer.contains(event.target)) {
+          return;
+        }
+        closeFooter();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeFooter();
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 768) {
+          closeFooter();
+        }
+      }, { passive: true });
+    });
+  }
+
   var statusBar = document.getElementById("status-bar");
   var setStatus = function (text, activeMs) {
     if (!statusBar) {
