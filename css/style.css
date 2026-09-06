@@ -5388,7 +5388,6 @@ body.page-about .profile-layout .profile-vertical {
   body.is-home.menu-open .home-updates,
   body.is-home.menu-open .ui-dock .social-dock,
   body.is-home.menu-open .music-links-footer .music-links-footer__nav,
-  body.is-home.menu-open .music-links-footer .music-links-footer__listen-toggle,
   body.is-home.menu-open .music-links-footer .language-switcher {
     opacity: 0 !important;
     pointer-events: none !important;
@@ -8421,36 +8420,6 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav a:focus-visib
     display: none;
   }
 
-  body.is-home > .music-links-footer .music-links-footer__listen-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 20px;
-    padding: 0;
-    border: 0 !important;
-    border-radius: 0;
-    background: transparent !important;
-    appearance: none;
-    -webkit-appearance: none;
-    color: rgba(24, 24, 24, 0.72);
-    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.12em;
-    cursor: pointer;
-    box-shadow: none !important;
-    transition: color 180ms ease-out, transform 180ms ease-out;
-  }
-
-  body.is-home > .music-links-footer .music-links-footer__listen-toggle:hover,
-  body.is-home > .music-links-footer .music-links-footer__listen-toggle:focus-visible {
-    color: rgba(24, 24, 24, 0.94);
-    outline: none;
-  }
-
-  body.is-home > .music-links-footer .music-links-footer__listen-toggle:active {
-    transform: translateY(1px);
-  }
-
   body.is-home > .music-links-footer .music-links-footer__nav {
     position: absolute;
     left: 0;
@@ -8474,14 +8443,6 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav a:focus-visib
     transform: translateY(8px);
     transition: opacity 180ms ease-out, transform 180ms ease-out, visibility 180ms ease-out;
     white-space: nowrap;
-  }
-
-  body.is-home > .music-links-footer.is-open .music-links-footer__nav {
-    display: inline-flex !important;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
   }
 
   body.is-home > .music-links-footer .music-links-footer__nav a {
@@ -8953,7 +8914,6 @@ body.page-contact .contact-copy-status.sr-only {
 /* ===== Home mobile: simplify footer controls ===== */
 @media (max-width: 768px) {
   body.is-home > .music-links-footer .music-links-footer__heading,
-  body.is-home > .music-links-footer .music-links-footer__listen-toggle,
   body.is-home > .music-links-footer .music-links-footer__nav {
     display: none !important;
   }
