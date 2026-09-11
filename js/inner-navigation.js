@@ -20,7 +20,7 @@
     else document.body.setAttribute('style', previousStyle);
     window.scrollTo(0, scrollY);
     if (restoreFocus) trigger.focus({preventScroll: true});
-    timer = window.setTimeout(function () { panel.hidden = true; }, 180);
+    timer = window.setTimeout(function () { panel.hidden = true; }, 400);
   }
   trigger.addEventListener('click', function () {
     if (!media.matches || opened) return;
@@ -37,6 +37,7 @@
     }).map(function (el) { var entry = {element: el, inert: el.inert}; el.inert = true; return entry; });
     panel.hidden = false;
     panel.inert = false;
+    void panel.offsetHeight;
     trigger.setAttribute('aria-expanded', 'true');
     requestAnimationFrame(function () {
       if (!opened) return;
