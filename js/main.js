@@ -559,6 +559,48 @@
     applyBlogFilter(initialTag);
   }
 
+  // The home index is independent of the artist visual and follows the intro.
+  var homeIndex = document.querySelector('body.is-home .home-index-menu');
+  if (homeIndex) {
+    var syncHomeIndex = function () {
+      var ready = document.body.classList.contains('intro-done');
+      homeIndex.classList.toggle('is-ready', ready);
+      homeIndex.inert = !ready;
+    };
+    new MutationObserver(syncHomeIndex).observe(document.body, {attributes: true, attributeFilter: ['class']});
+    syncHomeIndex();
+    var visual = document.getElementById('artist-button');
+    var wrap = document.querySelector('.artist-wrap');
+    var hoverMedia = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var speedFrame = 0;
+    var speed = 1;
+    var targetSpeed = 1;
+    var lastTime = 0;
+    var easeSpeed = function (time) {
+      var dt = lastTime ? Math.min(time - lastTime, 50) : 16;
+      lastTime = time;
+      speed += (targetSpeed - speed) * (1 - Math.exp(-dt / 130));
+      if (Math.abs(speed - targetSpeed) < .003) speed = targetSpeed;
+      wrap.getAnimations({subtree: true}).forEach(function (animation) {
+        if (animation.animationName === 'spin' || animation.animationName === 'menu-orbit') {
+          animation.updatePlaybackRate(speed);
+        }
+      });
+      if (speed !== targetSpeed) speedFrame = requestAnimationFrame(easeSpeed);
+      else { speedFrame = 0; lastTime = 0; }
+    };
+    var setSpeed = function (value) {
+      targetSpeed = value;
+      if (!speedFrame) speedFrame = requestAnimationFrame(easeSpeed);
+    };
+    visual.addEventListener('pointerenter', function () {
+      if (hoverMedia.matches && !motionMedia.matches) setSpeed(0);
+    });
+    visual.addEventListener('pointerleave', function () { setSpeed(1); });
+    return;
+  }
+
   var artistButton = document.getElementById("artist-button");
   var profileMenuToggle = document.getElementById("profile-menu-toggle");
   var arcMenu = document.getElementById("arc-menu");
@@ -747,6 +789,7 @@
 
   var setMenuOpen = function (open, skipStatus) {
     arcMenu.classList.toggle("open", open);
+    if (arcMenu.classList.contains("home-index-menu")) arcMenu.inert = !open;
     if (artistButton) {
       artistButton.setAttribute("aria-expanded", open ? "true" : "false");
     }

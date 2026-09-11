@@ -18,18 +18,6 @@
 .artist-kit--compact { max-width: 660px; margin: 40px 0 0; }
 .inner-mobile-bar, .inner-navigation { display: none; }
 .inner-navigation[hidden] { display: none !important; }
-/* Keep the home menu's existing visual treatment, with eight positions. */
-@media (min-width: 769px) {
-  body.is-home .arc-menu .menu-item:nth-child(n) { --a: var(--nav-angle) !important; --r: 290px !important; }
-  body.is-home .arc-menu .menu-item:nth-child(1) { --nav-angle: -90deg; }
-  body.is-home .arc-menu .menu-item:nth-child(2) { --nav-angle: -45deg; }
-  body.is-home .arc-menu .menu-item:nth-child(3) { --nav-angle: 0deg; }
-  body.is-home .arc-menu .menu-item:nth-child(4) { --nav-angle: 45deg; }
-  body.is-home .arc-menu .menu-item:nth-child(5) { --nav-angle: 90deg; }
-  body.is-home .arc-menu .menu-item:nth-child(6) { --nav-angle: 135deg; }
-  body.is-home .arc-menu .menu-item:nth-child(7) { --nav-angle: 180deg; }
-  body.is-home .arc-menu .menu-item:nth-child(8) { --nav-angle: 225deg; }
-}
 @media (max-width: 768px) {
   body.is-not-home .site-header .site-header__nav { display: none; }
   body.is-not-home .site-header { background: #fff; backdrop-filter: none; padding: 12px 20px; }
@@ -48,10 +36,7 @@
   .info-page { margin-top: 48px; width: calc(100% - 40px); }
 }
 @media (prefers-reduced-motion: reduce) { .inner-navigation { transition: none; } }
-@media (min-width: 769px) {
-  /* Expanded links must remain usable above the wordmark and notice. */
-  body.is-home.menu-open .scene { z-index: 1001; }
-}
+
 
 /* INFO titles lead to full articles; previews stay deliberately compact. */
 .info-record a.info-record__title { font: inherit; color: inherit; text-decoration: none; }
@@ -72,4 +57,119 @@
   .info-article__body { font-size: 16px; }
   .info-article__pagination { flex-direction: column; gap: 20px; }
   .info-article__pagination a { max-width: 100%; }
+}
+
+/* Home index: the existing artist control opens this navigation. */
+body.is-home .home-index-menu {
+  position: fixed; inset: 50% clamp(24px, 5vw, 96px) auto auto;
+  z-index: 1100; width: 250px; display: flex; flex-direction: column; gap: 8px;
+  transform: translateY(-50%); visibility: hidden; opacity: 0; pointer-events: none;
+  transition: opacity .35s ease, visibility .35s;
+}
+body.is-home .home-index-menu.open { visibility: visible; opacity: 1; pointer-events: auto; }
+body.is-home .home-index-menu .menu-item {
+  position: relative; inset: auto; width: 100%; height: auto; min-height: 40px;
+  display: flex; align-items: baseline; gap: 16px; padding: 5px 0;
+  border: 0; border-radius: 0; background: none; box-shadow: none;
+  color: var(--ink); font-family: var(--font-site); font-size: 20px; font-weight: 400;
+  letter-spacing: .035em; line-height: 1.5; text-align: left; opacity: 1;
+  transform: none; transform-origin: right center; outline: none;
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1), color .4s ease;
+}
+body.is-home .home-index-menu .menu-item::before { content: none; }
+.home-index-menu__number { color: #82a0cf; font-size: 11px; font-variant-numeric: tabular-nums; letter-spacing: .06em; }
+@media (hover: hover) {
+  body.is-home .home-index-menu .menu-item:hover { transform: translateX(-8px) scale(1.18); color: #507ab9; }
+}
+body.is-home .home-index-menu .menu-item:focus-visible { transform: translateX(-8px) scale(1.18); color: #507ab9; outline: 1px solid #b8cbea; outline-offset: 4px; }
+@media (max-width: 768px) {
+  body.is-home .home-index-menu { right: 24px; width: min(260px, calc(100vw - 48px)); padding: 12px 16px; background: #fff; gap: 2px; max-height: calc(100dvh - 48px); overflow-y: auto; }
+  body.is-home .home-index-menu .menu-item { font-size: 18px; min-height: 38px; }
+  body.is-home .home-index-menu .menu-item:focus-visible { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.is-home .home-index-menu, body.is-home .home-index-menu .menu-item { transition: none; }
+}
+@media (min-width: 769px) {
+  body.is-home.menu-open .home-updates { left: clamp(24px, 5vw, 96px); right: auto; top: auto; bottom: 110px; }
+}
+
+/* Permanent home index, revealed with the completed intro. */
+body.is-home .home-index-menu.is-ready { visibility: visible; opacity: 1; pointer-events: auto; }
+body.is-home .home-index-menu .menu-item { font-size: 18px; font-weight: 300; }
+body.is-home .artist-button { cursor: default; }
+body.is-home .artist-wrap::after { content: "ondo" !important; }
+@media (min-width: 769px) {
+  body.is-home .home-updates { left: clamp(22px, 5vw, 72px); right: auto; top: auto; bottom: 110px; text-align: left; }
+  body.is-home .home-updates h2, body.is-home .home-updates ul, body.is-home .home-updates li { text-align: left; margin-left: 0; padding-left: 0; }
+}
+@media (hover: hover) {
+  body.is-home .home-index-menu .menu-item:hover { transform: translateX(-12px) scale(1.4); font-weight: 300; }
+}
+body.is-home .home-index-menu .menu-item:focus-visible { transform: translateX(-12px) scale(1.4); }
+@media (max-width: 768px) {
+  body.is-home .home-index-menu { top: auto; bottom: 76px; right: 24px; width: 174px; transform: none; padding: 8px 0; gap: 0; background: transparent; }
+  body.is-home .home-index-menu .menu-item { font-size: 14px; min-height: 28px; padding: 2px 0; }
+}
+body.is-home .artist-wrap:hover::after { animation-play-state: running; }
+body.is-home .artist-button:active { transform: translate(-50%, -50%); }
+
+/* Desktop home: individually placed, horizontal labels form a gentle arc. */
+@media (min-width: 769px) {
+  body.is-home .home-index-menu {
+    inset: 50% auto auto min(calc(50% + min(18vw, 180px) + 45px), calc(100% - 300px));
+    width: 260px; height: 376px; display: block;
+  }
+  body.is-home .home-index-menu__number { display: none; }
+  body.is-home .home-index-menu .menu-item {
+    position: absolute; top: var(--index-y); left: var(--index-x);
+    width: max-content; min-height: 36px; padding: 5px 0;
+    font-size: 16px; font-weight: 300; transform: translateY(var(--neighbor-shift, 0px)) scale(1);
+    transform-origin: center; transition: transform .42s cubic-bezier(.22, 1, .36, 1), color .42s ease;
+  }
+  body.is-home .home-index-menu .menu-item:nth-child(1) { --index-x: 0px; --index-y: 0px; }
+  body.is-home .home-index-menu .menu-item:nth-child(2) { --index-x: 45px; --index-y: 48px; }
+  body.is-home .home-index-menu .menu-item:nth-child(3) { --index-x: 88px; --index-y: 96px; }
+  body.is-home .home-index-menu .menu-item:nth-child(4) { --index-x: 120px; --index-y: 144px; }
+  body.is-home .home-index-menu .menu-item:nth-child(5) { --index-x: 128px; --index-y: 192px; }
+  body.is-home .home-index-menu .menu-item:nth-child(6) { --index-x: 116px; --index-y: 240px; }
+  body.is-home .home-index-menu .menu-item:nth-child(7) { --index-x: 82px; --index-y: 288px; }
+  body.is-home .home-index-menu .menu-item:nth-child(8) { --index-x: 38px; --index-y: 336px; }
+  body.is-home .home-index-menu .menu-item:focus-visible { transform: scale(1.4); font-weight: 300; }
+}
+@media (min-width: 769px) and (hover: hover) {
+  body.is-home .home-index-menu .menu-item:hover { transform: scale(1.4); font-weight: 300; }
+}
+@media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+  body.is-home .home-index-menu .menu-item { transition: none; }
+}
+
+/* Nearby rows make room without moving the active label. */
+@media (min-width: 769px) and (hover: hover) {
+  body.is-home .home-index-menu:has(.menu-item:nth-child(1):hover) .menu-item:nth-child(2) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(1):hover) .menu-item:nth-child(3) { --neighbor-shift: 4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(2):hover) .menu-item:nth-child(1) { --neighbor-shift: -10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(2):hover) .menu-item:nth-child(3) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(2):hover) .menu-item:nth-child(4) { --neighbor-shift: 4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(3):hover) .menu-item:nth-child(1) { --neighbor-shift: -4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(3):hover) .menu-item:nth-child(2) { --neighbor-shift: -10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(3):hover) .menu-item:nth-child(4) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(3):hover) .menu-item:nth-child(5) { --neighbor-shift: 4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(4):hover) .menu-item:nth-child(2) { --neighbor-shift: -4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(4):hover) .menu-item:nth-child(3) { --neighbor-shift: -10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(4):hover) .menu-item:nth-child(5) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(4):hover) .menu-item:nth-child(6) { --neighbor-shift: 4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(5):hover) .menu-item:nth-child(3) { --neighbor-shift: -4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(5):hover) .menu-item:nth-child(4) { --neighbor-shift: -10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(5):hover) .menu-item:nth-child(6) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(5):hover) .menu-item:nth-child(7) { --neighbor-shift: 4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(6):hover) .menu-item:nth-child(4) { --neighbor-shift: -4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(6):hover) .menu-item:nth-child(5) { --neighbor-shift: -10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(6):hover) .menu-item:nth-child(7) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(6):hover) .menu-item:nth-child(8) { --neighbor-shift: 4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(7):hover) .menu-item:nth-child(5) { --neighbor-shift: -4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(7):hover) .menu-item:nth-child(6) { --neighbor-shift: -10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(7):hover) .menu-item:nth-child(8) { --neighbor-shift: 10px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(8):hover) .menu-item:nth-child(6) { --neighbor-shift: -4px; }
+  body.is-home .home-index-menu:has(.menu-item:nth-child(8):hover) .menu-item:nth-child(7) { --neighbor-shift: -10px; }
 }
