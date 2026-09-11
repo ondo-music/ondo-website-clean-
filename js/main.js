@@ -562,13 +562,67 @@
   // The home index is independent of the artist visual and follows the intro.
   var homeIndex = document.querySelector('body.is-home .home-index-menu');
   if (homeIndex) {
+    var mobileHomeMedia = window.matchMedia('(max-width: 768px)');
+    var mobileHomeOpen = false;
+    var mobileHomeToggle = document.querySelector('.home-mobile-menu-toggle');
     var syncHomeIndex = function () {
       var ready = document.body.classList.contains('intro-done');
       homeIndex.classList.toggle('is-ready', ready);
-      homeIndex.inert = !ready;
+      homeIndex.inert = !ready || (mobileHomeMedia.matches && !mobileHomeOpen);
     };
     new MutationObserver(syncHomeIndex).observe(document.body, {attributes: true, attributeFilter: ['class']});
     syncHomeIndex();
+    var savedBodyStyle = null;
+    var savedScrollY = 0;
+    var backgroundElements = [];
+    var closeMobileHome = function (restoreFocus) {
+      if (!mobileHomeOpen) return;
+      mobileHomeOpen = false;
+      document.body.classList.remove('home-mobile-nav-open');
+      mobileHomeToggle.textContent = 'MENU';
+      mobileHomeToggle.setAttribute('aria-expanded', 'false');
+      backgroundElements.forEach(function (item) { item.el.inert = item.inert; });
+      if (savedBodyStyle === null) document.body.removeAttribute('style');
+      else document.body.setAttribute('style', savedBodyStyle);
+      window.scrollTo(0, savedScrollY);
+      syncHomeIndex();
+      if (restoreFocus && mobileHomeMedia.matches) mobileHomeToggle.focus({preventScroll: true});
+    };
+    mobileHomeToggle.addEventListener('click', function () {
+      if (!mobileHomeMedia.matches) return;
+      if (mobileHomeOpen) { closeMobileHome(true); return; }
+      if (!document.body.classList.contains('intro-done')) return;
+      mobileHomeOpen = true;
+      savedScrollY = window.scrollY;
+      savedBodyStyle = document.body.getAttribute('style');
+      document.body.style.position = 'fixed';
+      document.body.style.top = -savedScrollY + 'px';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      backgroundElements = Array.from(document.querySelectorAll('body.is-home .hero, body.is-home > .music-links-footer, body.is-home > .ui-dock')).map(function (el) {
+        var item = {el: el, inert: el.inert}; el.inert = true; return item;
+      });
+      mobileHomeToggle.textContent = 'CLOSE';
+      mobileHomeToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('home-mobile-nav-open');
+      syncHomeIndex();
+      homeIndex.querySelector('a').focus({preventScroll: true});
+    });
+    homeIndex.addEventListener('click', function (event) {
+      if (event.target.closest('a') && mobileHomeOpen) closeMobileHome(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (!mobileHomeOpen) return;
+      if (event.key === 'Escape') { event.preventDefault(); closeMobileHome(true); }
+      if (event.key === 'Tab') {
+        var items = [mobileHomeToggle].concat(Array.from(homeIndex.querySelectorAll('a')));
+        var first = items[0], last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    mobileHomeMedia.addEventListener('change', function () { closeMobileHome(false); syncHomeIndex(); });
+    window.addEventListener('pagehide', function () { closeMobileHome(false); });
     var visual = document.getElementById('artist-button');
     var wrap = document.querySelector('.artist-wrap');
     var hoverMedia = window.matchMedia('(hover: hover) and (pointer: fine)');
