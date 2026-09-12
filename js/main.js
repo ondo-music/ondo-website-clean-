@@ -126,6 +126,7 @@
         var moveWindow = function (moveEvent) {
           var nextLeft = clamp(moveEvent.clientX - offsetX, minLeft, maxLeft);
           var nextTop = clamp(moveEvent.clientY - offsetY, minTop, maxTop);
+          if (floatingWindows.acceptPosition && !floatingWindows.acceptPosition(windowEl, nextLeft, nextTop)) return;
           windowEl.style.left = nextLeft + "px";
           windowEl.style.top = nextTop + "px";
         };

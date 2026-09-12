@@ -255,3 +255,19 @@ body.is-home .artist-button:active { transform: translate(-50%, -50%); }
 @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .inner-navigation, .inner-navigation__link { transition: none; transition-delay: 0s !important; }
 }
+
+/* Shared fragment chrome, with category-independent proportions. */
+@media (min-width: 981px) {
+  body.is-home .home-floating-window { width: var(--fragment-width); max-width: calc(100vw - 32px); pointer-events: none; box-shadow: 2px 3px 0 rgba(107,140,255,.06); }
+  body.is-home .home-floating-window--wide { --fragment-width: 320px; --fragment-height: 86px; }
+  body.is-home .home-floating-window--compact { --fragment-width: 232px; --fragment-height: 98px; }
+  body.is-home .home-floating-window--square { --fragment-width: 178px; --fragment-height: 178px; }
+  body.is-home .home-floating-window--tall { --fragment-width: 158px; --fragment-height: 220px; }
+  body.is-home .home-floating-window--strip { --fragment-width: 380px; --fragment-height: 64px; }
+  body.is-home .home-floating-window__chrome { min-height: var(--fragment-height); display: flex; flex-direction: column; }
+  body.is-home .home-floating-window__titlebar { flex-shrink: 0; background: #f4f7ff; pointer-events: auto; }
+  body.is-home .home-floating-window__body { min-height: 0; flex: 1; display: flex; align-items: center; padding: 12px 14px; font-size: 13px; line-height: 1.7; }
+  body.is-home .home-floating-window--strip .home-floating-window__body { padding: 7px 14px; }
+  body.is-home .home-floating-window.is-link .home-floating-window__body:focus-visible { outline: 2px solid #82a0cf; outline-offset: -4px; }
+  body.is-home .home-floating-window[data-unplaced] { visibility: hidden; }
+}
