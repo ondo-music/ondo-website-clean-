@@ -1,5 +1,5 @@
 /* Activity archive and shared download component. */
-.info-page { width: min(860px, calc(100% - 48px)); margin: 90px auto 140px; }
+.info-page { width: min(850px, calc(100% - 48px)); margin: 90px auto 140px; }
 .info-intro { color: #777; line-height: 1.9; }
 .info-record { padding: 32px 0; border-top: 1px solid #e4e4e4; overflow-wrap: anywhere; }
 .info-records { margin-top: 48px; }
@@ -45,12 +45,12 @@
 .info-article { width: min(1000px, calc(100% - 48px)); margin: 72px auto 140px; overflow-wrap: anywhere; }
 .info-article__back { display: inline-block; margin-bottom: 32px; font-size: 12px; }
 .info-article h1 { font-size: clamp(30px, 4vw, 56px); line-height: 1.4; margin: 20px 0 48px; white-space: normal; word-break: normal; }
-.info-article__body { max-width: 660px; margin: 0 auto; font-size: 17px; line-height: 1.9; }
+.info-article__body { max-width: 850px; margin: 0 auto; font-size: 17px; line-height: 1.9; }
 .info-article__body p { margin: 0 0 1.7em; }
 .info-article__body img, .info-article__hero { display: block; max-width: 100%; height: auto; margin: 24px auto; }
 .info-article__body iframe { max-width: 100%; }
 .info-article__body a { text-underline-offset: 4px; }
-.info-article__pagination { display: flex; justify-content: space-between; gap: 32px; border-top: 1px solid #e4e4e4; margin-top: 64px; padding-top: 24px; }
+.info-article__pagination { max-width: 850px; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; gap: 32px; border-top: 1px solid #e4e4e4; margin-top: 64px; padding-top: 24px; }
 .info-article__pagination a { max-width: 48%; font-size: 13px; line-height: 1.8; }
 @media (max-width: 768px) {
   .info-article { width: calc(100% - 40px); margin-top: 40px; }
