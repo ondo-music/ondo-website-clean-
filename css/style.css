@@ -8155,9 +8155,14 @@ body.section-blog:not(.page-blog) .blog-single-content-wrap {
 }
 
 body.section-blog:not(.page-blog) .blog-single-afterword,
-body.section-blog:not(.page-blog) .post-nav,
 body.section-blog:not(.page-blog) .blog-single.zine-post .post-share {
   max-width: 850px;
+}
+
+@media (min-width: 981px) {
+  body.section-blog:not(.page-blog) .blog-single.zine-post .post-nav {
+    max-width: 850px;
+  }
 }
 
 body.section-blog:not(.page-blog) .blog-single.zine-post .post-body {
