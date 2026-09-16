@@ -8157,7 +8157,7 @@ body.section-blog:not(.page-blog) .blog-single-content-wrap {
 body.section-blog:not(.page-blog) .blog-single-afterword,
 body.section-blog:not(.page-blog) .post-nav,
 body.section-blog:not(.page-blog) .blog-single.zine-post .post-share {
-  max-width: 660px;
+  max-width: 850px;
 }
 
 body.section-blog:not(.page-blog) .blog-single.zine-post .post-body {
