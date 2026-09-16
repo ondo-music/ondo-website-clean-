@@ -114,27 +114,33 @@ body.is-home .home-index-menu .menu-item:focus-visible { transform: translateX(-
 body.is-home .artist-wrap:hover::after { animation-play-state: running; }
 body.is-home .artist-button:active { transform: translate(-50%, -50%); }
 
-/* Desktop home: individually placed, horizontal labels form a gentle arc. */
+/* Desktop home: fixed right-edge navigation. */
 @media (min-width: 769px) {
   body.is-home .home-index-menu {
-    inset: 50% auto auto min(calc(50% + min(18vw, 180px) + 45px), calc(100% - 300px));
-    width: 260px; height: 376px; display: block;
+    inset: 50% 0 auto auto;
+    width: 260px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
   }
   body.is-home .home-index-menu__number { display: none; }
   body.is-home .home-index-menu .menu-item {
-    position: absolute; top: var(--index-y); left: var(--index-x);
-    width: max-content; min-height: 36px; padding: 5px 0;
-    font-size: 16px; font-weight: 300; transform: translateY(var(--neighbor-shift, 0px)) scale(1);
-    transform-origin: center; transition: transform .42s cubic-bezier(.22, 1, .36, 1), color .42s ease;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: max-content;
+    min-height: 36px;
+    padding: 5px 0;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 300;
+    transform: translateY(var(--neighbor-shift, 0px)) scale(1);
+    transform-origin: right center;
+    transition: transform .42s cubic-bezier(.22, 1, .36, 1), color .42s ease;
   }
-  body.is-home .home-index-menu .menu-item:nth-child(1) { --index-x: 0px; --index-y: 0px; }
-  body.is-home .home-index-menu .menu-item:nth-child(2) { --index-x: 45px; --index-y: 48px; }
-  body.is-home .home-index-menu .menu-item:nth-child(3) { --index-x: 88px; --index-y: 96px; }
-  body.is-home .home-index-menu .menu-item:nth-child(4) { --index-x: 120px; --index-y: 144px; }
-  body.is-home .home-index-menu .menu-item:nth-child(5) { --index-x: 128px; --index-y: 192px; }
-  body.is-home .home-index-menu .menu-item:nth-child(6) { --index-x: 116px; --index-y: 240px; }
-  body.is-home .home-index-menu .menu-item:nth-child(7) { --index-x: 82px; --index-y: 288px; }
-  body.is-home .home-index-menu .menu-item:nth-child(8) { --index-x: 38px; --index-y: 336px; }
   body.is-home .home-index-menu .menu-item:focus-visible { transform: scale(1.4); font-weight: 300; }
 }
 @media (min-width: 769px) and (hover: hover) {
