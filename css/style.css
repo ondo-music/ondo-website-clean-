@@ -8109,8 +8109,8 @@ body.section-blog:not(.page-blog) .blog-single-hero__caption {
   color: rgba(24, 24, 24, 0.5);
 }
 
-body.section-blog:not(.page-blog) .blog-single-head {
-  width: calc(100vw - 48px);
+body.section-blog:not(.page-blog) .blog-single.zine-post .blog-single-head {
+  width: calc(100% - 48px);
   max-width: none;
   margin-left: 24px;
   margin-right: 24px;
@@ -8132,8 +8132,9 @@ body.section-blog:not(.page-blog) .blog-single.zine-post .blog-single-head h1 {
   font-weight: 700;
   text-wrap: wrap;
   white-space: normal;
-  word-break: keep-all;
+  word-break: normal;
   line-break: strict;
+  overflow-wrap: normal;
 }
 
 body.section-blog:not(.page-blog) .blog-single-date-pill {
