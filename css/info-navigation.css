@@ -380,6 +380,7 @@ body.is-home .home-floating-window__drag-mark { color: rgba(80,122,185,.75); fon
   body.is-home .artist-wrap,
   body.is-home .artist-floater,
   body.is-home .artist-rotor { width: min(80vw, 330px); }
+  body.is-home .artist-wrap { overflow: clip; }
   body.is-home .artist-button,
   body.is-home .artist-selection {
     width: min(58vw, 230px);
