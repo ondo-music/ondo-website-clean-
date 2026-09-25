@@ -10,7 +10,8 @@
     ['left-middle', .055, .48], ['lower-offset', .23, .77],
     ['upper-offset', .53, .13], ['bottom-left', .055, .82],
     ['bottom-center', .57, .84], ['upper-left', .27, .035],
-    ['left-offset', .18, .56], ['lower-right', .75, .83]
+    ['left-offset', .18, .56], ['lower-right', .75, .83],
+    ['right-upper', .655, .30]
   ];
   function overlaps(a, b, gap) {
     return a.x < b.x + b.w + gap && a.x + a.w + gap > b.x && a.y < b.y + b.h + gap && a.y + a.h + gap > b.y;
