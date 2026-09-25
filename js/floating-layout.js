@@ -5,13 +5,13 @@
   var windows = Array.from(layer.querySelectorAll('.home-floating-window'));
   // Candidate anchors are deliberate compositions, not random coordinates.
   var anchors = [
-    ['upper-center', .40, .035], ['lower-left', .055, .63],
-    ['lower-center', .43, .80], ['upper-right', .72, .035],
+    ['upper-center', .37, .165], ['narrow-upper-center', .39, .025], ['lower-left', .055, .63],
+    ['narrow-right-lower', .665, .69], ['lower-center', .43, .80], ['upper-right', .72, .035],
     ['left-middle', .055, .48], ['lower-offset', .23, .77],
     ['upper-offset', .53, .13], ['bottom-left', .055, .82],
     ['bottom-center', .57, .84], ['upper-left', .27, .035],
     ['left-offset', .18, .56], ['lower-right', .75, .83],
-    ['right-upper', .655, .30]
+    ['right-upper', .635, .39]
   ];
   function overlaps(a, b, gap) {
     return a.x < b.x + b.w + gap && a.x + a.w + gap > b.x && a.y < b.y + b.h + gap && a.y + a.h + gap > b.y;
@@ -28,7 +28,7 @@
         if (r.width && r.height) rects.push({x:r.left, y:r.top, w:r.width, h:r.height});
       });
     });
-    document.querySelectorAll('body > .music-links-footer .language-switcher, .ui-dock .social-dock, .home-index-menu .menu-item').forEach(function (el) {
+    document.querySelectorAll('body > .music-links-footer .language-switcher, .ui-dock .social-dock, .home-index-menu .menu-item, .home-highlights').forEach(function (el) {
       var r = bounds(el);
       if (!r.w || !r.h) return;
       // Reserve room for the desktop menu's expansion and neighbor movement.

@@ -570,3 +570,32 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
   .work-detail__tracklist li { grid-template-columns: 34px minmax(0, 1fr); gap: 8px 12px; }
   .work-detail__track-vocal { grid-column: 2; text-align: left; }
 }
+
+/* Desktop home composition; mobile keeps its existing layout. */
+@media (min-width: 981px) {
+  body.is-home .home-wordmark {
+    left: clamp(28px, 3vw, 56px);
+    top: clamp(28px, 3.5vh, 42px);
+  }
+  body.is-home .home-highlights {
+    left: clamp(28px, 3vw, 56px);
+    bottom: clamp(118px, 12vh, 146px);
+  }
+  body.is-home .scene .artist-wrap {
+    left: 47%;
+    top: 57%;
+  }
+  body.is-home .home-index-menu {
+    top: clamp(28px, 4vh, 48px);
+    transform: none;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1199px) {
+  body.is-home .scene .artist-wrap { top: 52%; }
+  body.is-home .artist-wrap,
+  body.is-home .artist-floater,
+  body.is-home .artist-rotor { width: 440px; }
+  body.is-home .artist-button,
+  body.is-home .artist-selection { width: 300px; height: 300px; }
+}
