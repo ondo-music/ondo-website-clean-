@@ -342,13 +342,13 @@ body.is-home .artist-button:active { transform: translate(-50%, -50%); }
 }
 
 
-/* Approved home composition: latest release, latest blog, and primary paths. */
+/* Home updates share one quiet list for the latest blog and INFO entry. */
 body.is-home .home-highlights {
   position: fixed;
   left: clamp(22px, 5vw, 72px);
   bottom: 92px;
   z-index: 4;
-  width: min(620px, calc(100vw - 390px));
+  width: min(470px, calc(100vw - 390px));
   opacity: 0;
   visibility: hidden;
   transform: translateY(6px);
@@ -361,6 +361,7 @@ body.is-home.intro-done .home-highlights {
   transform: none;
   pointer-events: auto;
 }
+body.is-home .home-highlights { display: flex; flex-direction: column; gap: 22px; }
 body.is-home .home-highlight { margin: 0; }
 body.is-home .home-highlight--release { display: none; }
 body.is-home .home-highlight__meta {
@@ -451,7 +452,8 @@ body.is-home .home-floating-window__drag-mark { color: rgba(80,122,185,.75); fon
     color: rgba(24,24,24,.58);
     font-size: 12px;
   }
-  body.is-home .home-highlight--blog { margin-top: 34px; }
+  body.is-home .home-highlight--blog,
+  body.is-home .home-highlight--info { margin-top: 0; }
   body.is-home .home-highlight__title { font-size: 13px; }
   body.is-home .home-paths {
     margin-top: 34px;
@@ -515,9 +517,9 @@ body.is-home .home-floating-window__drag-mark { color: rgba(80,122,185,.75); fon
 
 @media (min-width: 769px) and (max-width: 980px) {
   body.is-home .home-highlights { width: min(330px, calc(100vw - 420px)); bottom: 64px; }
-  body.is-home .home-highlight--release { display: block; padding-top: 14px; border-top: 1px solid rgba(107,140,255,.42); }
-  body.is-home .home-highlight--release > p:not(.home-highlight__meta) { margin-top: 6px; color: rgba(24,24,24,.58); font-size: 11px; }
-  body.is-home .home-highlight--blog { margin-top: 22px; }
+  
+  
+  body.is-home .home-highlights { gap: 18px; }
   body.is-home .home-paths { display: none; }
 }
 
