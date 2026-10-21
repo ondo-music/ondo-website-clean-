@@ -634,20 +634,20 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
 @media (min-width: 981px) {
   body.is-home .home-wordmark { left: 3.1vw; top: 4vh; width: 40vw; }
   body.is-home .home-wordmark__title { font-size: clamp(180px, 16.5vw, 340px); line-height: .70; letter-spacing: -.055em; }
-  body.is-home .home-wordmark__subtitle { margin-top: 22px; font-size: 14px; letter-spacing: .09em; color: #171c25; }
-  body.is-home .home-wordmark__meta { margin-top: 36px; pointer-events: auto; }
+  body.is-home .home-wordmark__subtitle { margin-top: 52px; margin-left: 24px; font-size: 14px; letter-spacing: .12em; color: #171c25; }
+  body.is-home .home-wordmark__meta { margin-top: 30px; margin-left: 20px; pointer-events: auto; }
   body.is-home .home-wordmark__meta > .music-links-footer { display: none; }
   body.is-home .home-platform-icons { display: flex; align-items: center; gap: 18px; }
   body.is-home .home-platform-icons a { display: grid; place-items: center; width: 36px; height: 44px; color: #171c25; font-size: 26px; text-decoration: none; transition: color .25s ease; }
   body.is-home .home-platform-icons a:hover { color: #1670ff; }
   body.is-home .home-platform-icons a:focus-visible { outline: 2px solid #1670ff; outline-offset: 3px; }
   body.is-home .home-platform-icons__divider { height: 30px; width: 1px; background: #737981; margin: 0 8px; }
-  body.is-home .scene .artist-wrap { left: 48%; top: 59%; }
+  body.is-home .scene .artist-wrap { left: 49%; top: 57%; }
   body.is-home .artist-wrap,
   body.is-home .artist-floater,
   body.is-home .artist-rotor { width: min(42vw, 700px); }
   body.is-home .artist-button,
-  body.is-home .artist-selection { width: min(30vw, 53vh, 570px); height: min(30vw, 53vh, 570px); }
+  body.is-home .artist-selection { width: min(19.2vw, 34.4vh, 368px); height: min(19.2vw, 34.4vh, 368px); }
   body.is-home .home-highlights { left: 3.1vw; bottom: 15.5vh; width: 26.5vw; gap: 34px; }
   body.is-home .home-highlight__meta { margin-bottom: 8px; font-size: 14px; line-height: 1.6; letter-spacing: .1em; color: #6d7688; word-spacing: .35em; }
   body.is-home .home-highlight__title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; font-size: 17px; line-height: 1.7; color: #151922; }
