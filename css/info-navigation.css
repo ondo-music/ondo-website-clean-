@@ -633,7 +633,7 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
 /* Approved desktop mock: proportions, typography and generous spacing. */
 @media (min-width: 981px) {
   body.is-home .home-wordmark { left: 3.1vw; top: 4vh; width: 40vw; }
-  body.is-home .home-wordmark__title { font-size: clamp(180px, 16.5vw, 340px); line-height: .70; letter-spacing: -.055em; }
+  body.is-home .home-wordmark__title { font-size: clamp(162px, 14.85vw, 306px); line-height: .70; letter-spacing: -.055em; }
   body.is-home .home-wordmark__subtitle { margin-top: 52px; margin-left: 24px; font-size: 14px; letter-spacing: .12em; color: #171c25; }
   body.is-home .home-wordmark__meta { margin-top: 30px; margin-left: 20px; pointer-events: auto; }
   body.is-home .home-wordmark__meta > .music-links-footer { display: none; }
@@ -673,7 +673,7 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
 /* Approved mobile home: quiet section links and room around the identity. */
 @media (max-width: 768px) {
   body.is-home .hero { padding: calc(env(safe-area-inset-top) + 88px) 26px 0; }
-  body.is-home .home-wordmark__title { font-size: clamp(110px, 36.9vw, 170px); line-height: .78; letter-spacing: -.055em; }
+  body.is-home .home-wordmark__title { font-size: clamp(99px, 33.21vw, 153px); line-height: .78; letter-spacing: -.055em; }
   body.is-home .home-wordmark__subtitle { font-size: clamp(9.5px, 2.82vw, 12px); line-height: 1.6; letter-spacing: .09em; margin: 32px 0 0 8px; white-space: nowrap; color: #171c25; }
   body.is-home .home-wordmark__meta { display: block; margin: 25px 0 0 4px; pointer-events: auto; }
   body.is-home .home-wordmark__meta > .music-links-footer { display: none; }
@@ -711,3 +711,13 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
   body.is-home .home-section-link:focus-visible,
   body.is-home .home-platform-icons a:focus-visible { outline: 2px solid #1670ff; outline-offset: 4px; }
 }
+
+/* Keep the original square artwork visible without the circular mask or rotation. */
+body.is-home .artist-rotor { animation: none !important; transform: none !important; }
+body.is-home .artist-button,
+body.is-home .artist-selection,
+body.is-home .artist-image { border-radius: 0 !important; clip-path: none !important; -webkit-clip-path: none !important; }
+body.is-home .artist-button { border: 0 !important; box-shadow: none !important; background: transparent !important; }
+body.is-home .artist-selection,
+body.is-home .artist-wrap::after { display: none !important; }
+body.is-home .artist-image { object-fit: contain; }
