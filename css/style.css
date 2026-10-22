@@ -6774,7 +6774,7 @@ body.page-about::after {
   aspect-ratio: 1 / 1;
   right: 28px;
   bottom: 28px;
-  background-image: url("/images/background/guitar.PNG");
+  background-image: image-set(url("/images/optimized/images/background/guitar-dd3f7ee8c247-320.webp") 1x, url("/images/optimized/images/background/guitar-dd3f7ee8c247-640.webp") 2x);
   transform: rotate(-2deg);
 }
 
@@ -6783,7 +6783,7 @@ body.page-contact::after {
   aspect-ratio: 1 / 1;
   left: 26px;
   bottom: 24px;
-  background-image: url("/images/background/sp404mk2.PNG");
+  background-image: image-set(url("/images/optimized/images/background/sp404mk2-5ed81f2985a6-320.webp") 1x, url("/images/optimized/images/background/sp404mk2-5ed81f2985a6-640.webp") 2x);
   transform: rotate(2deg);
 }
 
@@ -6793,7 +6793,7 @@ body.section-blog::after {
   aspect-ratio: 1 / 1;
   right: 28px;
   top: 92px;
-  background-image: url("/images/background/macmini.PNG");
+  background-image: image-set(url("/images/optimized/images/background/macmini-400876e8a64e-320.webp") 1x, url("/images/optimized/images/background/macmini-400876e8a64e-640.webp") 2x);
   transform: rotate(-1.5deg);
 }
 
@@ -6835,7 +6835,7 @@ body.page-about::before {
   aspect-ratio: 1 / 1;
   right: clamp(52px, 7vw, 120px);
   bottom: clamp(126px, 17vh, 220px);
-  background: url("/images/background/bass.PNG") no-repeat center / contain;
+  background: image-set(url("/images/optimized/images/background/bass-75dd81ef3892-320.webp") 1x, url("/images/optimized/images/background/bass-75dd81ef3892-640.webp") 2x) no-repeat center / contain;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
   animation: scrapbookFloatB 11.6s ease-in-out infinite;
 }

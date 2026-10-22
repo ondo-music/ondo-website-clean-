@@ -46,7 +46,7 @@
         if (destination.bottom > 0 && destination.top < innerHeight) {
           const start = art.getBoundingClientRect();
           art.style.opacity = '0';
-          await fly(start, destination, art.src);
+          await fly(start, destination, art.currentSrc || art.src);
         }
       }
       dialog.close();
@@ -99,7 +99,7 @@
           { opacity: 0, transform: 'translateY(12px)' },
           { opacity: 1, transform: 'none' }
         ], { duration: 650, delay: 140, fill: 'both', easing: 'cubic-bezier(.22,1,.36,1)' });
-        await fly(start, art.getBoundingClientRect(), original.src);
+        await fly(start, art.getBoundingClientRect(), original.currentSrc || original.src);
         art.style.opacity = '1';
       } catch (_) {
         window.location.assign(link.href);
