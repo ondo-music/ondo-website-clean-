@@ -712,8 +712,9 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
   body.is-home .home-platform-icons a:focus-visible { outline: 2px solid #1670ff; outline-offset: 4px; }
 }
 
-/* Keep the original square artwork visible without the circular mask or rotation. */
-body.is-home .artist-rotor { animation: none !important; transform: none !important; }
+/* Keep the original square artwork still and visible without the circular mask. */
+body.is-home .artist-rotor,
+body.is-home .artist-floater { animation: none !important; transform: none !important; }
 body.is-home .artist-button,
 body.is-home .artist-selection,
 body.is-home .artist-image { border-radius: 0 !important; clip-path: none !important; -webkit-clip-path: none !important; }
