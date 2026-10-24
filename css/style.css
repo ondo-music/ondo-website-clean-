@@ -7952,12 +7952,21 @@ body.page-about .links-section--about h2 {
 }
 
 body.page-about .about-works-year h3 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body.page-about .about-works-item {
-  font-size: 13px;
+  font-size: 15.5px;
   line-height: 1.85;
+}
+
+body.page-about .about-works h2 {
+  font-size: 18px;
+}
+
+body.page-about .about-works-org,
+body.page-about .about-works-points {
+  font-size: inherit;
 }
 
 body.page-about .links-section--about .links__label,
@@ -8018,7 +8027,15 @@ body.page-contact .links-section--contact .links__plus {
   }
 
   body.page-about .about-works-item {
-    font-size: 12.5px;
+    font-size: 14px;
+  }
+
+  body.page-about .about-works h2 {
+    font-size: 16px;
+  }
+
+  body.page-about .about-works-year h3 {
+    font-size: 15px;
   }
 
   body.page-about .links-section--about .links__label,
