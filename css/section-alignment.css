@@ -101,3 +101,21 @@ body.page-about .links-section--about .links__item:focus-visible {
 @media (max-width: 768px) {
   .info-page .info-records { margin-top: 158px; }
 }
+
+/* Approved quiet INFO archive. */
+.info-page .info-records { margin-top: 58px; }
+.info-year + .info-year { margin-top: 40px; }
+.info-year__title { margin: 0 0 18px; font-size: 16px; letter-spacing: .14em; color: #666; }
+.info-page .info-record { border: 0; padding: 15px 0; display: grid; grid-template-columns: 58px minmax(0, 1fr) 65px; gap: 18px; align-items: baseline; }
+.info-page .info-record__meta { font-size: 13px; color: #777; letter-spacing: .02em; }
+.info-page .info-record h3 { margin: 0; font-size: 15px; line-height: 1.8; font-weight: 400; }
+.info-page a.info-record__title { display: block; font-size: 15px; line-height: 1.8; text-decoration: none; color: #242424; }
+.info-record__category { font-size: 10px; letter-spacing: .07em; color: #7b8492; text-align: right; }
+.info-record__arrow { color: #1670ff; margin-left: 12px; }
+@media (max-width: 768px) {
+  .info-page .info-records { margin-top: 164px; }
+  .info-page .info-record { grid-template-columns: 44px minmax(0, 1fr); gap: 3px 12px; padding: 13px 0; }
+  .info-record__category { grid-column: 2; text-align: left; }
+  .info-page a.info-record__title { font-size: 14px; }
+  .info-page .info-record__meta { font-size: 12px; }
+}
