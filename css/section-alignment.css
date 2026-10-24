@@ -126,3 +126,8 @@ body.is-inner .ui-dock { right: 32px; bottom: 32px; }
 @media (max-width: 768px) {
   body.is-inner .ui-dock { right: calc(16px + env(safe-area-inset-right)); bottom: calc(66px + env(safe-area-inset-bottom)); }
 }
+
+/* Keep the plant clear of archive controls after removing the introduction. */
+@media (max-width: 768px) {
+  body.section-blog .blog-log__inner > .blog-filter { margin-top: 164px; }
+}
