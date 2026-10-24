@@ -11,7 +11,7 @@
 .media-work-dialog a:focus-visible,
 .media-work-dialog button:focus-visible { outline: 2px solid #1768ff; outline-offset: 5px; }
 .media-works-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 52px 3.7vw; }
-.media-work { display: block; color: inherit; text-decoration: none; min-width: 0; }
+.media-work { display: block; color: inherit; text-decoration: none; min-width: 0; align-self: start; transform-origin: center top; }
 .media-work > img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; transition: transform .5s cubic-bezier(.22,1,.36,1); }
 .media-work__title { display: block; margin-top: 16px; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
 .media-work time { display: block; margin-top: 5px; font-size: 10px; color: #747c8a; letter-spacing: .05em; }
