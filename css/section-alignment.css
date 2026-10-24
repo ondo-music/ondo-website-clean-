@@ -83,3 +83,9 @@ body.page-about .profile-vertical hr {
   border: 0;
   border-top: 1px solid #ddd;
 }
+
+body.page-about .profile-layout .profile-vertical::before,
+body.page-about .profile-layout .profile-vertical::after {
+  content: none;
+  display: none;
+}
