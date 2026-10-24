@@ -48,3 +48,30 @@ body.page-about .profile-layout .page-title,
   .media-archive__heading { display: block; }
   .media-archive__platforms { padding-top: 0; margin-top: 24px; }
 }
+
+/* Quiet link feedback without reflow or changing the home menu motion. */
+body.section-blog .blog-link,
+body.section-blog .blog-link:hover,
+body.section-blog .blog-link:focus-visible {
+  border-bottom-color: transparent;
+  text-decoration: none;
+}
+:where(a[href]:not(.menu-item)) {
+  display: inline-block;
+  transform-origin: left center;
+}
+body a[href]:not(.menu-item) {
+  transition: scale .32s cubic-bezier(.22, 1, .36, 1), color .25s ease, background-color .25s ease, border-color .25s ease, transform .32s cubic-bezier(.22, 1, .36, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  body a[href]:not(.menu-item):hover { scale: 1.06; }
+  body a.media-work:hover,
+  body .media-video__media > a:hover,
+  body a:has(> img):hover { scale: 1.02; }
+}
+body a[href]:not(.menu-item):focus-visible { scale: 1.06; }
+@media (prefers-reduced-motion: reduce) {
+  body a[href]:not(.menu-item) { transition: none; }
+  body a[href]:not(.menu-item):hover,
+  body a[href]:not(.menu-item):focus-visible { scale: none; }
+}
