@@ -119,3 +119,10 @@ body.page-about .links-section--about .links__item:focus-visible {
   .info-page a.info-record__title { font-size: 14px; }
   .info-page .info-record__meta { font-size: 12px; }
 }
+
+.site-copyright { margin-top: 8px; font-size: 10px; letter-spacing: .04em; color: #888; line-height: 1.4; }
+.home-wordmark .site-copyright { display: none; }
+body.is-inner .ui-dock { right: 32px; bottom: 32px; }
+@media (max-width: 768px) {
+  body.is-inner .ui-dock { right: calc(16px + env(safe-area-inset-right)); bottom: calc(66px + env(safe-area-inset-bottom)); }
+}
