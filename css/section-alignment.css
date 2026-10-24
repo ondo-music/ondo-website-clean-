@@ -1,0 +1,50 @@
+/* Shared archive alignment. Detail pages retain their reading layouts. */
+body.page-about .profile-page .scene {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 72px 64px 96px !important;
+}
+.info-page {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 72px 64px 96px;
+}
+.info-page__inner { max-width: 760px; }
+.info-page .info-intro { margin-top: 26px; font-size: 14px; line-height: 1.95; }
+.info-headphones { position: absolute; top: 100px; right: clamp(48px, 10vw, 190px); width: 180px; pointer-events: none; }
+.info-headphones img { width: 100%; height: auto; display: block; }
+.section-lyrics .lyrics-log { max-width: none; margin: 0; padding: 72px 64px 96px; }
+.media-archive { padding: 72px 64px 120px; }
+.media-archive__eyebrow { display: none; }
+.media-archive__heading { align-items: flex-start; }
+.media-archive__platforms { padding-top: 12px; }
+body.page-about .profile-layout .page-title,
+.info-page > .info-page__inner > .page-title,
+.section-lyrics .lyrics-log > header > .page-title,
+.media-archive__heading h1 {
+  font-family: var(--font-site);
+  font-size: clamp(33px, 4.5vw, 58px);
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  .info-page__inner { max-width: calc(100% - 220px); }
+  .info-headphones { right: 40px; width: 150px; }
+}
+@media (max-width: 768px) {
+  body.page-about .profile-page .scene { padding: 40px 24px 72px !important; }
+  .info-page, .section-lyrics .lyrics-log, .media-archive { padding: 40px 24px 72px; }
+  body.page-about .profile-layout .page-title,
+  .info-page > .info-page__inner > .page-title,
+  .section-lyrics .lyrics-log > header > .page-title,
+  .media-archive__heading h1 { font-size: clamp(30px, 8.8vw, 42px); }
+  .info-headphones { top: 104px; right: 24px; width: 90px; }
+  .info-page .info-intro { padding-right: 100px; min-height: 110px; }
+  .media-archive__heading { display: block; }
+  .media-archive__platforms { padding-top: 0; margin-top: 24px; }
+}
