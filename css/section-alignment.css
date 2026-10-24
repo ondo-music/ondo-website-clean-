@@ -89,3 +89,15 @@ body.page-about .profile-layout .profile-vertical::after {
   content: none;
   display: none;
 }
+
+body.page-about .links-section--about .links__item,
+body.page-about .links-section--about .links__item:hover,
+body.page-about .links-section--about .links__item:focus-visible {
+  background: transparent;
+  box-shadow: none;
+}
+/* Reserve room for the decorative image without an introductory paragraph. */
+.info-page .info-records { margin-top: 48px; }
+@media (max-width: 768px) {
+  .info-page .info-records { margin-top: 158px; }
+}
