@@ -629,6 +629,7 @@ body.page-about .about-contact-link { margin: 32px 0 0; }
 }
 
 .home-platform-icons { display: none; }
+.home-platform-icons a[aria-label="ニコニコ動画"] svg { transform: translateY(-2px); }
 
 /* Approved desktop mock: proportions, typography and generous spacing. */
 @media (min-width: 981px) {
