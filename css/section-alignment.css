@@ -131,3 +131,5 @@ body.is-inner .ui-dock { right: 32px; bottom: 32px; }
 @media (max-width: 768px) {
   body.section-blog .blog-log__inner > .blog-filter { margin-top: 164px; }
 }
+
+body.is-home .artist-wrap { display: none; }
