@@ -165,3 +165,8 @@ body.is-home.home-mobile-nav-open .home-mobile-menu-toggle { position:fixed; }
   .inner-navigation__languages a { display: inline-flex; align-items: center; min-height: 44px; color: #888; }
   .inner-navigation__languages [aria-current] { color: #1670ff; }
 }
+
+/* Covers stay top-aligned even when a caption wraps onto another line. */
+body.page-discography .discography-work,
+body.page-discography .disc-work,
+body.page-discography .disc-cover-link { vertical-align: top; align-self: start; transform-origin: center top; }

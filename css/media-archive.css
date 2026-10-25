@@ -41,7 +41,6 @@
 .media-work-dialog .work-detail__links { gap: 22px; margin-top: 25px; }
 .media-work-dialog .work-detail__links a { font-size: 12px; }
 .media-work-dialog .work-detail__tracklist { margin-top: 35px; }
-@media (hover: hover) { .media-work:hover > img { transform: translateY(-5px); } }
 @media (min-width: 1700px) { .media-works-grid { grid-template-columns: repeat(6,minmax(0,1fr)); } }
 @media (max-width: 1000px) {
   .media-works-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
