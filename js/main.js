@@ -566,7 +566,18 @@
     var mobileHomeMedia = window.matchMedia('(max-width: 768px)');
     var mobileHomeOpen = false;
     var mobileHomeToggle = document.querySelector('.home-mobile-menu-toggle');
+    var menuAnchor = document.createComment('home menu position');
+    var toggleAnchor = document.createComment('home menu toggle position');
+    homeIndex.before(menuAnchor);
+    mobileHomeToggle.before(toggleAnchor);
     var syncHomeIndex = function () {
+      if (mobileHomeMedia.matches) {
+        if (homeIndex.parentNode !== document.body) document.body.appendChild(homeIndex);
+        if (mobileHomeToggle.parentNode !== document.body) document.body.appendChild(mobileHomeToggle);
+      } else {
+        if (homeIndex.previousSibling !== menuAnchor) menuAnchor.after(homeIndex);
+        if (mobileHomeToggle.previousSibling !== toggleAnchor) toggleAnchor.after(mobileHomeToggle);
+      }
       var ready = document.body.classList.contains('intro-done');
       homeIndex.classList.toggle('is-ready', ready);
       homeIndex.inert = !ready || (mobileHomeMedia.matches && !mobileHomeOpen);
@@ -603,7 +614,7 @@
       backgroundElements = Array.from(document.querySelectorAll('body.is-home .hero, body.is-home > .music-links-footer, body.is-home > .ui-dock')).map(function (el) {
         var item = {el: el, inert: el.inert}; el.inert = true; return item;
       });
-      mobileHomeToggle.textContent = 'CLOSE';
+      mobileHomeToggle.textContent = 'CLOSE ×';
       mobileHomeToggle.setAttribute('aria-expanded', 'true');
       document.body.classList.add('home-mobile-nav-open');
       syncHomeIndex();
