@@ -149,3 +149,19 @@ body.is-home.home-mobile-nav-open .home-index-menu > .menu-item:first-of-type { 
 body.is-home.home-mobile-nav-open .home-mobile-menu-toggle { position:fixed; }
 @media(prefers-reduced-motion:reduce){body.is-home .home-index-menu, body.is-home .home-index-menu .menu-item {transition:none!important;}}
 }
+
+/* Match the home mobile menu across inner pages. */
+@media (max-width: 768px) {
+  .inner-navigation { box-sizing: border-box; height: 100dvh; padding: 114px 32px max(82px, env(safe-area-inset-bottom)); }
+  .inner-navigation__top { position: absolute; top: 22px; left: 32px; right: 28px; border: 0; padding: 0; }
+  .inner-navigation__brand { font-size: 27px; font-weight: 700; letter-spacing: -.04em; color: #171c25; }
+  .inner-navigation__top button { font-size: 11px; letter-spacing: .1em; color: #1670ff; min-height: 44px; }
+  .inner-navigation__links { padding: 0; gap: 4px; align-items: stretch; }
+  .inner-navigation__link { display: flex; align-items: center; flex-shrink: 0; min-height: 54px; font-size: 23px; font-weight: 400; line-height: 1.4; letter-spacing: .075em; color: #171c25; }
+  .inner-navigation__link.is-current { color: #1670ff; }
+  .inner-navigation__bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 26px; gap: 20px; font-size: 10px; letter-spacing: .08em; color: #8a9099; }
+  .inner-navigation__bottom small { font-size: inherit; }
+  .inner-navigation__languages { margin: 0; padding: 0; gap: 20px; font-size: 10px; }
+  .inner-navigation__languages a { display: inline-flex; align-items: center; min-height: 44px; color: #888; }
+  .inner-navigation__languages [aria-current] { color: #1670ff; }
+}
