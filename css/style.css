@@ -7395,7 +7395,7 @@ body.section-blog::after {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
   gap: 30px 24px;
-  align-items: end;
+  align-items: start;
   padding: 22px 0 30px;
 }
 
@@ -7420,6 +7420,7 @@ body.section-blog::after {
   gap: 12px;
   color: inherit;
   text-decoration: none;
+  transform-origin: center top;
 }
 
 .section-lyrics .lyrics-card__cover {

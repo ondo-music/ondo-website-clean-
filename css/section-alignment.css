@@ -170,3 +170,14 @@ body.is-home.home-mobile-nav-open .home-mobile-menu-toggle { position:fixed; }
 body.page-discography .discography-work,
 body.page-discography .disc-work,
 body.page-discography .disc-cover-link { vertical-align: top; align-self: start; transform-origin: center top; }
+
+@media (min-width: 769px) {
+  body.is-home > .music-links-footer > .site-copyright {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    margin: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+}
