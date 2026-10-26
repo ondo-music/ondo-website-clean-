@@ -181,3 +181,16 @@ body.page-discography .disc-cover-link { vertical-align: top; align-self: start;
     white-space: nowrap;
   }
 }
+
+/* Reset the legacy translucent, curved inner-page menu completely. */
+@media (max-width: 768px) {
+  .inner-navigation { background: #fff; backdrop-filter: none; }
+  .inner-navigation__links { flex: 0 0 auto; justify-content: flex-start; }
+  .inner-navigation__links .inner-navigation__link {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    padding: 0;
+    transform: none;
+  }
+}
